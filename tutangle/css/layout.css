@@ -1,6 +1,6 @@
 .container-wrapper {
   width: 100%;
-  background: silver;
+  background: green;
 }
 
 .header-wrapper {
@@ -13,11 +13,10 @@
 }
 
 .header-top {
-  width: 632px;
+  width: 944px;
   margin: 0px auto;
   overflow: auto;
   background: blue;
-  padding: 10px;
 }
 
 .header-top-left {
@@ -25,13 +24,13 @@
 }
 
 .tutangle-logo {
-  width: 156px;
+  width: 225px;
   background: red;
 }
 
 .header-top-left-2 {
   float: left;
-  width: 233px;
+  width: 342px;
   background: white;
 }
 
@@ -53,26 +52,89 @@
 }
 
 .header-bottom {
-  width: 632px;
+  width: 944px;
   margin: 0px auto;
   overflow: auto;
   background: yellow;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .header-bottom-left {
-  width: 335px;
+  width: 485px;
   background: orange;
   float: left;
 }
 
 .header-bottom-right {
   float: right;
-  background: grey;
+  background: hotpink;
 }
 
 .body-wrapper {
+  width: 944px;
+  margin: 0 auto;
+  background: blue;
+  overflow: auto;
+}
+
+.body-left {
+  float: left;
+  background: red;
+  width: 196px;
+}
+
+.recent-searches-wrapper {
   width: 100%;
+  background: yellow;
+}
+
+.recent-searches-heading {
+  width: 100%;
+  background: skyblue;
+}
+
+.recent-searches-body {
+  width: 100%;
+  background: grey;
+}
+
+.body-right {
+  float: right;
+  background: grey;
+  width: 720px;
+}
+
+.entries-wrapper {
+  width: 520px;
+  background: peru;
+  float: left;
+}
+
+.all-entries-wrapper {
+  float: left;
+  width: 50%;
+  background: silver;
+}
+
+.all-entries-menu {
+  width: 100%;
+  background: lightslategrey;
+}
+
+.subscribed-menu {
+  width: 100%;
+  background: lightseagreen;
+}
+.subscribed-wrapper {
+  float: right;
+  width: 50%;
+  background: teal;
+}
+
+.video-tutorial-wrapper {
+  width: 176px;
+  background: royalblue;
+  float: right;
 }
 
 .footer-wrapper {
