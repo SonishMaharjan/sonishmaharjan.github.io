@@ -83,6 +83,10 @@
   width: 196px;
 }
 
+.recent-searches {
+  width: 100%;
+}
+
 .recent-searches-wrapper {
   width: 100%;
   background: yellow;
@@ -131,10 +135,41 @@
   background: teal;
 }
 
+.entries-body {
+  width: 100%;
+  background: brown;
+}
+
+.entry-item {
+  width: 100%;
+}
+
+.entry-image {
+  width: 72px;
+  height: 72px;
+  background: yellow;
+  float: left;
+}
+
+.entry-description {
+  width: 432px;
+  background: greenyellow;
+  float: right;
+}
+
 .video-tutorial-wrapper {
   width: 176px;
   background: royalblue;
   float: right;
+}
+
+.video-tutorial-header {
+  width: 100%;
+  background: chocolate;
+}
+.video-tutorial-body {
+  width: 100%;
+  background: violet;
 }
 
 .footer-wrapper {
