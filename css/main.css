@@ -29,9 +29,21 @@ dl {
 header {
   padding: 50px 20px;
 }
-h1 {
+h1,
+h2,
+h3 {
   color: white;
 }
+
+.profile-info {
+  margin: 25px;
+  text-align: center;
+}
+
+.table-header {
+  margin: 20px;
+}
+
 h1,
 main {
   text-align: center;
