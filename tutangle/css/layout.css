@@ -174,4 +174,21 @@
 
 .footer-wrapper {
   width: 100%;
+  background: #00bcd4;
+}
+
+.footer {
+  width: 944px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.footer-left {
+  float: left;
+  background: red;
+}
+
+.footer-right {
+  float: right;
+  background: green;
 }
