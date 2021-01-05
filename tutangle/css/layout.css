@@ -13,7 +13,8 @@
 }
 
 .header-top {
-  width: 944px;
+  width: 938px;
+  padding: 22px 32px 28px;
   margin: 0px auto;
   overflow: auto;
   background: blue;
@@ -52,7 +53,8 @@
 }
 
 .header-bottom {
-  width: 944px;
+  width: 938px;
+  padding: 15px 32px;
   margin: 0px auto;
   overflow: auto;
   background: yellow;
@@ -71,7 +73,8 @@
 }
 
 .body-wrapper {
-  width: 944px;
+  width: 938px;
+  padding: 32px;
   margin: 0 auto;
   background: blue;
   overflow: auto;
@@ -142,6 +145,8 @@
 
 .entry-item {
   width: 100%;
+  padding: 16px 0;
+  overflow: auto;
 }
 
 .entry-image {
@@ -178,9 +183,11 @@
 }
 
 .footer {
-  width: 944px;
+  width: 938px;
+  padding: 20px 32px;
   margin: 0 auto;
   overflow: auto;
+  background: purple;
 }
 
 .footer-left {
