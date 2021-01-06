@@ -214,7 +214,7 @@
 }
 
 .all-entries-left {
-  background-image: url("./images/big-tab-left.png");
+  background-image: url("../images/big-tab-left.png");
   height: 100%;
   background-position: top left;
   background-repeat: no-repeat;
@@ -222,7 +222,7 @@
 
 .all-entries-right {
   background-position: top right;
-  /* background-image: url("./images/big-tab-right.png"); */
+  /* background-image: url("../images/big-tab-right.png"); */
   height: 100%;
   background-repeat: no-repeat;
 }
@@ -240,7 +240,7 @@
 }
 
 .subscribed-left {
-  /* background-image: url("./images/big-tab-left.png"); */
+  /* background-image: url("../images/big-tab-left.png"); */
   height: 100%;
   background-position: top left;
   background-repeat: no-repeat;
@@ -248,7 +248,7 @@
 
 .subscribed-right {
   background-position: top right;
-  background-image: url("./images/big-tab-right.png");
+  background-image: url("../images/big-tab-right.png");
   height: 100%;
   background-repeat: no-repeat;
 }
@@ -342,12 +342,12 @@
   height: 20px;
 }
 .search-input-left {
-  background-image: url("./images/search-left.png");
+  background-image: url("../images/search-left.png");
   background-position: top left;
   background-repeat: no-repeat;
 }
 .search-input-right {
-  background-image: url("./images/search-right.png");
+  background-image: url("../images/search-right.png");
   background-position: top right;
   background-repeat: no-repeat;
 }
@@ -372,12 +372,12 @@
 }
 
 .search-btn-left {
-  background-image: url("./images/btn-left.png");
+  background-image: url("../images/btn-left.png");
   background-position: top left;
   background-repeat: no-repeat;
 }
 .search-btn-right {
-  background-image: url("./images/btn-right.png");
+  background-image: url("../images/btn-right.png");
   background-position: top right;
   background-repeat: no-repeat;
 }
@@ -400,13 +400,13 @@
 }
 
 .tab-btn-left {
-  background-image: url("./images/tab-left.png");
+  background-image: url("../images/tab-left.png");
 
   background-position: top left;
   background-repeat: no-repeat;
 }
 .tab-btn-right {
-  background-image: url("./images/tab-right.png");
+  background-image: url("../images/tab-right.png");
   background-position: top right;
   background-repeat: no-repeat;
 }
@@ -421,23 +421,23 @@
 }
 
 .tab-btn:hover .tab-btn-left {
-  background-image: url("./images/tab-select-left.png");
+  background-image: url("../images/tab-select-left.png");
 }
 
 .tab-btn:hover {
   background: #2fc1d8;
 }
 .tab-btn:hover .tab-btn-right {
-  background-image: url("./images/tab-select-right.png");
+  background-image: url("../images/tab-select-right.png");
   color: white;
 }
 
 .tab-btn.tab-btn-active .tab-btn-left {
-  background-image: url("./images/tab-select-left.png");
+  background-image: url("../images/tab-select-left.png");
 }
 
 .tab-btn.tab-btn-active .tab-btn-right {
-  background-image: url("./images/tab-select-right.png");
+  background-image: url("../images/tab-select-right.png");
   color: white;
 }
 
