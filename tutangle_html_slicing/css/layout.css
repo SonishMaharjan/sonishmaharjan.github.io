@@ -29,7 +29,6 @@
 
 .header-top-left-2 {
   float: left;
-  width: 342px;
   margin-left: 36px;
 }
 
@@ -360,10 +359,9 @@
 }
 
 .search-btn {
-  background-color: #caeff7;
   float: left;
   margin-top: 40px;
-  margin-right: 10px;
+  margin-right: 0px;
   background: #275056;
 }
 
@@ -383,8 +381,12 @@
 }
 .search-text {
   display: block;
+
   padding: 0 10px;
   color: white;
+  height: 16px;
+  padding-top: 4px;
+  font-size: 12px;
 }
 
 .tab-btn {
@@ -462,7 +464,7 @@
 
 .description-title {
   font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .entry-option {
@@ -494,4 +496,42 @@
 .footer-nav-item a {
   text-decoration: none;
   color: #fff;
+}
+
+.round-search {
+  background-color: #caeff7;
+  float: left;
+  margin-top: 40px;
+  margin-right: 10px;
+  background: #caeff7;
+}
+
+.round-search:hover {
+  cursor: pointer;
+}
+
+.round-search-left {
+  background-image: url("../images/search-left.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+.round-search-right {
+  background-image: url("../images/search-right.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+.round-search-content {
+  width: 266px;
+  height: 20px;
+  padding: 0 10px;
+}
+
+.round-search-input {
+  width: 235px;
+}
+
+.round-search-content input {
+  background: transparent;
+  border: none;
 }
