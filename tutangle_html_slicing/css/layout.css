@@ -127,6 +127,7 @@
 .recent-searches-item {
   font-size: 10px;
   padding: 14px 12px;
+  font-weight: bold;
 }
 
 .recent-searches-item:hover {
@@ -170,6 +171,7 @@
   font-size: 12px;
   background: #2fc1da;
   padding: 14px 12px;
+  font-weight: bold;
 }
 
 .recent-searches-body {
@@ -196,6 +198,9 @@
 
 .entries-option {
   margin-top: 12px;
+  overflow: hidden;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #2fc1d8;
 }
 
 .all-entries-wrapper {
