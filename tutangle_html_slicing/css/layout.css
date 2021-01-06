@@ -209,15 +209,14 @@
   background-repeat: no-repeat;
 }
 
-/* .all-entries-right {
+.all-entries-right {
   background-position: top right;
+  background-image: url("/images/big-tab-right.png");
+  height: 100%;
   background-repeat: no-repeat;
-} */
-/* .search-text {
-  display: block;
-  padding: 0 10px;
-  color: white;
-} */
+}
+.all-entries-text {
+}
 
 .all-entries-menu {
   width: 100%;
