@@ -96,7 +96,7 @@
 }
 
 .option-item:hover {
-  background: lightgray;
+  background: #7dd9e8;
   cursor: pointer;
 }
 
@@ -272,7 +272,6 @@
 
 .subscribed-menu {
   width: 100%;
-  background: lightseagreen;
 }
 
 .entries-body {
@@ -301,17 +300,14 @@
 
 .video-tutorial-wrapper {
   width: 176px;
-  background: royalblue;
   float: right;
 }
 
 .video-tutorial-header {
   width: 100%;
-  background: chocolate;
 }
 .video-tutorial-body {
   width: 100%;
-  background: violet;
 }
 
 .footer-wrapper {
