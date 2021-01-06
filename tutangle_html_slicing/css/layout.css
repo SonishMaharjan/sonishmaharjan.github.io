@@ -175,21 +175,49 @@
 
 .body-right {
   float: right;
-  background: grey;
   width: 720px;
 }
 
 .entries-wrapper {
   width: 520px;
-  background: peru;
   float: left;
+}
+
+.entries-heading {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.entries-option {
+  margin-top: 12px;
 }
 
 .all-entries-wrapper {
   float: left;
-  width: 50%;
-  background: silver;
+  width: 248px;
+  background-color: #f5f5f5;
+  /* float: left; */
+  /* margin-top: 40px;
+  margin-right: 10px; */
+  height: 65px;
 }
+
+.all-entries-left {
+  background-image: url("/images/big-tab-left.png");
+  height: 100%;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+
+/* .all-entries-right {
+  background-position: top right;
+  background-repeat: no-repeat;
+} */
+/* .search-text {
+  display: block;
+  padding: 0 10px;
+  color: white;
+} */
 
 .all-entries-menu {
   width: 100%;
@@ -208,7 +236,7 @@
 
 .entries-body {
   width: 100%;
-  background: brown;
+  /* background: brown; */
 }
 
 .entry-item {
