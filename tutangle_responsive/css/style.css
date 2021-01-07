@@ -367,16 +367,9 @@
 }
 
 .footer-nav-item {
-  display: inline-block;
-  background: url("../images/dot.png");
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-left: 12px;
-  margin-right: 8px;
-}
-
-.footer-nav-item:first-child {
-  background: none;
+  /* width: 56px; */
+  /* border: 2px solid red; */
+  margin: 10px;
 }
 
 .footer-nav-item a {
@@ -408,5 +401,20 @@
 
   .recent-searches-right {
     height: 592px;
+  }
+
+  .footer-nav-item {
+    display: inline-block;
+    background: url("../images/dot.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 12px;
+    margin-right: 8px;
+  }
+  .footer-nav-item:first-child {
+    background: none;
+  }
+  .footer-nav-item {
+    margin: 0px;
   }
 }

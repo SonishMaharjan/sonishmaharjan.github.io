@@ -29,11 +29,20 @@ body {
   overflow: auto;
 }
 
+.footer-right {
+  margin-top: 20px;
+}
+
 .body-wrapper {
   /* margin: auto;
   width: 100%; */
 }
+.footer {
+  padding: 20px 0;
+  width: 100%;
 
+  text-align: center;
+}
 .header-top-right {
   float: right;
 }
@@ -56,6 +65,10 @@ body {
 .nav-hamburger-icon {
   float: left;
 }
+
+.footer-right {
+}
+
 /*  */
 
 .body-left {
@@ -143,6 +156,23 @@ body {
   .video-tutorial-wrapper {
     width: 176px;
     float: right;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .footer-left {
+    float: left;
+  }
+  .footer-right {
+    float: right;
+    margin-top: 0;
+  }
+
+  .footer {
+    width: 938px;
+    padding: 20px 32px;
+    margin: 0 auto;
+    overflow: auto;
   }
 }
 
@@ -225,18 +255,6 @@ body {
   font-size: 12px;
 }
 
-.footer {
-  width: 938px;
-  padding: 20px 32px;
-  margin: 0 auto;
-  overflow: auto;
-}
-
-.footer-left {
-  float: left;
-}
-
 .footer-right {
-  float: right;
   color: #fff;
 }
