@@ -105,9 +105,13 @@
 }
 
 .user-nav-wrapper {
-  display: none;
+  /* display: none; */
   /* overflow: auto; */
 }
+
+/* .header-top-right {
+  float: none;
+} */
 
 .username-wrapper {
   font-weight: bold;

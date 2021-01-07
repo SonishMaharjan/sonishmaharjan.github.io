@@ -16,9 +16,14 @@ body {
   position: relative;
 }
 
+.header-top-right {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .header-bottom {
   width: 93.612774%;
-  padding: 0 32px;
+  padding: 0 15px;
   margin: 0px auto;
   overflow: auto;
 }
@@ -42,9 +47,6 @@ body {
   width: 100%;
 
   text-align: center;
-}
-.header-top-right {
-  float: right;
 }
 
 .header-top-left {
@@ -95,6 +97,11 @@ body {
 
   .header-top-left {
     float: left;
+  }
+
+  .header-top-right {
+    float: right;
+    margin-bottom: 0;
   }
 
   .header-top-left-2 {
