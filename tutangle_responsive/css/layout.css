@@ -29,6 +29,11 @@ body {
   overflow: auto;
 }
 
+.body-wrapper {
+  /* margin: auto;
+  width: 100%; */
+}
+
 .header-top-right {
   float: right;
 }
@@ -53,6 +58,11 @@ body {
 }
 /*  */
 
+.body-left {
+  width: 29.940119%;
+  margin: 20px auto;
+  min-width: 200px;
+}
 @media screen and (min-width: 768px) {
   body {
     min-width: 48em;
@@ -79,6 +89,13 @@ body {
     width: 938px;
   }
 
+  .body-wrapper {
+    width: 938px;
+    padding: 32px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+
   .header-bottom-left {
     display: block;
     width: auto;
@@ -93,6 +110,17 @@ body {
 
   .header-bottom-right {
     margin-right: 0px;
+  }
+
+  .body-left {
+    margin: 0;
+    float: left;
+    width: 196px;
+  }
+
+  .body-right {
+    float: right;
+    width: 720px;
   }
 }
 
@@ -109,29 +137,12 @@ body {
   margin-right: 10px;
 }
 
-.body-wrapper {
-  width: 938px;
-  padding: 32px;
-  margin: 0 auto;
-  overflow: auto;
-}
-
-.body-left {
-  float: left;
-  width: 196px;
-}
-
 .recent-searches {
   width: 100%;
 }
 
 .recent-searches-wrapper {
   width: 100%;
-}
-
-.body-right {
-  float: right;
-  width: 720px;
 }
 
 .entries-wrapper {
