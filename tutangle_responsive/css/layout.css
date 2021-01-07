@@ -2,20 +2,8 @@ body {
   min-width: 30em;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    min-width: 48em;
-  }
-}
-
-@media screen and (min-width: 1002px) {
-  body {
-    min-width: 62.625em;
-  }
-}
-
 .container-wrapper {
-  min-width: 62.625em;
+  min-width: 100%;
 }
 
 .header-wrapper {
@@ -25,26 +13,60 @@ body {
 .header-top-wrapper {
   width: 100%;
   background: #7dd9e8;
+  position: relative;
 }
 
 .header-top {
-  width: 938px;
+  width: 100%;
   padding: 0px 32px;
   margin: 0px auto;
   overflow: auto;
 }
 
-.header-top-left {
-  float: left;
-}
-
-.header-top-left-2 {
-  float: left;
-  margin-left: 36px;
+.header-top {
+  width: 93.612774%;
 }
 
 .header-top-right {
   float: right;
+}
+
+.header-top-left {
+  margin: 0 auto;
+  width: 230px;
+}
+
+.header-top-left-2 {
+  margin: 12px auto;
+  width: 356px;
+  overflow: auto;
+}
+/*  */
+
+@media screen and (min-width: 768px) {
+  body {
+    min-width: 48em;
+  }
+
+  .header-top-left {
+    float: left;
+  }
+
+  .header-top-left-2 {
+    float: left;
+    margin: 0;
+    margin-left: 14px;
+  }
+}
+
+@media screen and (min-width: 1002px) {
+  body {
+    min-width: 62.625em;
+  }
+
+  .header-top {
+    width: 938px;
+  }
 }
 
 .navbar-wrapper {

@@ -1,6 +1,12 @@
 .tutangle-logo {
-  width: 225px;
+  /* width: 225px; */
   margin: 20px 0;
+}
+.hamburger-wrapper {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .search-input-wrapper {
@@ -32,7 +38,6 @@
 
 .search-btn {
   float: left;
-  margin-top: 40px;
   margin-right: 0px;
   background: #275056;
 }
@@ -64,7 +69,6 @@
 .round-search {
   background-color: #caeff7;
   float: left;
-  margin-top: 40px;
   margin-right: 10px;
   background: #caeff7;
 }
@@ -98,6 +102,11 @@
 .round-search-content input {
   background: transparent;
   border: none;
+}
+
+.user-nav-wrapper {
+  display: none;
+  /* overflow: auto; */
 }
 
 .username-wrapper {
@@ -192,7 +201,7 @@
   padding-top: 3px;
 }
 
-.friend-request{
+.friend-request {
   color: #aaaaaa;
 }
 
@@ -381,4 +390,24 @@
 .footer-nav-item a {
   text-decoration: none;
   color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger-wrapper {
+    display: none;
+  }
+
+  .user-nav-wrapper {
+    display: block;
+  }
+
+  .round-search {
+    margin-top: 40px;
+  }
+  .search-btn {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1002px) {
 }
