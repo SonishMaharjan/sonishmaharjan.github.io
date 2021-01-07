@@ -63,6 +63,18 @@ body {
   margin: 20px auto;
   min-width: 200px;
 }
+
+.entries-wrapper {
+  width: 520px;
+  margin: auto;
+}
+
+.video-tutorial-wrapper {
+  width: 17.56487%;
+  min-width: 200px;
+  margin: 20px auto;
+  /* float: right; */
+}
 @media screen and (min-width: 768px) {
   body {
     min-width: 48em;
@@ -122,6 +134,16 @@ body {
     float: right;
     width: 720px;
   }
+
+  .entries-wrapper {
+    width: 520px;
+    float: left;
+  }
+
+  .video-tutorial-wrapper {
+    width: 176px;
+    float: right;
+  }
 }
 
 .navbar-wrapper {
@@ -143,11 +165,6 @@ body {
 
 .recent-searches-wrapper {
   width: 100%;
-}
-
-.entries-wrapper {
-  width: 520px;
-  float: left;
 }
 
 .all-entries-wrapper {
@@ -193,11 +210,6 @@ body {
   background-repeat: no-repeat;
 }
 .subscribed-text {
-}
-
-.video-tutorial-wrapper {
-  width: 176px;
-  float: right;
 }
 
 .video-tutorial-header {

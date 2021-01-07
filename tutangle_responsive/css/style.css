@@ -220,14 +220,6 @@
   border: 1px solid transparent;
 }
 
-.recent-searches-left-bottom {
-  height: 460px;
-}
-
-.recent-searches-right {
-  height: 592px;
-}
-
 .entries-heading {
   font-size: 22px;
   font-weight: bold;
@@ -410,4 +402,11 @@
 }
 
 @media screen and (min-width: 1002px) {
+  .recent-searches-left-bottom {
+    height: 460px;
+  }
+
+  .recent-searches-right {
+    height: 592px;
+  }
 }
