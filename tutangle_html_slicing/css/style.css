@@ -3,8 +3,6 @@
   margin: 20px 0;
 }
 
-
-
 .search-input-wrapper {
   background-color: #caeff7;
   float: left;
@@ -62,7 +60,6 @@
   padding-top: 4px;
   font-size: 12px;
 }
-
 
 .round-search {
   background-color: #caeff7;
@@ -146,7 +143,6 @@
   cursor: pointer;
 }
 
-
 .notification {
   padding: 12px 0;
   float: left;
@@ -196,7 +192,6 @@
   padding-top: 3px;
 }
 
-
 .recent-searches-heading {
   color: white;
   font-size: 12px;
@@ -212,6 +207,14 @@
   border: 1px solid transparent;
 }
 
+.recent-searches-left-bottom {
+  height: 460px;
+}
+
+.recent-searches-right {
+  height: 592px;
+}
+
 .entries-heading {
   font-size: 22px;
   font-weight: bold;
@@ -222,7 +225,6 @@
   overflow: hidden;
   border-bottom: 2px solid #2fc1d8;
 }
-
 
 .all-entries-heading {
   padding: 14px 0;
@@ -256,7 +258,6 @@
   width: 432px;
   float: right;
 }
-
 
 .tab-btn {
   float: left;
@@ -315,8 +316,6 @@
   background: #2fc1d8;
 }
 
-
-
 .all-entries-list {
   list-style: none;
   padding-left: 6px;
@@ -326,6 +325,12 @@
 .entry-exclamation {
   font-size: 10px;
   color: #57b0c0;
+  margin: 5px 0;
+  font-weight: bold;
+}
+.topic-box-exclamation {
+  color: #70961d;
+  font-size: 10px;
   margin: 5px 0;
   font-weight: bold;
 }
@@ -373,6 +378,3 @@
   text-decoration: none;
   color: #fff;
 }
-
-
-
