@@ -1,8 +1,21 @@
-.container-wrapper {
-  /* min-width: 62.625em;
-   */
+body {
+  min-width: 30em;
+}
 
-  min-width: 10em;
+@media screen and (min-width: 768px) {
+  body {
+    min-width: 48em;
+  }
+}
+
+@media screen and (min-width: 1002px) {
+  body {
+    min-width: 62.625em;
+  }
+}
+
+.container-wrapper {
+  min-width: 62.625em;
 }
 
 .header-wrapper {
