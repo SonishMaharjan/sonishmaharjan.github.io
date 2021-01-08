@@ -74,8 +74,13 @@ body {
 /*  */
 
 .body-left {
-  width: 29.940119%;
-  margin: 20px auto;
+  display: none;
+}
+
+.body-left-sm {
+  float: left;
+  width: 40%;
+  margin: 20px 0;
   min-width: 200px;
 }
 
@@ -85,11 +90,22 @@ body {
 }
 
 .video-tutorial-wrapper {
-  width: 17.56487%;
-  min-width: 200px;
+  width: 40%;
+  /* min-width: 200px; */
   margin: 20px auto;
-  /* float: right; */
+  margin-left: 20px;
+  float: left;
 }
+
+.bottom-searches-wrapper-sm {
+  overflow: auto;
+  /* margin: 30px; */
+  /* border: 30px solid blue; */
+  /* ***********  remove width */
+  /* width: 50%;
+  margin: auto; */
+}
+
 @media screen and (min-width: 768px) {
   body {
     min-width: 48em;
@@ -145,11 +161,15 @@ body {
   }
 
   .body-left {
+    display: block;
     margin: 0;
     float: left;
     width: 196px;
   }
 
+  .body-left-sm {
+    display: none;
+  }
   .body-right {
     float: right;
     width: 720px;
