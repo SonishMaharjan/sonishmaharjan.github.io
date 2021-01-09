@@ -66,7 +66,7 @@
 
 .login-btn {
   background: #cc003e;
-  padding: 10px 18px;
+  padding: 8px 18px;
   border: none;
   margin-right: 15px;
   color: white;
@@ -102,6 +102,7 @@
 
 .search-wrapper {
   float: right;
+  position: relative;
 }
 
 .nav-wrapper ul {
@@ -158,5 +159,17 @@
   .header-pop-up {
     display: hidden;
     border: 20px solid red;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: -30px;
+    text-decoration: none;
+    /* display: inline-block; */
+    /* height: 28px;
+    width: 28px; */
+    background: #fff;
+    /* padding-top: 5px; */
+    /* border: 2px solid red; */
   }
 }
