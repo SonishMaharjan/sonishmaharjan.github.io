@@ -1,9 +1,13 @@
 .pandora-logo {
   float: left;
+  margin-right: 16px;
 }
 
 .pandora-text {
   float: left;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #cc003e;
 }
 
 .account-info ul {
@@ -14,13 +18,80 @@
   display: inline-block;
 }
 
+.account-info-link {
+  text-decoration: none;
+  color: black;
+}
+
+.account-info-link:hover {
+  color: #cc003e;
+}
+
+.header-icon {
+  margin-top: 10px;
+}
+
+.login-label {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.login-input {
+  margin-right: 15px;
+  height: 28px;
+  border: none;
+  width: 168px;
+  padding-left: 5px;
+}
+
+.email-wrapper {
+  float: left;
+}
+
+.password-wrapper {
+  float: left;
+  position: relative;
+}
+
+.forget-link {
+  position: absolute;
+  left: 110px;
+  top: 5px;
+}
+
+.login-btn {
+  background: #cc003e;
+  padding: 10px 18px;
+  border: none;
+  margin-right: 15px;
+  color: white;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+  background-color: #cc6f0e;
+}
+
 .header-bottom-down {
   overflow: auto;
-  /* border: 20px solid yellow; */
+  padding: 22px 0;
 }
 
 .nav-wrapper {
   float: left;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-item:hover {
+  border-bottom: 2px solid black;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
 }
 
 .search-wrapper {

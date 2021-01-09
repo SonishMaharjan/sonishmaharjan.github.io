@@ -13,20 +13,31 @@
       <div class="header-wrapper">
         <div class="header-top">
           <div class="header-top-left">
-            <div class="pandora-logo">PANDORA</div>
+            <div class="pandora-logo">
+              <img src="images/pandora-logo.png" alt="" />
+            </div>
             <div class="pandora-text">fantastic products & great prices</div>
           </div>
           <div class="header-top-right">
             <div class="account-info">
               <ul>
                 <li>
-                  <span>C</span>
+                  <span class="header-icon"
+                    ><img src="images/trolly-icon.png" alt=""
+                  /></span>
                   <span>0 items($0.00 in total)s</span>
                 </li>
                 |
-                <li>Checkout</li>
+                <li><a class="account-info-link" href="#">Checkout</a></li>
                 |
-                <li><span>M</span> <span>My account</span></li>
+                <li>
+                  <span class="header-icon"
+                    ><img src="images/user-icon.png" alt=""
+                  /></span>
+                  <span
+                    ><a class="account-info-link" href="#">My account</a></span
+                  >
+                </li>
               </ul>
             </div>
             <div class="header-bottom-sm">
@@ -41,11 +52,26 @@
           <div class="header-bottom-up">
             <div class="form-wrapper">
               <form action="#">
-                <span>Log-In</span>
-                <input type="text" placeholder="Email address" />
-                <input type="text" placeholder="Password" />Forget?
-                <button class="login-btn">Log-in</button>
-                <button class="login-btn">Continue as guest</button>
+                <div class="email-wrapper">
+                  <span class="login-label">Log-In</span>
+                  <input
+                    class="login-input"
+                    type="text"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div class="password-wrapper">
+                  <input
+                    class="login-input"
+                    type="text"
+                    placeholder="Password"
+                  />
+                  <span class="forget-link"><a href="#">Forget?</a></span>
+                </div>
+                <div class="button-wrapper">
+                  <button class="login-btn">Log-in</button>
+                  <button class="login-btn">Continue as guest</button>
+                </div>
               </form>
             </div>
           </div>
@@ -65,7 +91,11 @@
               </ul>
             </div>
             <div class="search-wrapper">
-              <input type="text" placeholder="search here" />
+              <input
+                class="login-input"
+                type="text"
+                placeholder="search here"
+              />
             </div>
           </div>
         </div>

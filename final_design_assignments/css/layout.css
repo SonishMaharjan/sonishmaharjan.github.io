@@ -17,17 +17,15 @@ body {
 .header-top {
   width: 100%;
   overflow: auto;
-  border: 5px solid green;
+  padding: 24px 0;
 }
 
 .header-top-left {
   float: left;
-  border: 5px solid red;
 }
 
 .header-top-right {
   float: right;
-  border: 5px solid red;
 }
 
 .account-info {
@@ -75,6 +73,7 @@ body {
     width: 680px;
     margin: auto;
     padding: 10px;
+    overflow: auto;
   }
 
   .header-bottom {
