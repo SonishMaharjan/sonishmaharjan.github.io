@@ -27,6 +27,10 @@
   color: #cc003e;
 }
 
+.hamburger-icon:hover {
+  cursor: pointer;
+}
+
 .header-icon {
   margin-top: 10px;
 }
@@ -106,4 +110,53 @@
 
 .nav-wrapper ul li {
   display: inline-block;
+}
+
+/* pop up */
+
+.account-info-sm ul {
+  list-style: none;
+}
+
+.account-info-sm ul li {
+  margin: 20px;
+}
+
+.login-wrapper-sm {
+  margin: 20px;
+  /* border: 2px solid blue; */
+}
+
+.login-input-sm {
+  width: 60%;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.navbar-sm {
+  margin: 20px;
+}
+
+.navbar-sm ul {
+  list-style: none;
+}
+
+.navbar-sm ul li {
+  margin: 15px 0;
+}
+
+.search-input-sm {
+  width: 50%;
+  margin: 20px;
+}
+/* pop up */
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1002px) {
+  .header-pop-up {
+    display: hidden;
+    border: 20px solid red;
+  }
 }

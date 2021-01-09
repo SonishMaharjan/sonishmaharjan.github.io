@@ -44,6 +44,24 @@ body {
   display: none;
 }
 
+.header-bottom-sm {
+  /* border: 2px solid red; */
+  /* position: relative; */
+}
+
+.header-pop-up {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 60%;
+  padding: 40px;
+  font-size: 30px;
+  background: rgba(46, 49, 49, 0.1);
+  border-radius: 10px;
+  /* height: 300px; */
+}
+
 @media screen and (min-width: 768px) {
   .main-container {
     min-width: 48em;
@@ -62,6 +80,7 @@ body {
   }
 
   .account-info {
+    /* uncomment below line */
     display: block;
   }
   .header-bottom-sm {
@@ -77,6 +96,8 @@ body {
   }
 
   .header-bottom {
+    /* display: none; */
+    /* change to block */
     display: block;
   }
 }
