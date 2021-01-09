@@ -1,0 +1,36 @@
+.pandora-logo {
+  float: left;
+}
+
+.pandora-text {
+  float: left;
+}
+
+.account-info ul {
+  list-style-type: none;
+}
+
+.account-info ul li {
+  display: inline-block;
+}
+
+.header-bottom-down {
+  overflow: auto;
+  /* border: 20px solid yellow; */
+}
+
+.nav-wrapper {
+  float: left;
+}
+
+.search-wrapper {
+  float: right;
+}
+
+.nav-wrapper ul {
+  list-style: none;
+}
+
+.nav-wrapper ul li {
+  display: inline-block;
+}
