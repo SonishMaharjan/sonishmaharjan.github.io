@@ -1,0 +1,75 @@
+.main-container {
+  min-width: 30em;
+  padding: 0 5px;
+}
+
+.header-wrapper {
+  width: 97.804391%;
+  margin: auto;
+  border: 4px solid black;
+}
+
+.header-top {
+  width: 100%;
+  overflow: auto;
+  border: 5px solid green;
+}
+
+.header-top-left {
+  float: left;
+  border: 5px solid red;
+}
+
+.header-top-right {
+  float: right;
+  border: 5px solid red;
+}
+
+.account-info {
+  display: none;
+}
+
+.header-bottom {
+  width: 100%;
+}
+
+.form-wrapper {
+  display: none;
+}
+
+.nav-wrapper {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .main-container {
+    min-width: 48em;
+  }
+}
+
+@media screen and (min-width: 1002px) {
+  body {
+    min-width: 62.625em;
+  }
+
+  .header-wrapper {
+    border: 10px solid blue;
+    width: 990px;
+    margin: auto;
+  }
+
+  .account-info {
+    display: block;
+  }
+  .header-bottom-sm {
+    display: none;
+  }
+
+  .form-wrapper {
+    display: block;
+  }
+
+  .nav-wrapper {
+    display: block;
+  }
+}
