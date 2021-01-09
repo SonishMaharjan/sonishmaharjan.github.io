@@ -11,7 +11,7 @@ body {
 .header-wrapper {
   width: 97.804391%;
   margin: auto;
-  border: 4px solid black;
+  /* border: 4px solid black; */
 }
 
 .header-top {
@@ -56,7 +56,7 @@ body {
   }
 
   .header-wrapper {
-    border: 10px solid blue;
+    /* border: 10px solid blue; */
     width: 990px;
     margin: auto;
   }
