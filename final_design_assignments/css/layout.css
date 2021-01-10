@@ -59,18 +59,121 @@ body {
   font-size: 30px;
   background: #ffff;
   border-radius: 10px;
+  z-index: 10000;
+}
+
+.outer-slider-wrapper {
+  position: relative;
 }
 
 .slider-wrapper {
   width: 100%;
   /* border: 2px solid red; */
-  height: 500px;
+  height: auto;
   overflow: hidden;
+  position: relative;
+}
+
+.slider-text-wrapper {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 100%;
+}
+
+.slider-main-text {
+  width: 47.365269%;
+  background: #cc003e;
+  /* padding: 20px; */
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  /* font-size: 30px; */
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+.slider-sub-text {
+  margin-top: 5px;
+  width: 47.365269%;
+  /* height: 62px; */
+  padding: 5px;
+  background: #cc003e;
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+}
+
+.slider-button-wrapper {
+  position: absolute;
+  bottom: -12px;
+  left: 45%;
+
+  text-align: center;
+}
+
+.slider-button-wrapper ul {
+  list-style: none;
+}
+
+.slider-button-wrapper ul li {
+  display: inline-block;
+  background: #fff;
+  padding: 5px;
+  height: 15px;
+  width: 15px;
+  border-radius: 100px;
+  color: #fff;
+  margin: 2px;
+  font-weight: bold;
+  color: #cc003e;
+}
+
+.slider-button-wrapper ul li:hover {
+  cursor: pointer;
+  background: #cc003e;
+  color: #fff;
+}
+
+.slider-button.active-slider-button {
+  background: #cc003e;
+  color: #fff;
 }
 
 @media screen and (min-width: 768px) {
   .main-container {
     min-width: 48em;
+  }
+
+  .slider-text-wrapper {
+    position: absolute;
+    top: 55%;
+    left: 15%;
+    width: 100%;
+  }
+
+  .slider-main-text {
+    width: 47.365269%;
+    background: #cc003e;
+    /* padding: 20px; */
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    /* font-size: 30px; */
+    font-size: 20px;
+    /* font-weight: bold; */
+  }
+
+  .slider-sub-text {
+    margin-top: 10px;
+    width: 47.365269%;
+    /* height: 62px; */
+    padding: 16px;
+    background: #cc003e;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    /* width: 56%; */
   }
 }
 
@@ -105,5 +208,19 @@ body {
     /* display: none; */
     /* change to block */
     display: block;
+  }
+  .slider-wrapper {
+    /* border: 2px solid red; */
+    height: 500px;
+  }
+
+  .slider-main-text {
+    font-size: 30px;
+    text-align: left;
+  }
+
+  .slider-sub-text {
+    width: 570px;
+    font-size: 15px;
   }
 }

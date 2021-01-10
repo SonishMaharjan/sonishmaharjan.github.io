@@ -165,7 +165,6 @@
 @media screen and (min-width: 1002px) {
   .header-pop-up {
     display: hidden;
-    border: 20px solid red;
   }
 
   .search-icon {
