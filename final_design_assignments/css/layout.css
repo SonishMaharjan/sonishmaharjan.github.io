@@ -22,7 +22,7 @@ body {
   /* border: 4px solid black; */
 }
 
-.feature-item-wrapper {
+.section-wrapper {
   width: 80%;
   margin: auto;
 }
@@ -271,7 +271,7 @@ body {
     left: 45%;
   }
 
-  .feature-item-wrapper {
+  .section-wrapper {
     width: 990px;
     margin: auto;
   }
