@@ -8,7 +8,7 @@ body {
 }
 
 .header-wrapper {
-  width: 97.804391%;
+  width: 80%;
   padding: 0 10px;
   margin: auto;
   /* border: 4px solid black; */
@@ -75,7 +75,7 @@ body {
 }
 
 @media screen and (min-width: 1002px) {
-  body {
+  .main-conatainer {
     min-width: 62.625em;
   }
 
