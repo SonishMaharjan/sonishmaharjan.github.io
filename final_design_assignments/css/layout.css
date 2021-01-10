@@ -107,7 +107,7 @@ body {
 .slider-button-wrapper {
   position: absolute;
   bottom: -12px;
-  left: 45%;
+  left: 35%;
 
   text-align: center;
 }
@@ -140,6 +140,25 @@ body {
   color: #fff;
 }
 
+.welcome-section-wrapper {
+  width: auto;
+  margin: 45px auto;
+  overflow: auto;
+  text-align: auto;
+}
+
+.welcome-section {
+  margin: auto;
+  width: 80%;
+}
+
+.welcome-section-left {
+  margin-top: 4%;
+  text-align: center;
+}
+.welcome-section-right {
+  padding: 4.990019% 0;
+}
 @media screen and (min-width: 768px) {
   .main-container {
     min-width: 48em;
@@ -174,6 +193,9 @@ body {
     color: #fff;
     font-size: 10px;
     /* width: 56%; */
+  }
+  .slider-button-wrapper {
+    left: 40%;
   }
 }
 
@@ -222,5 +244,18 @@ body {
   .slider-sub-text {
     width: 570px;
     font-size: 15px;
+  }
+
+  .welcome-section-left {
+    float: left;
+    width: 48%;
+  }
+  .welcome-section-right {
+    width: 48%;
+    float: right;
+  }
+
+  .slider-button-wrapper {
+    left: 45%;
   }
 }

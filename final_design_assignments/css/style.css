@@ -159,6 +159,31 @@
   height: 100%;
 }
 
+.laptop-img {
+  width: 80%;
+}
+
+.welcome-heading {
+  text-align: center;
+  font-size: 18px;
+  margin: 22px 0;
+}
+
+.welcome-pandora-text {
+  font-weight: bold;
+}
+
+.welcome-body {
+  text-align: center;
+  /* border: 3px solid red; */
+  line-height: 1.5;
+}
+
+.welcome-body-bold {
+  font-weight: bold;
+  /* margin: 20px; */
+}
+
 @media screen and (min-width: 768px) {
 }
 
