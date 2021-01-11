@@ -53,6 +53,10 @@
   float: left;
 }
 
+.contact-info img {
+  margin-right: 20px;
+}
+
 .password-wrapper {
   float: left;
   position: relative;
@@ -126,7 +130,6 @@
 
 .login-wrapper-sm {
   margin: 20px;
-  /* border: 2px solid blue; */
 }
 
 .login-input-sm {
@@ -181,7 +184,6 @@
 
 .welcome-body-bold {
   font-weight: bold;
-  /* margin: 20px; */
 }
 
 .section-heading {
@@ -327,8 +329,7 @@
   position: relative;
   height: 176px;
   width: 135px;
-  /* border: 2px solid blue; */
-  /* overflow: hidden; */
+
   background: #fff;
   margin: 10px;
   padding-top: 10px;
@@ -362,6 +363,7 @@
 .contact-info {
   color: #333333;
   font-weight: bold;
+  margin: 20px 0;
 }
 
 .phone-number {
