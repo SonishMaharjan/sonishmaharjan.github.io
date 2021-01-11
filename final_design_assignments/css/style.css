@@ -176,7 +176,6 @@
 
 .welcome-body {
   text-align: center;
-  /* border: 3px solid red; */
   line-height: 1.5;
 }
 
@@ -373,6 +372,10 @@
 .footer-header {
   font-size: 22px;
   padding: 16px 0;
+  padding-bottom: 6px;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 10px;
 }
 
 .footer-nav-list {
@@ -396,6 +399,69 @@
 .footer-nav-item a:hover {
   text-decoration: underline;
 }
+
+.tweet-list {
+  list-style: none;
+}
+
+.tweet-item {
+  margin: 12px 0;
+}
+
+.tweet-content {
+  display: inline-block;
+  width: 80%;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.hash-tag {
+  color: #cc003e;
+}
+
+.hash-tag:hover {
+  cursor: pointer;
+}
+
+.news-letter-body p {
+  text-align: left;
+  font-size: 12px;
+}
+
+.news-letter-body b {
+  text-align: left;
+  font-size: 12px;
+}
+
+.footer-search {
+  margin: 20px 0;
+}
+
+.about-us-body {
+  font-size: 12px;
+  text-align: left;
+}
+
+.about-us-footer {
+  margin: 30px 0;
+}
+
+.about-us-footer ul {
+  list-style: none;
+}
+
+.about-us-footer ul li {
+  display: inline-block;
+}
+
+.icon-list {
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+}
 @media screen and (min-width: 768px) {
 }
 
@@ -408,11 +474,7 @@
     position: absolute;
     left: -30px;
     text-decoration: none;
-    /* display: inline-block; */
-    /* height: 28px;
-    width: 28px; */
+
     background: #fff;
-    /* padding-top: 5px; */
-    /* border: 2px solid red; */
   }
 }
