@@ -185,7 +185,7 @@
 }
 
 .section-heading {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .view-more-item {
@@ -270,8 +270,7 @@
 
 .extras {
   width: 315px;
-  display: inline-block;
-  margin: 10px 0;
+  margin: 10px auto;
   vertical-align: top;
 }
 
@@ -293,10 +292,13 @@
 }
 .news-blog-heading {
   color: #cc003e;
-  font-size: 15px;
+  font-size: 18px;
   margin: 8px 0;
 }
 
+.news-blog-text {
+  font-size: 12px;
+}
 .news-blog-info {
   margin: 8px 0;
   font-size: 10px;
@@ -350,6 +352,7 @@
 
 .about-contact-body {
   text-align: left;
+  font-size: 12px;
 }
 
 .about-contact-body p {
@@ -380,6 +383,7 @@
 
 .footer-nav-list {
   list-style: none;
+  margin-left: 17px;
 }
 
 .footer-nav-list li::before {
@@ -463,6 +467,9 @@
   text-align: center;
 }
 @media screen and (min-width: 768px) {
+  .extras {
+    display: inline-block;
+  }
 }
 
 @media screen and (min-width: 1002px) {
