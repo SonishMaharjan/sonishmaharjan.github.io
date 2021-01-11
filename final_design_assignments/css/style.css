@@ -265,13 +265,15 @@
 }
 
 .extras-wrapper {
-  /* text-align: center; */
+  text-align: center;
   padding: 20px 0;
 }
 
 .extras {
   width: 315px;
   display: inline-block;
+  margin: 10px 0;
+  vertical-align: top;
 }
 
 .extras-header {
@@ -308,6 +310,10 @@
   font-weight: bold;
   color: #cc003e;
   text-decoration: none;
+}
+
+.news-read-more a:hover {
+  text-decoration: underline;
 }
 
 .best-seller-list {
@@ -358,6 +364,37 @@
 
 .phone-number {
   font-size: 24px;
+}
+
+.footer-top {
+  text-align: center;
+}
+
+.footer-header {
+  font-size: 22px;
+  padding: 16px 0;
+}
+
+.footer-nav-list {
+  list-style: none;
+}
+
+.footer-nav-list li::before {
+  content: "\2022";
+  color: #cc003e;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.footer-nav-item a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-nav-item a:hover {
+  text-decoration: underline;
 }
 @media screen and (min-width: 768px) {
 }

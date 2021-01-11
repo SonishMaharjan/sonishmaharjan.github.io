@@ -175,6 +175,35 @@ body {
 .welcome-section-right {
   padding: 4.990019% 0;
 }
+
+.footer-navigation {
+  display: inline-block;
+  width: 136px;
+  margin-right: 17px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.latest-tweets {
+  display: inline-block;
+  width: 328px;
+  margin: 0 17px;
+  vertical-align: top;
+}
+
+.newsletter {
+  display: inline-block;
+  width: 230px;
+  margin: 0 17px;
+  vertical-align: top;
+}
+
+.about-us {
+  display: inline-block;
+  margin: 0 17px;
+  vertical-align: top;
+}
+
 @media screen and (min-width: 768px) {
   .main-container {
     min-width: 48em;
@@ -213,6 +242,13 @@ body {
   .slider-button-wrapper {
     left: 40%;
   }
+}
+
+.footer-wrapper {
+  background-color: #333333;
+  color: #fff;
+  width: 100%;
+  /* text-align: center; */
 }
 
 @media screen and (min-width: 1002px) {
@@ -281,5 +317,11 @@ body {
   .section-wrapper {
     width: 990px;
     margin: auto;
+  }
+
+  .footer {
+    width: 990px;
+    margin: auto;
+    border: 2px solid red;
   }
 }
