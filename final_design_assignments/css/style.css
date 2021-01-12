@@ -397,7 +397,7 @@
   padding: 16px 0;
   padding-bottom: 6px;
   text-align: left;
-  border-bottom: 1px solid #fff;
+  /* border-bottom: 1px solid #fff; */
   margin-bottom: 10px;
 }
 
@@ -430,6 +430,13 @@
 
 .tweet-item {
   margin: 12px 0;
+  position: relative;
+}
+
+.tweet-icon {
+  position: absolute;
+  top: 2px;
+  left: 8px;
 }
 
 .tweet-content {
@@ -486,13 +493,25 @@
 .footer-bottom {
   text-align: center;
 }
-@media screen and (min-width: 768px) {
-  .extras {
-    display: inline-block;
-    width: 30%;
-    margin-right: 20px;
-  }
 
+.search-here-wrapper {
+  position: relative;
+}
+
+.search-here-input {
+  height: 28px;
+  border: none;
+  width: 168px;
+  background: #e2e2e2;
+}
+
+.search-here-icon {
+  position: absolute;
+  top: 0;
+  left: 1px;
+}
+
+@media screen and (min-width: 768px) {
   .feature-item {
     width: 226px;
     height: 340px;
@@ -504,11 +523,26 @@
     display: none;
   }
 
+  .extras {
+    display: inline-block;
+    width: 30%;
+    margin-right: 20px;
+  }
+
+  .latest {
+    width: 28%;
+  }
+
+  .about-contacts {
+    width: 28%;
+  }
+
+  .best-seller-extras {
+    /* min-width: 275px; */
+  }
   .search-icon {
     position: absolute;
     left: -30px;
     text-decoration: none;
-
-    background: #fff;
   }
 }
