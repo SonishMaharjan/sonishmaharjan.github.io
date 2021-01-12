@@ -27,7 +27,7 @@ body {
 
 .section-wrapper {
   width: 77%;
-  margin: 18px 8%;
+  margin: 18px auto;
 }
 .header-top {
   width: 100%;
