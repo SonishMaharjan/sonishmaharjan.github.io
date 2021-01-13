@@ -29,6 +29,12 @@ body {
   width: 77%;
   margin: 18px auto;
 }
+
+.footer {
+  width: 77%;
+  margin: auto;
+}
+
 .header-top {
   width: 100%;
   overflow: auto;
@@ -109,7 +115,7 @@ body {
 .slider-sub-text {
   font-weight: bold;
   margin-top: 5px;
-  width: 47.365269%;
+  width: 85%;
   padding: 5px;
   background: #cc003e;
   text-align: center;
@@ -173,29 +179,29 @@ body {
 .welcome-section-right {
 }
 
+.footer-wrapper {
+  background-color: #333333;
+  color: #fff;
+  width: 100%;
+}
+
+.footer-top-left {
+  width: 100%;
+}
 .footer-navigation {
-  width: 136px;
-  text-align: left;
-  vertical-align: top;
-  margin-left: 17px;
+  width: 100%;
 }
 
 .latest-tweets {
-  width: 328px;
-  margin: 0 17px;
-  vertical-align: top;
+  width: 100%;
 }
 
 .newsletter {
-  width: 230px;
-  margin: 0 17px;
-  vertical-align: top;
+  width: 100%;
 }
 
 .about-us {
-  margin: 0 17px;
-  vertical-align: top;
-  width: 155px;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -207,23 +213,19 @@ body {
     position: absolute;
     top: 55%;
     left: 15%;
-    border: 3px solid blue;
-    /* width: 100%; */
   }
 
   .slider-main-text {
-    /* width: 47.365269%; */
     background: #cc003e;
     padding: 20px;
     text-align: center;
     color: #fff;
     font-size: 20px;
-    /* max-width: 678px; */
   }
 
   .slider-sub-text {
     margin-top: 10px;
-    width: 47.365269%;
+    width: 85%;
     padding: 16px;
     background: #cc003e;
     text-align: center;
@@ -233,12 +235,6 @@ body {
   .slider-button-wrapper {
     left: 40%;
   }
-}
-
-.footer-wrapper {
-  background-color: #333333;
-  color: #fff;
-  width: 100%;
 }
 
 @media screen and (min-width: 1002px) {
@@ -281,7 +277,7 @@ body {
   }
 
   .slider-sub-text {
-    width: 570px;
+    width: 85%;
     font-size: 15px;
   }
 
@@ -304,8 +300,31 @@ body {
   }
 
   .footer {
-    width: 990px;
-    margin: auto;
+    max-width: 990px;
+  }
+
+  .footer-navigation {
+    width: 30%;
+    text-align: left;
+    vertical-align: top;
+    margin-left: 17px;
+  }
+
+  .latest-tweets {
+    width: 60%;
+    vertical-align: top;
+  }
+
+  .newsletter {
+    width: 40%;
+    margin: 0 17px;
+    vertical-align: top;
+  }
+
+  .about-us {
+    margin: 0 17px;
+    vertical-align: top;
+    width: 40%;
   }
 
   .footer-navigation {
@@ -321,6 +340,16 @@ body {
   }
 
   .about-us {
+    display: inline-block;
+  }
+
+  .footer-top-left {
+    width: 48%;
+    display: inline-block;
+  }
+
+  .footer-top-right {
+    width: 48%;
     display: inline-block;
   }
 }

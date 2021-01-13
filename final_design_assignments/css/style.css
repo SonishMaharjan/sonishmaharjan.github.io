@@ -57,6 +57,11 @@
   margin-right: 20px;
 }
 
+.email-id {
+  position: absolute;
+  top: 5px;
+}
+
 .password-wrapper {
   float: left;
   position: relative;
@@ -382,14 +387,18 @@
   color: #333333;
   font-weight: bold;
   margin: 20px 0;
+  position: relative;
 }
 
 .phone-number {
   font-size: 24px;
+  position: absolute;
+  top: -2px;
 }
 
 .footer-top {
-  text-align: center;
+  width: 100%;
+  margin: auto;
 }
 
 .footer-header {
@@ -444,7 +453,7 @@
   width: 80%;
   font-size: 12px;
   text-align: left;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
 .hash-tag {
@@ -503,12 +512,17 @@
   border: none;
   width: 168px;
   background: #e2e2e2;
+  padding-left: 40px;
 }
 
 .search-here-icon {
   position: absolute;
   top: 0;
-  left: 1px;
+  left: 2px;
+}
+
+.best-seller-extras {
+  margin: 50px 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -538,11 +552,15 @@
   }
 
   .best-seller-extras {
-    /* min-width: 275px; */
+    margin: 10px 0;
+    margin-right: 20px;
   }
   .search-icon {
     position: absolute;
     left: -30px;
     text-decoration: none;
+  }
+  .search-here-input {
+    width: 80%;
   }
 }
