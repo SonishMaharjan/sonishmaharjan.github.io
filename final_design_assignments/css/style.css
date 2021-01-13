@@ -238,12 +238,8 @@
   margin: 24px 3px;
   padding: 8px;
   display: inline-block;
-
   min-width: 135px;
-  /* height: 203px; */
-
   width: 25%;
-
   background: #fff;
   color: #cc003e;
   text-align: center;
@@ -409,7 +405,6 @@
   padding: 16px 0;
   padding-bottom: 6px;
   text-align: left;
-  /* border-bottom: 1px solid #fff; */
   margin-bottom: 10px;
 }
 
