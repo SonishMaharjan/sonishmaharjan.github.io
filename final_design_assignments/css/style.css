@@ -210,8 +210,10 @@
   color: #555;
 }
 .section-header {
-  margin: 34px 0;
+  margin: 34px 0 17px;
   overflow: auto;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #fff;
 }
 
 .feature-image-wrapper {
@@ -459,10 +461,7 @@
 
 .hash-tag {
   color: #cc003e;
-}
-
-.hash-tag:hover {
-  cursor: pointer;
+  text-decoration: none;
 }
 
 .news-letter-body p {
