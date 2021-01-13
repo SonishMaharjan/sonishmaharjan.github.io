@@ -6,7 +6,7 @@
 .pandora-text {
   float: left;
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 0.75em;
   color: #cc003e;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .login-label {
-  font-size: 10px;
+  font-size: 0.625em;
   font-weight: bold;
   margin-right: 15px;
 }
@@ -179,7 +179,7 @@
 
 .welcome-heading {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.125em;
   margin: 22px 0;
 }
 
@@ -197,7 +197,7 @@
 }
 
 .section-heading {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .view-more-item {
@@ -229,11 +229,12 @@
   width: 100%;
   list-style: none;
   text-align: center;
+  font-size: 16px;
 }
 
 .feature-item {
   margin: 24px 3px;
-  padding: 8px 0;
+  padding: 8px;
   display: inline-block;
 
   min-width: 135px;
@@ -255,16 +256,16 @@
 }
 
 .item-name {
-  margin: 15px 0;
+  margin: 10px 0;
 }
 .price-tag {
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: bold;
 }
 
 .cut-price {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 0.875em;
   text-decoration: line-through;
   color: #555;
 }
@@ -289,7 +290,7 @@
 }
 
 .extras-wrapper {
-  text-align: center;
+  text-align: left;
   padding: 20px 0;
 }
 
@@ -300,7 +301,7 @@
 }
 
 .extras-header {
-  font-size: 18px;
+  font-size: 1.125em;
   padding-bottom: 20px;
   border-bottom: 1px solid #fff;
   text-align: left;
@@ -317,16 +318,16 @@
 }
 .news-blog-heading {
   color: #cc003e;
-  font-size: 18px;
+  font-size: 1.125em;
   margin: 8px 0;
 }
 
 .news-blog-text {
-  font-size: 12px;
+  font-size: 0.75em;
 }
 .news-blog-info {
   margin: 8px 0;
-  font-size: 10px;
+  font-size: 0.625em;
 }
 .news-blog-info-text {
   margin: 0 6px;
@@ -376,7 +377,7 @@
 
 .about-contact-body {
   text-align: left;
-  font-size: 12px;
+  font-size: 0.75em;
 }
 
 .about-contact-body p {
@@ -391,7 +392,7 @@
 }
 
 .phone-number {
-  font-size: 24px;
+  font-size: 1.5em;
   position: absolute;
   top: -2px;
 }
@@ -402,7 +403,7 @@
 }
 
 .footer-header {
-  font-size: 22px;
+  font-size: 1.135em;
   padding: 16px 0;
   padding-bottom: 6px;
   text-align: left;
@@ -425,7 +426,7 @@
 }
 .footer-nav-item a {
   color: #fff;
-  font-size: 14px;
+  font-size: 0.875em;
   text-decoration: none;
 }
 
@@ -450,8 +451,8 @@
 
 .tweet-content {
   display: inline-block;
-  width: 80%;
-  font-size: 12px;
+  width: 90%;
+  font-size: 0.75em;
   text-align: left;
   padding-left: 40px;
 }
@@ -466,12 +467,12 @@
 
 .news-letter-body p {
   text-align: left;
-  font-size: 12px;
+  font-size: 0.75em;
 }
 
 .news-letter-body b {
   text-align: left;
-  font-size: 12px;
+  font-size: 0.75em;
 }
 
 .footer-search {
@@ -479,7 +480,7 @@
 }
 
 .about-us-body {
-  font-size: 12px;
+  font-size: 0.75em;
   text-align: left;
 }
 
@@ -527,8 +528,12 @@
 
 @media screen and (min-width: 768px) {
   .feature-item {
-    width: 226px;
-    height: 340px;
+    width: 208px;
+    height: 322px;
+  }
+
+  .special-list {
+    text-align: left;
   }
 }
 

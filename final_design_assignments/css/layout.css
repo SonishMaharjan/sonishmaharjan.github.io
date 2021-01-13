@@ -183,6 +183,15 @@ body {
   background-color: #333333;
   color: #fff;
   width: 100%;
+  font-size: 20px;
+}
+
+.section-wrapper {
+  font-size: 20px;
+}
+
+.extras {
+  font-size: 20px;
 }
 
 .footer-top-left {
@@ -351,5 +360,17 @@ body {
   .footer-top-right {
     width: 48%;
     display: inline-block;
+  }
+
+  .footer-wrapper {
+    font-size: 16px;
+  }
+
+  .extras {
+    font-size: 16px;
+  }
+
+  .section-wrapper {
+    font-size: 16px;
   }
 }
