@@ -142,6 +142,10 @@
   margin: 20px;
 }
 
+.login-wrapper-sm .login-btn {
+  margin: 5px 0;
+}
+
 .login-input-sm {
   width: 60%;
   height: 30px;
