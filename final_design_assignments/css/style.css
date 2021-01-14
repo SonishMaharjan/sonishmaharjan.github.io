@@ -314,6 +314,10 @@
   text-align: left;
 }
 
+.news-blog-list .news-blog-item:last-child {
+  border-bottom: none;
+}
+
 .news-blog-item {
   padding: 28px 0;
   border-bottom: 1px solid #fff;
@@ -518,7 +522,7 @@
 
 .search-here-icon {
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 2px;
 }
 
@@ -579,5 +583,9 @@
   }
   .search-here-input {
     width: 80%;
+  }
+
+  .search-here-icon {
+    top: 0;
   }
 }

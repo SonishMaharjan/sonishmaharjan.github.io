@@ -320,28 +320,29 @@ body {
   }
 
   .footer-navigation {
-    width: 30%;
+    width: 13%;
     text-align: left;
     vertical-align: top;
     margin: 0 25px 0 0;
   }
 
   .latest-tweets {
-    width: 60%;
+    width: 33%;
     vertical-align: top;
     margin: 0;
   }
 
   .newsletter {
-    width: 40%;
+    width: 23%;
     margin: 0 17px;
     vertical-align: top;
   }
 
   .about-us {
     margin: 0 17px;
+    margin-right: 0;
     vertical-align: top;
-    width: 40%;
+    width: 18%;
   }
 
   .footer-navigation {
