@@ -33,7 +33,7 @@ body {
 .footer {
   width: 77%;
   margin: auto;
-  padding: 40px 0;
+  padding: 10px 0;
 }
 
 .header-top {
@@ -204,18 +204,22 @@ body {
 }
 .footer-navigation {
   width: 100%;
+  margin: 20px 0;
 }
 
 .latest-tweets {
   width: 100%;
+  margin: 20px 0;
 }
 
 .newsletter {
   width: 100%;
+  margin: 20px 0;
 }
 
 .about-us {
   width: 100%;
+  margin: 20px 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -319,12 +323,13 @@ body {
     width: 30%;
     text-align: left;
     vertical-align: top;
-    margin-left: 17px;
+    margin: 0 25px 0 0;
   }
 
   .latest-tweets {
     width: 60%;
     vertical-align: top;
+    margin: 0;
   }
 
   .newsletter {
