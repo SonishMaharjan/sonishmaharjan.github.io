@@ -16,10 +16,6 @@ body {
   float: right;
 }
 
-/* .main-container {
-  min-width: 30em;
-} */
-
 .header-wrapper {
   padding: 0 10px;
   margin: auto;
@@ -329,12 +325,12 @@ body {
   .latest-tweets {
     width: 33%;
     vertical-align: top;
-    margin: 0;
+    margin: 0 25px 0 0;
   }
 
   .newsletter {
     width: 23%;
-    margin: 0 17px;
+    margin: 0 25px 0 0;
     vertical-align: top;
   }
 

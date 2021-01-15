@@ -8,6 +8,7 @@
   margin-top: 6px;
   font-size: 0.75em;
   color: #cc003e;
+  display: none;
 }
 
 .account-info ul {
@@ -240,7 +241,7 @@
 }
 
 .feature-item {
-  margin: 24px 3px;
+  margin: 0px 3px 24px;
   padding: 8px;
   display: inline-block;
   min-width: 135px;
@@ -253,8 +254,8 @@
 
 .sale-tag {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -6px;
+  left: -6px;
   z-index: 5000;
 }
 
@@ -322,6 +323,11 @@
   padding: 28px 0;
   border-bottom: 1px solid #fff;
 }
+
+.news-blog-list .news-blog-item:first-child {
+  padding-top: 0;
+}
+
 .news-blog-heading {
   color: #cc003e;
   font-size: 1.125em;
@@ -330,6 +336,7 @@
 
 .news-blog-text {
   font-size: 0.75em;
+  text-align: justify;
 }
 .news-blog-info {
   margin: 8px 0;
@@ -337,6 +344,7 @@
 }
 .news-blog-info-text {
   margin: 0 6px;
+  vertical-align: top;
 }
 
 .news-read-more a {
@@ -388,6 +396,7 @@
 
 .about-contact-body p {
   margin: 15px 0;
+  text-align: justify;
 }
 
 .contact-info {
@@ -531,6 +540,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .pandora-text {
+    display: block;
+  }
   .feature-item {
     width: 208px;
     height: 322px;
