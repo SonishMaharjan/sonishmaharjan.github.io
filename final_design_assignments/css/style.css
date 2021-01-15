@@ -252,6 +252,10 @@
   position: relative;
 }
 
+.feature-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .sale-tag {
   position: absolute;
   top: -6px;
@@ -371,6 +375,11 @@
   background: #fff;
   margin: 10px;
   padding-top: 10px;
+  box-shadow: none;
+}
+
+.best-seller-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .best-seller-tag {
