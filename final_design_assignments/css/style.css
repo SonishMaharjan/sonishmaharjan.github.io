@@ -250,6 +250,7 @@
   color: #cc003e;
   text-align: center;
   position: relative;
+  transition: box-shadow 0.5s;
 }
 
 .feature-item:hover {
@@ -375,7 +376,7 @@
   background: #fff;
   margin: 10px;
   padding-top: 10px;
-  box-shadow: none;
+  transition: box-shadow 0.5s;
 }
 
 .best-seller-item:hover {
