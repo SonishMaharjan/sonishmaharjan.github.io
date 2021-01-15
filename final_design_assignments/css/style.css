@@ -245,7 +245,7 @@
   padding: 8px;
   display: inline-block;
   min-width: 135px;
-  width: 25%;
+  width: 80%;
   background: #fff;
   color: #cc003e;
   text-align: center;
@@ -547,6 +547,12 @@
 
 .best-seller-extras {
   margin: 50px 0;
+}
+
+@media screen and (min-width: 500px) {
+  .feature-item {
+    width: 25%;
+  }
 }
 
 @media screen and (min-width: 768px) {
