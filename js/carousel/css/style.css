@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 640px;
+  height: 400px;
+  margin: auto;
+}
+
+.carousel-container {
+  /* width: 100%;
+  height: 400px;
+  overflow: hidden; */
+}
