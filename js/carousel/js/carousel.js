@@ -14,6 +14,7 @@ class Carousel {
     this.maxIndex = null;
     this.prevButton = null;
     this.nextButton = null;
+    this.prevDotIndex = 0;
     this.init();
   }
 
@@ -50,6 +51,7 @@ class Carousel {
       });
 
       this.addButtons();
+      this.addDotButton();
     } else {
       console.error(`Can retrive element with id ${this.carouselId}`);
     }
@@ -143,6 +145,38 @@ class Carousel {
     if (this.currentIndex == this.maxIndex) {
       this.nextButton.disabled = true;
     }
+  }
+
+  addDotButton() {
+    // for(let)
+    let dotContainer = document.createElement("div");
+
+    dotContainer.style.position = "absolute";
+    dotContainer.style.bottom = "0";
+    dotContainer.style.left = "45%";
+
+    for (let index = 0; index < this.imagesList.length; index++) {
+      let dot = document.createElement("div");
+      dot.classList.add("dot-btn");
+      dot.id = `dot-id-${index}`;
+
+      if (index == 0) {
+        dot.classList.add("active-dot");
+      }
+
+      dot.addEventListener("click", (event) => {
+        if (this.currentIndex != index) {
+          let prevDot = document.getElementById(`dot-id-${this.currentIndex}`);
+          prevDot.classList.remove("active-dot");
+          this.moveTo(index);
+          event.target.classList.add("active-dot");
+        }
+      });
+
+      dotContainer.appendChild(dot);
+    }
+
+    this.carousel.appendChild(dotContainer);
   }
 }
 

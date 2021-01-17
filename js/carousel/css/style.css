@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -29,4 +30,23 @@
 
 .change-button:disabled {
   cursor: not-allowed;
+}
+
+.dot-btn {
+  height: 10px;
+  width: 10px;
+  background: #000;
+  border-radius: 10px;
+  opacity: 0.8;
+  margin: 5px;
+  display: inline-block;
+}
+
+.dot-btn.active-dot {
+  border: 2px solid #000;
+  background: red;
+}
+
+.dot-btn:hover {
+  cursor: pointer;
 }
