@@ -10,6 +10,10 @@ class Carousel {
     this.carousel = null;
     this.imageWrapper = null;
     this.carouselWidth;
+    this.minIndex = null;
+    this.maxIndex = null;
+    this.prevButton = null;
+    this.nextButton = null;
     this.init();
   }
 
@@ -17,6 +21,8 @@ class Carousel {
     let carousel = document.getElementById(this.carouselId);
     let imagesList = Array.from(carousel.getElementsByTagName("img"));
     this.imagesList = imagesList;
+    this.minIndex = 0;
+    this.maxIndex = imagesList.length - 1;
     let leftPosition = 0;
 
     if (carousel) {
@@ -40,7 +46,7 @@ class Carousel {
       imagesList.forEach((imageItem, index) => {
         imageItem.style.width = "100%";
         imageItem.style.position = "absolute";
-        imageItem.style.left = `${index * imageItem.offsetWidth}px`;
+        imageItem.style.left = `${index * imageItem.offsetWidth - index}px`;
       });
 
       this.addButtons();
@@ -56,15 +62,16 @@ class Carousel {
     nextButton.innerHTML = "Next";
 
     prevButton.style.position = "absolute";
-    prevButton.style.top = "50%";
+    prevButton.style.bottom = "50%";
 
     nextButton.style.position = "absolute";
-    nextButton.style.top = "50%";
+    nextButton.style.bottom = "50%";
     nextButton.style.right = "0";
 
     prevButton.addEventListener("click", () => {
       let nextIndex = this.currentIndex - 1;
       this.moveTo(nextIndex);
+      console.log(nextIndex);
     });
 
     nextButton.addEventListener("click", () => {
@@ -72,8 +79,15 @@ class Carousel {
       this.moveTo(nextIndex);
     });
 
+    prevButton.classList.add("change-button");
+    nextButton.classList.add("change-button");
+
+    prevButton.disabled = true;
     this.carousel.appendChild(prevButton);
     this.carousel.appendChild(nextButton);
+
+    this.prevButton = prevButton;
+    this.nextButton = nextButton;
   }
 
   moveTo(nextIndex) {
@@ -86,6 +100,7 @@ class Carousel {
 
     let positionDiff = currentPositon - nextPosition;
 
+    this.disableButton();
     speed = -(positionDiff / this.transitionTime) / 0.06;
 
     let moveImage = setInterval(() => {
@@ -98,6 +113,7 @@ class Carousel {
           this.imageWrapper.style.left = `${nextPosition}px`;
           this.currentPositon = nextPosition;
           clearInterval(moveImage);
+          this.enableButton();
         }
       } else {
         if (currentPositon > nextPosition) {
@@ -105,9 +121,28 @@ class Carousel {
           this.currentPositon = nextPosition;
 
           clearInterval(moveImage);
+          this.enableButton();
         }
       }
     }, 1000 / 60);
+  }
+
+  disableButton() {
+    this.prevButton.disabled = true;
+    this.nextButton.disabled = true;
+  }
+
+  enableButton() {
+    this.prevButton.disabled = false;
+    this.nextButton.disabled = false;
+
+    if (this.currentIndex == this.minIndex) {
+      this.prevButton.disabled = true;
+    }
+
+    if (this.currentIndex == this.maxIndex) {
+      this.nextButton.disabled = true;
+    }
   }
 }
 
