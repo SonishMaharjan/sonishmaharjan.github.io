@@ -166,9 +166,12 @@ class Carousel {
   addDotButton() {
     let dotContainer = document.createElement("div");
 
-    dotContainer.style.position = "absolute";
-    dotContainer.style.bottom = "0";
-    dotContainer.style.left = "45%";
+    // dotContainer.style.position = "absolute";
+    // // dotContainer.style.top = "50%";
+    // dotContainer.style.bottom = "5%";
+
+    // dotContainer.style.left = "45%";
+    dotContainer.classList.add("dot-container");
 
     for (let index = 0; index < this.imagesList.length; index++) {
       let dot = document.createElement("button");
