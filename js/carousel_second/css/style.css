@@ -36,12 +36,6 @@
   left: 45%;
 }
 
-@media screen and (min-width: 860px) {
-  .dot-container {
-    bottom: 5%;
-  }
-}
-
 .dot-btn {
   height: 15px;
   width: 15px;
@@ -65,4 +59,10 @@
 
 .dot-btn:disabled {
   cursor: not-allowed;
+}
+
+@media screen and (min-width: 860px) {
+  .dot-container {
+    bottom: 5%;
+  }
 }
