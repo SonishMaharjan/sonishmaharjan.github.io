@@ -14,7 +14,7 @@ class Carousel {
     this.maxIndex = null;
     this.prevButton = null;
     this.nextButton = null;
-    this.prevDotIndex = 0;
+    this.dotButtonList = [];
     this.init();
   }
 
@@ -73,7 +73,6 @@ class Carousel {
     prevButton.addEventListener("click", () => {
       let nextIndex = this.currentIndex - 1;
       this.moveTo(nextIndex);
-      console.log(nextIndex);
     });
 
     nextButton.addEventListener("click", () => {
@@ -95,6 +94,7 @@ class Carousel {
   moveTo(nextIndex) {
     let speed = 0;
     let indexDiff = this.currentIndex - nextIndex;
+    let currentDotIndex = this.currentIndex;
     this.currentIndex = nextIndex;
 
     let currentPositon = this.imageWrapper.offsetLeft;
@@ -103,6 +103,9 @@ class Carousel {
     let positionDiff = currentPositon - nextPosition;
 
     this.disableButton();
+    this.dotButtonList[currentDotIndex].classList.remove("active-dot");
+    this.dotButtonList[this.currentIndex].classList.add("active-dot");
+
     speed = -(positionDiff / this.transitionTime) / 0.06;
 
     let moveImage = setInterval(() => {
@@ -132,6 +135,10 @@ class Carousel {
   disableButton() {
     this.prevButton.disabled = true;
     this.nextButton.disabled = true;
+
+    this.dotButtonList.forEach((dotButton) => {
+      dotButton.disabled = true;
+    });
   }
 
   enableButton() {
@@ -145,6 +152,10 @@ class Carousel {
     if (this.currentIndex == this.maxIndex) {
       this.nextButton.disabled = true;
     }
+
+    this.dotButtonList.forEach((dotButton) => {
+      dotButton.disabled = false;
+    });
   }
 
   addDotButton() {
@@ -156,26 +167,22 @@ class Carousel {
     dotContainer.style.left = "45%";
 
     for (let index = 0; index < this.imagesList.length; index++) {
-      let dot = document.createElement("div");
+      let dot = document.createElement("button");
       dot.classList.add("dot-btn");
       dot.id = `dot-id-${index}`;
 
-      if (index == 0) {
-        dot.classList.add("active-dot");
-      }
-
       dot.addEventListener("click", (event) => {
         if (this.currentIndex != index) {
-          let prevDot = document.getElementById(`dot-id-${this.currentIndex}`);
-          prevDot.classList.remove("active-dot");
           this.moveTo(index);
-          event.target.classList.add("active-dot");
         }
       });
+
+      this.dotButtonList.push(dot);
 
       dotContainer.appendChild(dot);
     }
 
+    this.dotButtonList[0].classList.add("active-dot");
     this.carousel.appendChild(dotContainer);
   }
 }
