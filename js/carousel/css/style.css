@@ -50,13 +50,12 @@
   border-radius: 10px;
   opacity: 0.8;
   margin: 5px;
-  /* display: inline-block; */
   border: none;
   outline: none;
 }
 
 .dot-btn.active-dot {
-  background: #808080;
+  background: #000;
 }
 
 .dot-btn:hover {
