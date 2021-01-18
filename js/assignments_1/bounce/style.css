@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 400px;
+  width: 600px;
+  border: 1px solid black;
+  position: relative;
+  left: 25%;
+}
+
+.ball {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: 50%;
+  top: 0;
+  background-color: blue;
+  border-radius: 25px;
+}

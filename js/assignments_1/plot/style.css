@@ -1,0 +1,17 @@
+.plot-container {
+  height: 400px;
+  width: 500px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.point {
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  border: 1px solid blue;
+  /* top: 1px;
+  left: 2px; */
+  background: blue;
+  border-radius: 5px;
+}
