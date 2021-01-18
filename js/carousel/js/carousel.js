@@ -15,6 +15,8 @@ class Carousel {
     this.prevButton = null;
     this.nextButton = null;
     this.dotButtonList = [];
+    this.autoSlideDirection = 1;
+    this.isSliding = false;
     this.init();
   }
 
@@ -52,6 +54,7 @@ class Carousel {
 
       this.addButtons();
       this.addDotButton();
+      this.autoSlide();
     } else {
       console.error(`Can retrive element with id ${this.carouselId}`);
     }
@@ -96,6 +99,7 @@ class Carousel {
     let indexDiff = this.currentIndex - nextIndex;
     let currentDotIndex = this.currentIndex;
     this.currentIndex = nextIndex;
+    this.isSliding = true;
 
     let currentPositon = this.imageWrapper.offsetLeft;
     let nextPosition = currentPositon + indexDiff * this.carouselWidth;
@@ -124,7 +128,6 @@ class Carousel {
         if (currentPositon > nextPosition) {
           this.imageWrapper.style.left = `${nextPosition}px`;
           this.currentPositon = nextPosition;
-
           clearInterval(moveImage);
           this.enableButton();
         }
@@ -156,10 +159,11 @@ class Carousel {
     this.dotButtonList.forEach((dotButton) => {
       dotButton.disabled = false;
     });
+
+    this.isSliding = false;
   }
 
   addDotButton() {
-    // for(let)
     let dotContainer = document.createElement("div");
 
     dotContainer.style.position = "absolute";
@@ -184,6 +188,26 @@ class Carousel {
 
     this.dotButtonList[0].classList.add("active-dot");
     this.carousel.appendChild(dotContainer);
+  }
+
+  autoSlide() {
+    if (this.imagesList.length > 0) {
+      setInterval(() => {
+        if (!this.isSliding) {
+          let nextSlideIndex = 0;
+          if (this.currentIndex == this.minIndex) {
+            this.autoSlideDirection = 1;
+          }
+          if (this.currentIndex == this.maxIndex) {
+            this.autoSlideDirection = -1;
+          }
+
+          nextSlideIndex = this.currentIndex + this.autoSlideDirection;
+
+          this.moveTo(nextSlideIndex);
+        }
+      }, this.holdTime);
+    }
   }
 }
 
