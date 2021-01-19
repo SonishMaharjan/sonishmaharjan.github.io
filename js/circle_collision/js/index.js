@@ -1,4 +1,4 @@
-const MAX_BALL_RADIUS = 15;
+const MAX_BALL_RADIUS = 20;
 const TOTAL_BALLS = 100;
 
 const MAX_SPEED = 5;
