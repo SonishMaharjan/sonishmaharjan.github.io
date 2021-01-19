@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 400px;
+  margin: auto;
+}
+canvas {
+  margin: auto;
+  border: 2px solid black;
+}
