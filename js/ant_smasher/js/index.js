@@ -28,7 +28,7 @@ class Board {
 
   init = () => {
     this.ant = new Image();
-    this.ant.src = "../images/ant-walking.gif";
+    this.ant.src = "images/ant-walking.gif";
     this.createBall(TOTAL_BALLS);
     this.ant.onload = this.update;
     // window.requestAnimationFrame(this.update);
