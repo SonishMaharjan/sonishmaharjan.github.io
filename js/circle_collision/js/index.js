@@ -111,10 +111,30 @@ class Ball {
   }
 
   checkContextCollision(ctx) {
-    if (this.x + this.r > ctx.canvas.width || this.x - this.r < 0) {
+    // if (this.x + this.r > ctx.canvas.width || this.x - this.r < 0) {
+    //   this.dx = -this.dx;
+    // }
+    // if (this.y + this.r > ctx.canvas.height || this.y - this.r < 0) {
+    //   this.dy = -this.dy;
+    // }
+
+    if (this.x - this.r < 0) {
+      this.x = this.r;
       this.dx = -this.dx;
     }
-    if (this.y + this.r > ctx.canvas.height || this.y - this.r < 0) {
+
+    if (this.x + this.r > ctx.canvas.width) {
+      this.x = ctx.canvas.width - this.r;
+      this.dx = -this.dx;
+    }
+
+    if (this.y - this.r < 0) {
+      this.y = this.r;
+      this.dy = -this.dy;
+    }
+
+    if (this.y + this.r > ctx.canvas.height) {
+      this.y = ctx.canvas.height - this.r;
       this.dy = -this.dy;
     }
   }
