@@ -27,8 +27,11 @@ class Board {
   }
 
   init = () => {
+    this.ant = new Image();
+    this.ant.src = "../images/ant-walking.gif";
     this.createBall(TOTAL_BALLS);
-    window.requestAnimationFrame(this.update);
+    this.ant.onload = this.update;
+    // window.requestAnimationFrame(this.update);
   };
 
   update = () => {
@@ -64,7 +67,15 @@ class Board {
         randDy = 1;
       }
 
-      let ball = new Ball(randX, randY, color, radius, randDx, randDy);
+      let ball = new Ball(
+        randX,
+        randY,
+        color,
+        radius,
+        randDx,
+        randDy,
+        this.ant
+      );
       this.ballsList.push(ball);
     }
   }
@@ -101,7 +112,8 @@ class Ball {
     color = "#0095DD",
     r = 20,
     dx = 1,
-    dy = 1
+    dy = 1,
+    antImg
   ) {
     this.x = x;
     this.y = y;
@@ -109,8 +121,7 @@ class Ball {
     this.dx = dx;
     this.dy = dy;
     this.color = color;
-    this.ant = new Image();
-    this.ant.src = "../images/ant-walking.gif";
+    this.ant = antImg;
   }
 
   init(ctx) {
