@@ -1,9 +1,10 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 canvas {
-  background: #212f3c;
+  background: #fff;
   display: block;
   margin: 0 auto;
 }
