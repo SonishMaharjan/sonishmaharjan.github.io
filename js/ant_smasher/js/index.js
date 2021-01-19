@@ -116,8 +116,7 @@ class Ball {
   init(ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    // ctx.fillStyle = this.color;
-    // ctx.fill();
+
     ctx.stroke();
     ctx.closePath();
   }
@@ -132,11 +131,7 @@ class Ball {
   draw(ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    // ctx.fillStyle = this.color;
-    // ctx.fill();
-    // ctx.stroke();
-    // ctx.rotate(30);
-    // this.ant.rotate(30);
+
     ctx.drawImage(this.ant, this.x - 25, this.y - 15, 60, 30);
 
     ctx.closePath();
