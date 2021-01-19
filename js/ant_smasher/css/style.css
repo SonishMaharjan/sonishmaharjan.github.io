@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+canvas {
+  background: #212f3c;
+  display: block;
+  margin: 0 auto;
+}
+
+#board {
+  border: 5px solid #196f3d;
+}
