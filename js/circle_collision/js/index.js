@@ -1,18 +1,19 @@
-function getRandomBetween(min, max) {
-  //   return Math.floor(Math.random() * max) + min;
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
-function distanceBetween(a, b) {
-  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
-}
-
-const MAX_BALL_RADIUS = 10;
-const TOTAL_BALLS = 25;
+const MAX_BALL_RADIUS = 15;
+const TOTAL_BALLS = 100;
 
 const MAX_SPEED = 5;
-const CANVAS_WIDTH = 500;
+const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 500;
+const COLORS = [
+  "#DFFF00",
+  "#FFBF00",
+  "#FF7F50",
+  "#DE3163",
+  "#9FE2BF",
+  "#40E0D0",
+  "#6495ED",
+  "#CCCCFF",
+];
 
 class Board {
   constructor(canvasId, width, height) {
@@ -25,7 +26,7 @@ class Board {
   }
 
   init = () => {
-    this.createBall();
+    this.createBall(TOTAL_BALLS);
     window.requestAnimationFrame(this.update);
   };
 
@@ -38,7 +39,7 @@ class Board {
     window.requestAnimationFrame(this.update);
   };
 
-  createBall(n = TOTAL_BALLS) {
+  createBall(n) {
     for (let i = 0; i < n; i++) {
       let randX = getRandomBetween(
         MAX_BALL_RADIUS,
@@ -51,6 +52,9 @@ class Board {
 
       let randDx = getRandomBetween(-MAX_SPEED, MAX_SPEED);
       let randDy = getRandomBetween(-MAX_SPEED, MAX_SPEED);
+      let color = COLORS[getRandomBetween(0, COLORS.length)];
+
+      let radius = getRandomBetween(7, MAX_BALL_RADIUS);
 
       if (randDx == 0) {
         randDx = 1;
@@ -59,21 +63,21 @@ class Board {
         randDy = 1;
       }
 
-      let ball = new Ball(
-        randX,
-        randY,
-        "blue",
-        MAX_BALL_RADIUS,
-        randDx,
-        randDy
-      );
+      let ball = new Ball(randX, randY, color, radius, randDx, randDy);
       this.ballsList.push(ball);
     }
   }
 }
 
 class Ball {
-  constructor(x = 0, y = 0, color = "#0095DD", r = 20, dx = 1, dy = 1) {
+  constructor(
+    x = CANVAS_WIDTH / 2,
+    y = CANVAS_HEIGHT / 2,
+    color = "#0095DD",
+    r = 20,
+    dx = 1,
+    dy = 1
+  ) {
     this.x = x;
     this.y = y;
     this.r = r;
@@ -111,13 +115,6 @@ class Ball {
   }
 
   checkContextCollision(ctx) {
-    // if (this.x + this.r > ctx.canvas.width || this.x - this.r < 0) {
-    //   this.dx = -this.dx;
-    // }
-    // if (this.y + this.r > ctx.canvas.height || this.y - this.r < 0) {
-    //   this.dy = -this.dy;
-    // }
-
     if (this.x - this.r < 0) {
       this.x = this.r;
       this.dx = -this.dx;
@@ -139,22 +136,11 @@ class Ball {
     }
   }
 
-  resolveContextCollision(ctx) {
-    // if (this.x - this.r + 1 < 0) {
-    //   this.x = this.r + 1;
-    // }
-    // if (this.y - this.r < 0) {
-    //   this.y = this.r;
-    // }
-  }
-
   checkOtherBallCollision(balls) {
     balls.forEach((ball) => {
       if (ball == this) {
-        // console.log("MILSY");
         return;
       }
-      //   console.log("hah");
 
       let ballAX = this.x;
       let ballAY = this.y;
@@ -168,23 +154,29 @@ class Ball {
       let ballBDx = ball.dx;
       let ballBDy = ball.dy;
 
-      //   console.log(Math.pow(ballAX - ballBX, 2));
       let distance = distanceBetween(
         { x: ballAX, y: ballAY },
         { x: ballBX, y: ballBY }
       );
 
       if (distance < ballARad + ballBRad) {
-        // console.log("collison alert");
+        if (ballAX < ballBX) {
+          this.x = ballAX - 1;
+        } else {
+          this.x = ballAX + 1;
+        }
 
-        // this.x =
+        if (ballAY < ballBY) {
+          this.y = ballAY - 1;
+        } else {
+          this.y = ballAY + 1;
+        }
 
         this.dx = ballBDx;
         this.dy = ballBDy;
         ball.dx = ballADx;
         ball.dy = ballADy;
       }
-      //   console.log(distance);
     });
   }
 }
