@@ -8,6 +8,35 @@
   </head>
   <body>
     <div class="container">
+      <div id="game-top">
+        <p>Score: <span id="score">0</span></p>
+      </div>
+
+      <div id="game-start">
+        <h2 class="heading">CAR GAME</h2>
+        <p class="highscore-wrapper">
+          Highscore : <span class="highscore">0</span>
+        </p>
+
+        <button id="play-button">Play</button>
+      </div>
+
+      <div id="game-over">
+        <h2 class="heading">CAR GAME</h2>
+
+        <h3 class="game-over-text">Game Over!!!</h3>
+
+        <p class="highscore-wrapper">
+          Your score : <span id="player-score">0</span>
+        </p>
+        <p class="highscore-wrapper">
+          Highscore : <span class="highscore">0</span>
+        </p>
+
+        <button id="play-again">Play Again</button>
+      </div>
+
+      <div id="count-down"></div>
       <canvas id="game-board"> </canvas>
     </div>
     <script src="js/utils.js"></script>

@@ -11,19 +11,27 @@ const GAME_SPRITES = [
 ];
 
 class GameScreen {
-  constructor(canvasId, width, height) {
+  constructor(canvasId, width, height, scoreObject, gameOverObject) {
     this.canvas = document.getElementById(canvasId);
+    this.scoreObject = scoreObject;
+
+    this.gameOverObject = gameOverObject;
 
     this.ctx = this.canvas.getContext("2d");
     this.canvas.width = width;
     this.canvas.height = height;
     this.spriteImages = [];
-    this.gameSpeed = 2;
+    this.gameSpeed = 1;
     this.playerXIndex = 1;
     this.enemyCarList = [];
     this.ySeperation = 400;
     this.playerPoint = 0;
+    this.lastMovedCarIndex = ENEMY_CAR_NUMBER - 1;
+    this.isPlayerPlaying = false;
+    this.isPlayerDead = false;
     this.loadSprite();
+
+    this.scoreObject.innerHTML = 0;
   }
 
   init = () => {
@@ -38,10 +46,7 @@ class GameScreen {
 
     this.createEnemyCar();
 
-    this.update();
-  };
-
-  update = () => {
+    // initial render
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
     this.road.update(this.ctx);
 
@@ -51,6 +56,25 @@ class GameScreen {
     });
     this.player.update(this.ctx);
     this.player.checkCollision(this.enemyCarList);
+
+    this.update();
+  };
+
+  update = () => {
+    if (this.isPlayerPlaying) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+      this.road.update(this.ctx);
+      if (this.player.isCollided) {
+        this.gameOver();
+      }
+
+      this.updateEnemyCar();
+      this.enemyCarList.forEach((enemyCar) => {
+        enemyCar.update(this.ctx);
+      });
+      this.player.update(this.ctx);
+      this.player.checkCollision(this.enemyCarList);
+    }
     window.requestAnimationFrame(this.update);
   };
 
@@ -76,7 +100,7 @@ class GameScreen {
         -(i + 1) * this.ySeperation,
         90,
         120,
-        1
+        this.gameSpeed
       );
       this.enemyCarList.push(enemyCar);
     }
@@ -85,14 +109,13 @@ class GameScreen {
   updateEnemyCar() {
     this.enemyCarList.forEach((enemy) => {
       if (enemy.y > 450 && !enemy.isPointCounted) {
-        console.log("point updat->", this.playerPoint++);
+        this.scoreObject.innerHTML = ++this.playerPoint;
         enemy.isPointCounted = true;
       }
-
       if (enemy.y > 700) {
         enemy.moveX(CAR_X_POSITIONS[getRandomBetween(0, 3)]);
-        enemy.moveY(enemy.y - ENEMY_CAR_NUMBER * this.ySeperation);
-        enemy.updateSpeed(getRandomBetween(1, 2));
+        enemy.moveY(enemy.y - ENEMY_CAR_NUMBER * this.ySeperation + 150);
+
         enemy.isPointCounted = false;
       }
     });
@@ -110,6 +133,16 @@ class GameScreen {
       this.playerXIndex++;
       this.player.moveX(CAR_X_POSITIONS[this.playerXIndex]);
     }
+  }
+
+  gameOver() {
+    // console.log("game over");
+    this.isPlayerPlaying = false;
+    this.isPlayerDead = true;
+
+    let playerScore = this.gameOverObject.querySelector("#player-score");
+    playerScore.innerHTML = this.playerPoint;
+    this.gameOverObject.style.display = "block";
   }
 }
 
@@ -129,6 +162,7 @@ class Car {
     this.speed = speed;
     this.image = carImg;
     this.isPointCounted = false;
+    this.isCollided = false;
   }
 
   init(ctx) {
@@ -187,14 +221,20 @@ class Car {
         rect1.y < rect2.y + rect2.height &&
         rect1.y + rect1.height > rect2.y
       ) {
-        console.log("collided");
+        this.isCollided = true;
       }
     });
   }
 }
 
-window.addEventListener("load", () => {
-  let game = new GameScreen("game-board", SCREEN_WIDTH, SCREEN_HEIGHT);
+function startGame(scoreObject, gameOverObject) {
+  let game = new GameScreen(
+    "game-board",
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    scoreObject,
+    gameOverObject
+  );
 
   document.addEventListener(
     "keydown",
@@ -209,4 +249,52 @@ window.addEventListener("load", () => {
     },
     false
   );
+
+  return game;
+}
+
+window.addEventListener("load", () => {
+  let scoreObject = document.getElementById("score");
+  let gameOverObject = document.getElementById("game-over");
+
+  let playeGame = startGame(scoreObject, gameOverObject);
+
+  let playBtn = document.getElementById("play-button");
+  let replayBtn = document.getElementById("play-again");
+  let gameStartScreen = document.getElementById("game-start");
+  let countDown = document.getElementById("count-down");
+  let countDownNumber = 3;
+
+  playBtn.addEventListener("click", () => {
+    let playeGame = startGame(scoreObject, gameOverObject);
+    gameStartScreen.style.display = "none";
+    countDown.innerHTML = countDownNumber;
+
+    let interval = setInterval(() => {
+      countDown.innerHTML = --countDownNumber;
+      if (countDownNumber == -1) {
+        countDown.style.display = "none";
+        clearInterval(interval);
+        playeGame.isPlayerPlaying = true;
+      }
+    }, 1000);
+    // alert("helo");
+  });
+
+  replayBtn.addEventListener("click", () => {
+    let playeGame = startGame(scoreObject, gameOverObject);
+    countDownNumber = 3;
+    gameOverObject.style.display = "none";
+    countDown.innerHTML = countDownNumber;
+    countDown.style.display = "block";
+
+    let interval = setInterval(() => {
+      countDown.innerHTML = --countDownNumber;
+      if (countDownNumber == -1) {
+        countDown.style.display = "none";
+        clearInterval(interval);
+        playeGame.isPlayerPlaying = true;
+      }
+    }, 1000);
+  });
 });
