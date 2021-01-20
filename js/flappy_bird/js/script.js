@@ -39,6 +39,11 @@ class GameScreen {
       this.spriteImages[3],
       this.spriteImages[4],
     ]);
+
+    this.pipe = new Pipes(0, 0, this.gameSpeed, [
+      this.spriteImages[5],
+      this.spriteImages[6],
+    ]);
     this.update();
   };
 
@@ -48,7 +53,9 @@ class GameScreen {
       bg.update(this.ctx);
     });
 
+    this.bird.checkCollision([this.pipe]);
     this.bird.update(this.ctx);
+    this.pipe.update(this.ctx);
 
     this.foregroundList.forEach((fg) => {
       fg.update(this.ctx);
@@ -104,34 +111,37 @@ class GameScreen {
   }
 }
 
-class Bird {
+class Pipes {
   constructor(
     x = SCREEN_WIDTH / 2,
     y = SCREEN_HEIGHT / 2,
-    width = 100,
-    height = 100,
     speed = 1,
-    imageList
+    pipeImages
   ) {
     this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.speedY = 0;
-    this.imageList = imageList;
-    this.isAlive = true;
-    this.imageCounter = 0;
-    this.image = imageList[this.imageCounter];
+    // should be between -50 and -200
+    this.y = -50;
+    this.width = 65;
+    this.height = 266;
+    this.speed = speed;
+    this.imagesList = pipeImages;
+    this.verticalSpace = 400;
 
-    this.accln = 100;
-    this.timeStep = 0.04;
+    this.pipeTop = {
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      height: this.height,
+      image: this.imagesList[1],
+    };
 
-    this.animationSpeed = 100;
-
-    this.birdAnimation = setInterval(() => {
-      this.imageCounter = (this.imageCounter + 1) % this.imageList.length;
-      this.image = this.imageList[this.imageCounter];
-    }, this.animationSpeed);
+    this.pipeBottom = {
+      x: this.x,
+      y: this.y + this.verticalSpace,
+      width: this.width,
+      height: this.height,
+      image: this.imagesList[0],
+    };
   }
 
   init(ctx) {
@@ -142,68 +152,46 @@ class Bird {
   }
 
   update(ctx) {
-    this.move();
-    if (this.y < 0 || this.y + this.height > 450) {
-      this.dead();
-
-      //keeps bird above ground
-      if (this.y + this.height > 450) {
-        this.y = 453 - this.height;
-      }
-    }
     this.draw(ctx);
+    this.move();
   }
 
   draw(ctx) {
     ctx.beginPath();
-    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.rect(this.pipeTop.x, this.pipeTop.y, this.width, this.height);
+    ctx.rect(this.pipeBottom.x, this.pipeBottom.y, this.width, this.height);
+    // ctx.rect(this.x, this.y, this.width, this.height);
     // collider rectangle
     ctx.stroke();
-    ctx.drawImage(this.image, this.x - 2, this.y - 5, 35, 38);
+    ctx.drawImage(
+      this.pipeTop.image,
+      this.pipeTop.x - 3,
+      this.pipeTop.y - 3,
+      70,
+      270
+    );
+
+    ctx.drawImage(
+      this.pipeBottom.image,
+      this.pipeBottom.x - 3,
+      this.pipeBottom.y - 3,
+      70,
+      270
+    );
     ctx.closePath();
   }
 
-  jump() {
-    if (this.isAlive) {
-      this.speedY = -125;
-    }
-  }
   move() {
-    this.speedY = this.speedY + this.accln * this.timeStep;
-    this.y = this.y + this.speedY * this.timeStep;
-  }
-  dead() {
-    clearInterval(this.birdAnimation);
-    this.isAlive = false;
-    this.accln = 0;
-    this.speedY = 0;
+    this.x -= this.speed;
+    this.pipeTop.x = this.x;
+    this.pipeBottom.x = this.x;
   }
 
-  checkCollision(obstacleList) {
-    obstacleList.forEach((enemy) => {
-      var rect1 = {
-        x: this.x,
-        y: this.y,
-        width: this.width,
-        height: this.height,
-      };
-
-      var rect2 = {
-        x: enemy.x,
-        y: enemy.y,
-        width: enemy.width,
-        height: enemy.height,
-      };
-
-      if (
-        rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y
-      ) {
-        this.isCollided = true;
-      }
-    });
+  moveX(x) {
+    this.x = x;
+  }
+  moveY(y) {
+    this.y = y;
   }
 }
 
