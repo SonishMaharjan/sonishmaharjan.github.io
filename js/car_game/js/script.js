@@ -97,7 +97,7 @@ class GameScreen {
   };
 
   increaseGameSpeed() {
-    if (this.gameSpeed < 8) {
+    if (this.gameSpeed < 10) {
       this.gameSpeed = this.gameSpeed + 1;
 
       this.road.updateSpeed(this.gameSpeed);
