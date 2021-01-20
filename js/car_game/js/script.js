@@ -9,7 +9,7 @@ const SPEED_UPDATE_POINT = 2;
 const GAME_SPRITES = [
   "images/road.png",
   "images/car-0.png",
-  "images/car-1.png",
+  "images/car-5.png",
 ];
 
 class GameScreen {
@@ -80,7 +80,7 @@ class GameScreen {
 
       if (!this.speedUpdater) {
         this.speedUpdater = setInterval(() => {
-          this.increaseSpeed();
+          this.increaseGameSpeed();
         }, 10000);
       }
 
@@ -94,13 +94,16 @@ class GameScreen {
     window.requestAnimationFrame(this.update);
   };
 
-  increaseSpeed() {
-    this.gameSpeed += this.gameSpeed;
-    this.road.updateSpeed(this.gameSpeed);
+  increaseGameSpeed() {
+    if (this.gameSpeed < 5) {
+      this.gameSpeed = this.gameSpeed + 1;
 
-    this.enemyCarList.forEach((enemyCar) => {
-      enemyCar.updateSpeed(this.gameSpeed);
-    });
+      this.road.updateSpeed(this.gameSpeed);
+
+      this.enemyCarList.forEach((enemyCar) => {
+        enemyCar.updateSpeed(this.gameSpeed);
+      });
+    }
   }
 
   loadSprite() {
@@ -124,7 +127,7 @@ class GameScreen {
         CAR_X_POSITIONS[getRandomBetween(0, 2)],
         -(i + 1) * this.ySeperation,
         90,
-        180,
+        140,
         this.gameSpeed,
         this.spriteImages[2]
       );
