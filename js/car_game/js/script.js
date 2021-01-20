@@ -34,6 +34,8 @@ class GameScreen {
     this.loadSprite();
     this.speedUpdater = null;
 
+    this.highScore = localStorage.getItem("highScore");
+
     this.scoreObject.innerHTML = 0;
   }
 
@@ -165,11 +167,18 @@ class GameScreen {
   }
 
   gameOver() {
+    if (this.playerPoint > this.highScore) {
+      localStorage.setItem("highScore", this.playerPoint);
+    }
     this.isPlayerPlaying = false;
     this.isPlayerDead = true;
     clearInterval(this.speedUpdater);
 
     let playerScore = this.gameOverObject.querySelector("#player-score");
+    let currentHighScore = this.gameOverObject.querySelector("#highscore");
+
+    currentHighScore.innerHTML = localStorage.getItem("highScore");
+
     playerScore.innerHTML = this.playerPoint;
     this.gameOverObject.style.display = "block";
   }
@@ -296,6 +305,14 @@ window.addEventListener("load", () => {
   let countDown = document.getElementById("count-down");
   let countDownNumber = 3;
 
+  gameStartScreen.querySelector("#highscore").innerHTML = localStorage.getItem(
+    "highScore"
+  );
+
+  if (!localStorage.getItem("highScore")) {
+    localStorage.setItem("highScore", 0);
+  }
+
   playBtn.addEventListener("click", () => {
     let playeGame = startGame(scoreObject, gameOverObject);
     gameStartScreen.style.display = "none";
@@ -309,7 +326,6 @@ window.addEventListener("load", () => {
         playeGame.isPlayerPlaying = true;
       }
     }, 1000);
-    // alert("helo");
   });
 
   replayBtn.addEventListener("click", () => {
