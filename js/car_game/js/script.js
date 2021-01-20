@@ -1,5 +1,5 @@
 const SCREEN_WIDTH = 400;
-const SCREEN_HEIGHT = 525;
+const SCREEN_HEIGHT = 575;
 
 const CAR_X_POSITIONS = [20, 155, 290];
 const ENEMY_CAR_NUMBER = 3;
@@ -47,7 +47,7 @@ class GameScreen {
 
     this.player = new Car(
       CAR_X_POSITIONS[this.playerXIndex],
-      370,
+      425,
       90,
       140,
       0,
