@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  height: 575px;
+  border: 2px solid black;
+  margin: auto;
+}
+
+canvas {
+  border: 2px solid red;
+}
