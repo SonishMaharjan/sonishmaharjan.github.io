@@ -75,7 +75,7 @@ class GameScreen {
         0,
         this.canvas.width,
         this.canvas.height,
-        0.1,
+        0.2,
         this.spriteImages[0]
       );
 
