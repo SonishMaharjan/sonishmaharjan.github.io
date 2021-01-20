@@ -23,7 +23,7 @@ class GameScreen {
     this.canvas.width = width;
     this.canvas.height = height;
     this.spriteImages = [];
-    this.gameSpeed = 1;
+    this.gameSpeed = 3;
     this.playerXIndex = 1;
     this.enemyCarList = [];
     this.ySeperation = 400;
@@ -97,7 +97,7 @@ class GameScreen {
   };
 
   increaseGameSpeed() {
-    if (this.gameSpeed < 5) {
+    if (this.gameSpeed < 8) {
       this.gameSpeed = this.gameSpeed + 1;
 
       this.road.updateSpeed(this.gameSpeed);
