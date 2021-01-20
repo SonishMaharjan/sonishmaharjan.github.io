@@ -53,4 +53,8 @@ class Road {
       }
     });
   }
+
+  updateSpeed(s) {
+    this.speed = s;
+  }
 }

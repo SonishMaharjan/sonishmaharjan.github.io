@@ -4,6 +4,8 @@ const SCREEN_HEIGHT = 525;
 const CAR_X_POSITIONS = [20, 155, 290];
 const ENEMY_CAR_NUMBER = 3;
 
+const SPEED_UPDATE_POINT = 2;
+
 const GAME_SPRITES = [
   "images/road.png",
   "images/car-0.png",
@@ -30,6 +32,7 @@ class GameScreen {
     this.isPlayerPlaying = false;
     this.isPlayerDead = false;
     this.loadSprite();
+    this.speedUpdater = null;
 
     this.scoreObject.innerHTML = 0;
   }
@@ -42,7 +45,14 @@ class GameScreen {
       this.gameSpeed
     );
 
-    this.player = new Car(CAR_X_POSITIONS[this.playerXIndex], 370, 90, 120, 0);
+    this.player = new Car(
+      CAR_X_POSITIONS[this.playerXIndex],
+      370,
+      90,
+      140,
+      0,
+      this.spriteImages[1]
+    );
 
     this.createEnemyCar();
 
@@ -68,6 +78,12 @@ class GameScreen {
         this.gameOver();
       }
 
+      if (!this.speedUpdater) {
+        this.speedUpdater = setInterval(() => {
+          this.increaseSpeed();
+        }, 10000);
+      }
+
       this.updateEnemyCar();
       this.enemyCarList.forEach((enemyCar) => {
         enemyCar.update(this.ctx);
@@ -77,6 +93,15 @@ class GameScreen {
     }
     window.requestAnimationFrame(this.update);
   };
+
+  increaseSpeed() {
+    this.gameSpeed += this.gameSpeed;
+    this.road.updateSpeed(this.gameSpeed);
+
+    this.enemyCarList.forEach((enemyCar) => {
+      enemyCar.updateSpeed(this.gameSpeed);
+    });
+  }
 
   loadSprite() {
     let imageCount = 0;
@@ -99,8 +124,9 @@ class GameScreen {
         CAR_X_POSITIONS[getRandomBetween(0, 2)],
         -(i + 1) * this.ySeperation,
         90,
-        120,
-        this.gameSpeed
+        180,
+        this.gameSpeed,
+        this.spriteImages[2]
       );
       this.enemyCarList.push(enemyCar);
     }
@@ -136,9 +162,9 @@ class GameScreen {
   }
 
   gameOver() {
-    // console.log("game over");
     this.isPlayerPlaying = false;
     this.isPlayerDead = true;
+    clearInterval(this.speedUpdater);
 
     let playerScore = this.gameOverObject.querySelector("#player-score");
     playerScore.innerHTML = this.playerPoint;
@@ -180,7 +206,9 @@ class Car {
   draw(ctx) {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.stroke();
+    // collider rectangle
+    // ctx.stroke();
+    ctx.drawImage(this.image, this.x + 10, this.y - 10);
     ctx.closePath();
   }
 
