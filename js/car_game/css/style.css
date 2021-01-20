@@ -16,6 +16,10 @@ canvas {
   /* height: 500px; */
 }
 
+p {
+  margin: 10px;
+}
+
 #game-start {
   height: 200px;
   width: 400px;
