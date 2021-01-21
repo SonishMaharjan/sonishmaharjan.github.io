@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -21,5 +22,63 @@ canvas {
   font-size: 50px;
   font-weight: bold;
   left: 180px;
-  top: 50px;
+  /* top: 50px; */
+  top: 100px;
+}
+
+#game-start {
+  background-color: #ded895;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  top: 100px;
+  left: 50px;
+  padding: 20px;
+  text-align: center;
+}
+
+#play-button {
+  height: 50px;
+  width: 80px;
+  margin: 20px;
+  font-size: 20px;
+}
+
+#play-button:hover {
+  cursor: pointer;
+}
+
+.highscore-wrapper {
+  font-size: 20px;
+  margin: 10px;
+}
+
+#game-over {
+  background-color: #ded895;
+  position: absolute;
+  width: 300px;
+  height: 260px;
+  border-radius: 10px;
+  top: 100px;
+  left: 50px;
+  padding: 20px;
+  text-align: center;
+  display: none;
+  opacity: 0.9;
+}
+
+#play-again {
+  height: 50px;
+  width: 160px;
+  margin: 20px;
+  font-size: 20px;
+}
+
+#play-again:hover {
+  cursor: pointer;
+}
+
+.game-over-text {
+  margin: 15px;
 }

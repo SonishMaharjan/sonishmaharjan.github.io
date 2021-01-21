@@ -35,11 +35,13 @@ class GameScreen {
     this.animationFrameId = null;
     this.backgroundList = [];
     this.foregroundList = [];
-    this.gameSpeed = 1;
+    this.gameSpeed = 2;
     this.bird = null;
     this.pipesList = [];
     this.playerScore = 0;
     this.isFirstClick = false;
+    this.isGameOver = false;
+    this.highScore = localStorage.getItem("flappyHighScore");
 
     this.loadSprite();
   }
@@ -88,6 +90,10 @@ class GameScreen {
         fg.update(this.ctx);
       });
     }
+    if (this.isFirstClick && !this.bird.isAlive && !this.isGameOver) {
+      this.isGameOver = true;
+      this.gameOver();
+    }
     this.animationFrameId = window.requestAnimationFrame(this.update);
   };
 
@@ -106,7 +112,16 @@ class GameScreen {
     });
   }
 
-  gameOver() {}
+  gameOver() {
+    if (this.playerScore > this.highScore) {
+      localStorage.setItem("flappyHighScore", this.playerScore);
+    }
+    let playerScore = this.gameOverObject.querySelector("#player-score");
+    let currentHighScore = this.gameOverObject.querySelector("#highscore");
+    playerScore.innerHTML = this.playerScore;
+    currentHighScore.innerHTML = localStorage.getItem("flappyHighScore");
+    this.gameOverObject.style.display = "block";
+  }
 
   destroy() {
     cancelAnimationFrame(this.animationFrameId);
@@ -217,9 +232,8 @@ class Pipes {
     ctx.beginPath();
     ctx.rect(this.pipeTop.x, this.pipeTop.y, this.width, this.height);
     ctx.rect(this.pipeBottom.x, this.pipeBottom.y, this.width, this.height);
-    // ctx.rect(this.x, this.y, this.width, this.height);
-    // collider rectangle
-    ctx.stroke();
+
+    // ctx.stroke();
     ctx.drawImage(
       this.pipeTop.image,
       this.pipeTop.x - 3,
@@ -267,15 +281,41 @@ function startGame(scoreObject, gameOverObject) {
 window.addEventListener("load", () => {
   let gameCanvas = document.getElementById("game-canvas");
   let scoreBoard = document.getElementById("score-board");
+  let playButton = document.getElementById("play-button");
+  let replayBtn = document.getElementById("play-again");
+  let gameStarter = document.getElementById("game-start");
+  let gameOver = document.getElementById("game-over");
 
-  let game = startGame(scoreBoard);
+  let isPlayable = false;
 
-  gameCanvas.addEventListener("click", () => {
-    if (!game.isFirstClick) {
+  let game = startGame(scoreBoard, gameOver);
+
+  gameStarter.querySelector("#highscore").innerHTML = localStorage.getItem(
+    "flappyHighScore"
+  );
+  playButton.addEventListener("click", () => {
+    isPlayable = true;
+    gameStarter.style.display = "none";
+  });
+
+  if (!localStorage.getItem("flappyHighScore")) {
+    localStorage.setItem("flappyHighScore", 0);
+  }
+
+  gameCanvas.addEventListener("click", (e) => {
+    if (!game.isFirstClick && isPlayable) {
       game.isFirstClick = true;
       scoreBoard.innerHTML = game.playerScore;
+      scoreBoard.style.top = "50px";
     }
     game.bird.jump();
-    // console.log(game.bird.jump());
+  });
+
+  replayBtn.addEventListener("click", () => {
+    game.destroy();
+    game = startGame(scoreBoard, gameOver);
+    scoreBoard.innerHTML = "TAP";
+    scoreBoard.style.top = "100px";
+    gameOver.style.display = "none";
   });
 });

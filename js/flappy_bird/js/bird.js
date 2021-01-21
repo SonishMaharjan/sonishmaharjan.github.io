@@ -52,7 +52,7 @@ class Bird {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.width, this.height);
     // collider rectangle
-    ctx.stroke();
+    // ctx.stroke();
     ctx.drawImage(this.image, this.x - 8, this.y - 5, 40, 40);
     ctx.closePath();
   }
@@ -102,8 +102,6 @@ class Bird {
         birdRect.y < rect1.y + rect1.height &&
         birdRect.y + birdRect.height > rect1.y
       ) {
-        // this.isCollided = true;
-        // console.log("coli top");
         this.isAlive = false;
       }
 

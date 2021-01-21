@@ -9,6 +9,29 @@
   <body>
     <div class="container">
       <div id="score-board">TAP</div>
+      <div id="game-start">
+        <h1 class="heading">FLAPPY BIRD</h1>
+        <p class="highscore-wrapper">
+          Highscore : <span id="highscore">0</span>
+        </p>
+
+        <button id="play-button">Play</button>
+      </div>
+
+      <div id="game-over">
+        <h2 class="heading">FLAPPY BIRD</h2>
+
+        <h3 class="game-over-text">Game Over!!!</h3>
+
+        <p class="highscore-wrapper">
+          Your score : <span id="player-score">0</span>
+        </p>
+        <p class="highscore-wrapper">
+          Highscore : <span id="highscore"></span>
+        </p>
+
+        <button id="play-again">Play Again</button>
+      </div>
       <canvas id="game-canvas"> </canvas>
     </div>
     <script src="js/utils.js"></script>
