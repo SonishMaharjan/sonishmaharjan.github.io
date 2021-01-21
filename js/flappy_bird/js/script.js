@@ -7,7 +7,7 @@ const INITIAL_PIPE_POSITION = 500;
 const HORIZONTAL_PIPE_DISTANCE = 250;
 
 const PIPE_MAX_TOP = -200;
-const PIPE_MAX_BOTTOM = -50;
+const PIPE_MAX_BOTTOM = -30;
 
 const BIRD_X_POS = 100;
 
@@ -48,7 +48,7 @@ class GameScreen {
 
   init = () => {
     this.createBackgrounds();
-    this.bird = new Bird(BIRD_X_POS, 200, 30, 30, 0, [
+    this.bird = new Bird(BIRD_X_POS, 200, 27, 27, 0, [
       this.spriteImages[2],
       this.spriteImages[3],
       this.spriteImages[4],
@@ -171,6 +171,7 @@ class GameScreen {
       if (pipe.x < -200) {
         pipe.isCounted = false;
         pipe.x = pipe.x + HORIZONTAL_PIPE_DISTANCE * NUM_OF_PIPES;
+        pipe.moveY(getRandomBetween(PIPE_MAX_TOP, PIPE_MAX_BOTTOM));
       }
 
       if (pipe.x < BIRD_X_POS && !pipe.isCounted) {
@@ -263,6 +264,8 @@ class Pipes {
   }
   moveY(y) {
     this.y = y;
+    this.pipeTop.y = this.y;
+    this.pipeBottom.y = this.y + this.verticalSpace;
   }
 }
 
