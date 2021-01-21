@@ -52,7 +52,7 @@ class Bird {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.width, this.height);
     // collider rectangle
-    ctx.stroke();
+    // ctx.stroke();
     ctx.drawImage(this.image, this.x - 10, this.y - 7, 40, 40);
     ctx.closePath();
   }
