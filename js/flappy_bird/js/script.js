@@ -1,6 +1,15 @@
 const SCREEN_WIDTH = 400;
 const SCREEN_HEIGHT = 575;
 const NUM_OF_BACKGROUNDS = 3;
+const NUM_OF_PIPES = 4;
+
+const INITIAL_PIPE_POSITION = 500;
+const HORIZONTAL_PIPE_DISTANCE = 250;
+
+const PIPE_MAX_TOP = -200;
+const PIPE_MAX_BOTTOM = -50;
+
+const BIRD_X_POS = 100;
 
 const GAME_SPRITES = [
   "images/background.png",
@@ -28,38 +37,57 @@ class GameScreen {
     this.foregroundList = [];
     this.gameSpeed = 1;
     this.bird = null;
+    this.pipesList = [];
+    this.playerScore = 0;
+    this.isFirstClick = false;
 
     this.loadSprite();
   }
 
   init = () => {
     this.createBackgrounds();
-    this.bird = new Bird(50, 100, 30, 30, 0, [
+    this.bird = new Bird(BIRD_X_POS, 200, 30, 30, 0, [
       this.spriteImages[2],
       this.spriteImages[3],
       this.spriteImages[4],
     ]);
 
-    this.pipe = new Pipes(0, 0, this.gameSpeed, [
-      this.spriteImages[5],
-      this.spriteImages[6],
-    ]);
-    this.update();
-  };
+    this.createPipes();
 
-  update = () => {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+    //initial render
     this.backgroundList.forEach((bg) => {
       bg.update(this.ctx);
     });
 
-    this.bird.checkCollision([this.pipe]);
     this.bird.update(this.ctx);
-    this.pipe.update(this.ctx);
 
     this.foregroundList.forEach((fg) => {
       fg.update(this.ctx);
     });
+
+    this.update();
+  };
+
+  update = () => {
+    if (this.isFirstClick && this.bird.isAlive) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+      this.backgroundList.forEach((bg) => {
+        bg.update(this.ctx);
+      });
+
+      this.bird.checkCollision(this.pipesList);
+      this.bird.update(this.ctx);
+
+      this.updatePipes();
+
+      this.pipesList.forEach((pipe) => {
+        pipe.update(this.ctx);
+      });
+
+      this.foregroundList.forEach((fg) => {
+        fg.update(this.ctx);
+      });
+    }
     this.animationFrameId = window.requestAnimationFrame(this.update);
   };
 
@@ -109,6 +137,34 @@ class GameScreen {
       this.foregroundList.push(foreground);
     }
   }
+
+  createPipes() {
+    for (let i = 0; i < NUM_OF_PIPES; i++) {
+      let pipe = new Pipes(
+        INITIAL_PIPE_POSITION + i * HORIZONTAL_PIPE_DISTANCE,
+        getRandomBetween(PIPE_MAX_TOP, PIPE_MAX_BOTTOM),
+        this.gameSpeed,
+        [this.spriteImages[5], this.spriteImages[6]]
+      );
+
+      this.pipesList.push(pipe);
+    }
+  }
+
+  updatePipes() {
+    this.pipesList.forEach((pipe) => {
+      if (pipe.x < -200) {
+        pipe.isCounted = false;
+        pipe.x = pipe.x + HORIZONTAL_PIPE_DISTANCE * NUM_OF_PIPES;
+      }
+
+      if (pipe.x < BIRD_X_POS && !pipe.isCounted) {
+        pipe.isCounted = true;
+        this.playerScore += 1;
+        this.scoreObject.innerHTML = this.playerScore;
+      }
+    });
+  }
 }
 
 class Pipes {
@@ -120,12 +176,13 @@ class Pipes {
   ) {
     this.x = x;
     // should be between -50 and -200
-    this.y = -50;
+    this.y = y;
     this.width = 65;
     this.height = 266;
     this.speed = speed;
     this.imagesList = pipeImages;
     this.verticalSpace = 400;
+    this.isCounted = false;
 
     this.pipeTop = {
       x: this.x,
@@ -208,10 +265,16 @@ function startGame(scoreObject, gameOverObject) {
 }
 
 window.addEventListener("load", () => {
-  let game = startGame();
-
   let gameCanvas = document.getElementById("game-canvas");
+  let scoreBoard = document.getElementById("score-board");
+
+  let game = startGame(scoreBoard);
+
   gameCanvas.addEventListener("click", () => {
+    if (!game.isFirstClick) {
+      game.isFirstClick = true;
+      scoreBoard.innerHTML = game.playerScore;
+    }
     game.bird.jump();
     // console.log(game.bird.jump());
   });

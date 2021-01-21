@@ -53,7 +53,7 @@ class Bird {
     ctx.rect(this.x, this.y, this.width, this.height);
     // collider rectangle
     ctx.stroke();
-    ctx.drawImage(this.image, this.x - 2, this.y - 5, 35, 38);
+    ctx.drawImage(this.image, this.x - 8, this.y - 5, 40, 40);
     ctx.closePath();
   }
 
@@ -103,7 +103,8 @@ class Bird {
         birdRect.y + birdRect.height > rect1.y
       ) {
         // this.isCollided = true;
-        console.log("coli top");
+        // console.log("coli top");
+        this.isAlive = false;
       }
 
       if (
@@ -112,7 +113,7 @@ class Bird {
         birdRect.y < rect2.y + rect2.height &&
         birdRect.y + birdRect.height > rect2.y
       ) {
-        console.log("coolid botom");
+        this.isAlive = false;
       }
     });
   }

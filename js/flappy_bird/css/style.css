@@ -4,12 +4,22 @@
 }
 
 .container {
-  width: 500px;
+  width: 400px;
   height: 575px;
   border: 2px solid black;
   margin: auto;
+  position: relative;
 }
 
 canvas {
   border: 2px solid red;
+}
+
+#score-board {
+  color: #fff;
+  position: absolute;
+  font-size: 50px;
+  font-weight: bold;
+  left: 180px;
+  top: 50px;
 }
