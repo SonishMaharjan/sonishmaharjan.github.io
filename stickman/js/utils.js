@@ -8,3 +8,17 @@ function getEndPoint(point, angle, length) {
 
   return { x, y };
 }
+
+function getDistance(pointA, pointB) {
+  return Math.abs(
+    Math.sqrt(
+      Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2)
+    )
+  );
+}
+
+function getAngle(p1, p2, origin) {
+  var d1 = this.getDistance(p1, origin);
+  var d2 = this.getDistance(p2, origin);
+  return Math.atan2(p2.y - p1.y, p2.x - p1.x);
+}
