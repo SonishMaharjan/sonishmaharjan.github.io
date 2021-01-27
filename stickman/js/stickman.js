@@ -47,6 +47,7 @@ class Stick {
     originY,
     stickName,
     stickManId,
+    parent,
     color
   ) {
     this.x = x;
@@ -55,12 +56,15 @@ class Stick {
     this.angle = angle;
     this.originX = originX;
     this.originY = originY;
-    this.endX = this.getEndX();
-    this.endY = this.getEndY();
+    this.endX = this.getEndX(angle);
+    this.endY = this.getEndY(angle);
     this.color = color || "#000";
 
     this.stickName = stickName;
     this.stickManId = stickManId;
+
+    console.log(parent);
+    this.parent = parent;
 
     this.stickStyle = `stroke:${this.color};stroke-width:15; `;
 
@@ -68,24 +72,40 @@ class Stick {
   }
 
   rotate(angle) {
-    this.endX = this.x + Math.cos(degToRad(angle)) * this.length;
-    this.endY = this.y + Math.sin(degToRad(angle)) * this.length;
+    this.angle = angle;
+    this.endX = this.getEndX(angle);
+    this.endY = this.getEndY(angle);
   }
 
-  getEndX() {
-    return this.x + Math.cos(degToRad(this.angle)) * this.length;
+  getEndX(angle) {
+    return this.x + Math.cos(degToRad(angle)) * this.length;
   }
 
-  getEndY() {
-    return this.y + Math.sin(degToRad(this.angle)) * this.length;
+  getEndY(angle) {
+    return this.y + Math.sin(degToRad(angle)) * this.length;
   }
 
+  update() {
+    // debugger;
+    if (this.parent) {
+      // console.log(this.parent);
+      this.x = this.parent.endX;
+      this.y = this.parent.endY;
+
+      this.endX = this.getEndX(this.angle);
+      this.endY = this.getEndY(this.angle);
+
+      // this.rotate(this.angle);
+    }
+  }
   render() {
-    // console.log("ahahr ", this.angle);
-    return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"  stroke-linecap="round"   style="${this.stickStyle}" />
+    this.update();
+    return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"
+    stroke-linecap="round"   style="${this.stickStyle}" />
    <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
+
     fill="red" class="draggable"  />
     `;
   }
@@ -134,7 +154,8 @@ class StickMan {
       0,
       0,
       "leftHand",
-      this.id
+      this.id,
+      this.leftArm
     );
   }
 
