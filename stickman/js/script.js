@@ -1,272 +1,192 @@
-ANIMATOR_WIDTH = 600;
-ANIMATOR_HEIGHT = 400;
+var sm = {
+  b1: {
+    x: 120,
+    y: 80,
+  },
+  b2: {
+    x: 250,
+    y: 200,
+  },
+  lh1: {
+    x: 200,
+    y: 100,
+  },
+  lh2: {
+    x: 150,
+    y: 80,
+  },
+  rh1: {
+    x: 300,
+    y: 120,
+  },
+  rh2: {
+    x: 350,
+    y: 130,
+  },
+  ll1: {
+    x: 200,
+    y: 250,
+  },
+  ll2: {
+    x: 150,
+    y: 360,
+  },
+  rl1: {
+    x: 310,
+    y: 270,
+  },
+  rl2: {
+    x: 350,
+    y: 270,
+  },
+};
+const stickStyle = "stroke:black;stroke-width:15;stroke-linecap='round'";
+const svg = document.getElementById("svg");
+const animTimeline = document.getElementById("animTimeline");
+const headSize = 30;
+const cpSize = 8;
+var savedFrames = [];
+var activeFrame = 0;
+var mode = 0; // 0: editing, 1: playing
+let animTimer;
+let animInterval = 1000;
 
-LINE_LENGTH = 70;
+document.getElementById("btnPlay").addEventListener("click", playAnim);
+document.getElementById("btnClear").addEventListener("click", clearAnim);
+document
+  .getElementById("animIntervalInput")
+  .addEventListener("change", handleIntervalChange);
+requestAnimationFrame(render);
 
-class CanvasAnimatorScreen {
-  constructor(canvasId, width, height) {
-    this.id = canvasId;
-    this.width = width;
-    this.height = height;
+function render() {
+  svg.innerHTML = `
+      <!-- Head -->
+      <circle cx="${sm.b1.x}" cy="${
+    sm.b1.y - headSize / 2
+  }" r="${headSize}" fill="black" />
+      
+      <!-- Body -->
+      <line x1="${sm.b1.x}" y1="${sm.b1.y}" x2="${sm.b2.x}" y2="${
+    sm.b2.y
+  }" style="${stickStyle}" />
+      <!-- Left hand -->
+      <line x1="${sm.b1.x}" y1="${sm.b1.y}" x2="${sm.lh1.x}" y2="${
+    sm.lh1.y
+  }" style="${stickStyle}" />
+      <line x1="${sm.lh1.x}" y1="${sm.lh1.y}" x2="${sm.lh2.x}" y2="${
+    sm.lh2.y
+  }" style="${stickStyle}" />
+      <!-- Right hand -->
+      <line x1="${sm.b1.x}" y1="${sm.b1.y}" x2="${sm.rh1.x}" y2="${
+    sm.rh1.y
+  }" style="${stickStyle}" />
+      <line x1="${sm.rh1.x}" y1="${sm.rh1.y}" x2="${sm.rh2.x}" y2="${
+    sm.rh2.y
+  }" style="${stickStyle}" />
+      <!-- Left leg -->
+      <line x1="${sm.b2.x}" y1="${sm.b2.y}" x2="${sm.ll1.x}" y2="${
+    sm.ll1.y
+  }" style="${stickStyle}" />
+      <line x1="${sm.ll1.x}" y1="${sm.ll1.y}" x2="${sm.ll2.x}" y2="${
+    sm.ll2.y
+  }" style="${stickStyle}" />
+      <!-- Right leg -->
+      <line x1="${sm.b2.x}" y1="${sm.b2.y}" x2="${sm.rl1.x}" y2="${
+    sm.rl1.y
+  }" style="${stickStyle}" />
+      <line x1="${sm.rl1.x}" y1="${sm.rl1.y}" x2="${sm.rl2.x}" y2="${
+    sm.rl2.y
+  }" style="${stickStyle}" />
+      <!-- Control Points -->
+      <!-- b1 --> <circle cx="${sm.b1.x}" cy="${
+    sm.b1.y
+  }" r="${cpSize}" fill="red" class="draggable" id="b1" />
+      <!-- b2 --> <circle cx="${sm.b2.x}" cy="${
+    sm.b2.y
+  }" r="${cpSize}" fill="red" class="draggable" id="b2" />
+      <!-- lh1 --> <circle cx="${sm.lh1.x}" cy="${
+    sm.lh1.y
+  }" r="${cpSize}" fill="red" class="draggable" id="lh1" />
+      <!-- lh2 --> <circle cx="${sm.lh2.x}" cy="${
+    sm.lh2.y
+  }" r="${cpSize}" fill="red" class="draggable" id="lh2" />
+      <!-- rh1 --> <circle cx="${sm.rh1.x}" cy="${
+    sm.rh1.y
+  }" r="${cpSize}" fill="red" class="draggable" id="rh1" />
+      <!-- rh2 --> <circle cx="${sm.rh2.x}" cy="${
+    sm.rh2.y
+  }" r="${cpSize}" fill="red" class="draggable" id="rh2" />
+      <!-- ll1 --> <circle cx="${sm.ll1.x}" cy="${
+    sm.ll1.y
+  }" r="${cpSize}" fill="red" class="draggable" id="ll1" />
+      <!-- ll2 --> <circle cx="${sm.ll2.x}" cy="${
+    sm.ll2.y
+  }" r="${cpSize}" fill="red" class="draggable" id=ll2 />
+      <!-- rl1 --> <circle cx="${sm.rl1.x}" cy="${
+    sm.rl1.y
+  }" r="${cpSize}" fill="red" class="draggable" id="rl1" />
+      <!-- rl2 --> <circle cx="${sm.rl2.x}" cy="${
+    sm.rl2.y
+  }" r="${cpSize}" fill="red" class="draggable" id="rl2" />
+  `;
 
-    this.canvas = document.getElementById(this.id);
-    this.context = this.canvas.getContext("2d");
-    this.canvas.width = this.width;
-    this.canvas.height = this.height;
-    this.mouseDragEvent = { x: null, y: null, isDraggble: false };
-
-    this.stickMan = new Line(250, 150, 34, 23, 34, "black");
-    this.init();
-    this.addClickListener();
-  }
-
-  init() {
-    this.update();
-  }
-
-  update = () => {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.stickMan.update(this.context, this.mouseDragEvent);
-
-    requestAnimationFrame(this.update);
-  };
-
-  draw() {}
-
-  addClickListener() {
-    this.canvas.addEventListener(
-      "mousedown",
-      (e) => {
-        // let mousePos = {
-        //   x: e.offsetX,
-        //   y: e.offsetY,
-        // };
-        // this.mouseDragEvent = mousePos;
-        this.mouseDragEvent.x = e.offsetX;
-        this.mouseDragEvent.y = e.offsetY;
-        this.mouseDragEvent.isDraggble = true;
-        console.log(this.mouseDragEvent);
-      },
-      false
-    );
-
-    this.canvas.addEventListener(
-      "mousemove",
-      (e) => {
-        if (this.mouseDragEvent.isDraggble) {
-          this.mouseDragEvent.x = e.offsetX;
-          this.mouseDragEvent.y = e.offsetY;
-          console.log(this.mouseDragEvent);
-        }
-
-        // console.log(this.mouseDragEvent);
-      },
-      false
-    );
-
-    this.canvas.addEventListener(
-      "mouseup",
-      (e) => {
-        // let mousePos = {
-        //   x: e.offsetX,
-        //   y: e.offsetY,
-        // };
-        // this.mouseDragEvent = mousePos;
-        this.mouseDragEvent.x = null;
-        this.mouseDragEvent.y = null;
-
-        this.mouseDragEvent.isDraggble = false;
-        console.log(this.mouseDragEvent);
-      },
-      false
-    );
-  }
-}
-
-class Line {
-  constructor(posX, posY, centerX, centerY, angle, color) {
-    this.posX = posX;
-    this.posY = posY;
-
-    this.centerX = posX;
-    this.centerY = posY;
-    this.angle = angle;
-    this.color = color;
-
-    this.length = LINE_LENGTH;
-
-    this.endX =
-      this.posX + Math.cos((Math.PI * this.angle) / 180) * this.length;
-    this.endY =
-      this.posY + Math.sin((Math.PI * this.angle) / 180) * this.length;
-
-    this.draggerX = this.endX;
-    this.draggerY = this.endY;
-    this.length = 20;
-    this.draggerRadius = 8;
-
-    this.isDraggble = false;
-  }
-
-  //   init() {
-  //     this.update(context);
-  //   }
-
-  roatate() {}
-
-  update(context, mouseDragEvent) {
-    this.checkDraggable(mouseDragEvent);
-
-    // let theta =
-    //   (Math.atan(
-    //     (mouseDragEvent.y - this.posY) / (mouseDragEvent.x - this.posX)
-    //   ) *
-    //     180) /
-    //   Math.PI;
-
-    // console.log(theta);
-
-    if (this.isDraggble) {
-      // let theta = Math.acos(mouseDragEvent.x-)
-      // let theta = Math.atan(
-      //   (mouseDragEvent.y - this.posY) / (mouseDragEvent.x - this.posX)
-      // );
-
-      // console.log(theta);
-      // x=r*cos(theta)
-      // y=r*sin(theta)
-
-      this.endX = mouseDragEvent.x;
-      this.endY = mouseDragEvent.y;
+  if (mode === 1) {
+    animTimeline.innerHTML = "";
+    for (let i = 0; i < savedFrames.length; i++) {
+      animTimeline.innerHTML += `<div class="animFrame ${
+        activeFrame === i ? "--activeFrame" : ""
+      }"></div>`;
     }
-
-    // console.log("hahah");
-    this.draw(context);
   }
+  requestAnimationFrame(render);
+}
 
-  draw(context) {
-    // context.beginPath();
-    // context.lineCap = "round";
-
-    // context.moveTo(20, 60);
-    // context.lineTo(921, 500);
-    // // context.moveTo(this.posX, this.poxY);
-    // // context.lineTo(this.endX, this.endY);
-    // context.strokeStyle = "black";
-    // context.stroke();
-
-    context.beginPath();
-    context.lineCap = "round";
-    context.lineWidth = 10;
-
-    context.moveTo(this.posX, this.posY);
-    context.lineTo(this.endX, this.endY);
-    context.strokeStyle = "black";
-    context.stroke();
-
-    context.closePath();
-    // context.arc(80, 50, 10, 0, Math.PI * 2);
-
-    context.fillStyle = "red";
-    context.arc(this.endX, this.endY, this.draggerRadius, 0, Math.PI * 2);
-    context.fill(); //fill the circle
+function enableDragging(evt) {
+  var svg = evt.target;
+  svg.addEventListener("mousedown", startDrag);
+  svg.addEventListener("mousemove", drag);
+  svg.addEventListener("mouseup", endDrag);
+  svg.addEventListener("mouseleave", endDrag);
+  var activeCp = false;
+  function startDrag(e) {
+    if (e.target.classList.contains("draggable")) activeCp = e.target;
   }
-
-  checkDraggable(mouseDragEvent) {
-    let circle = {
-      x: this.endX,
-      y: this.endY,
-      radius: this.draggerRadius,
-    };
-
-    let point = {
-      x: mouseDragEvent.x,
-      y: mouseDragEvent.y,
-    };
-
-    this.isDraggble = isOnCircle(point, circle);
+  function drag(e) {
+    if (activeCp && mode === 0) {
+      e.preventDefault();
+      sm[activeCp.getAttributeNS(null, "id")] = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+    }
+  }
+  function endDrag(e) {
+    activeCp = null;
+    savedFrames.push(JSON.parse(JSON.stringify(sm)));
   }
 }
 
-window.addEventListener("load", () => {
-  let animator = new CanvasAnimatorScreen(
-    "animator-canvas",
-    ANIMATOR_WIDTH,
-    ANIMATOR_HEIGHT
-  );
-});
+function playAnim() {
+  mode = 1;
+  animTimer = setInterval(() => {
+    if (savedFrames[activeFrame]) {
+      sm = savedFrames[activeFrame];
+      activeFrame++;
+      if (activeFrame >= savedFrames.length - 1) {
+        clearAnim();
+      }
+    }
+  }, animInterval);
+}
 
-// var canvas = document.getElementById("animator-canvas");
-// context = canvas.getContext("2d"); // get Canvas Context object
-// let timestamp = Date.now();
-// let wave = false;
+function clearAnim() {
+  savedFrames = [];
+  clearInterval(animTimer);
+  mode = 0;
+  activeFrame = 0;
+  animTimeline.innerHTML = "";
+}
 
-// canvas.width = 600;
-// canvas.height = 400;
-
-// //   context.beginPath();
-// //   context.fillStyle = "#000"; // #000000
-// //   context.arc(
-// //     canvas.width / 2 - 150,
-// //     canvas.height / 2 - 75,
-// //     20,
-// //     0,
-// //     Math.PI * 2
-// //   );
-// //   context.fill(); //fill the circle
-// //   context.stroke();
-
-// draw();
-
-// function draw() {
-//   if (Date.now() < timestamp + 900) return requestAnimationFrame(draw);
-
-//   context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-//   // head;
-//   // console.log("haha");
-//   context.beginPath();
-//   context.lineCap = "round";
-//   context.fillStyle = "black"; // #000000
-//   context.arc(80, 50, 10, 0, Math.PI * 2);
-//   // context.fill(); //fill the circle
-//   context.stroke();
-
-//   context.beginPath();
-//   context.lineWidth = 10;
-//   context.stroke();
-
-//   //body
-//   context.beginPath();
-//   context.moveTo(200, 80);
-//   context.lineTo(200, 180);
-//   context.strokeStyle = "black";
-//   context.stroke();
-
-//   //arms
-//   context.beginPath();
-//   context.strokeStyle = "black";
-//   context.moveTo(200, 100);
-//   context.lineTo(150, 130);
-//   if (wave) {
-//     context.moveTo(200, 100);
-//     context.lineTo(250, 130);
-//     wave = false;
-//   } else {
-//     context.moveTo(200, 100);
-//     context.lineTo(250, 70);
-//     wave = true;
-//   }
-//   context.stroke();
-
-//   //legs
-//   context.beginPath();
-//   context.strokeStyle = "black";
-//   context.moveTo(200, 180);
-//   context.lineTo(150, 280);
-//   context.moveTo(200, 180);
-//   context.lineTo(250, 280);
-//   context.stroke();
-//   timestamp = Date.now();
-//   requestAnimationFrame(draw);
-// }
+function handleIntervalChange(e) {
+  animInterval = parseInt(e.target.value);
+}

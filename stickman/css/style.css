@@ -1,38 +1,34 @@
 * {
   margin: 0;
   padding: 0;
-  background: #2f4f4f;
-}
-.top-wrapper {
-  min-width: 100%;
-  height: 80px;
-  border: 2px solid black;
+  /* background: #2f4f4f; */
 }
 
-.body-wrapper {
+.svg {
+  border: 1px solid #373737;
+}
+
+.draggable {
+  cursor: move;
+}
+
+.toolbar {
+  padding: 1rem;
+  margin: 1rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 10px;
 }
 
-.body-left {
-  border: 2px solid black;
-  height: 450px;
-  width: 650px;
+#animTimeline {
+  display: flex;
 }
 
-.canvas-left {
-  background: #fff;
-  /* height: 400px;
-  width: 600px; */
-
-  margin: 20px auto;
+.animFrame {
+  width: 10px;
+  background: lightgrey;
+  height: 50px;
+  margin-right: 5px;
 }
 
-.body-right {
-  border: 2px solid black;
-
-  width: 650px;
-  height: 450px;
+.--activeFrame {
+  background: #373737;
 }

@@ -3,21 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stick Man Animator</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <div class="container">
-      <div class="top-wrapper"></div>
-      <div class="body-wrapper">
-        <div class="body-left">
-          <canvas class="canvas-left" id="animator-canvas"></canvas>
-        </div>
-        <div class="body-right"></div>
-      </div>
 
-      <script src="js/utils.js"></script>
-      <script src="js/script.js"></script>
-    </div>
+  <body>
+    <svg
+      width="500"
+      height="500"
+      class="svg"
+      id="svg"
+      onload="enableDragging(event)"
+    ></svg>
+    <!-- <div id="animTimeline"></div>
+    <div class="toolbar">
+      <input type="number" id="animIntervalInput" value="1000" />
+      <button id="btnPlay">Play</button>
+      <button id="btnClear">Clear</button>
+    </div> -->
+    <script src="js/utils.js"></script>
+    <script src="js/stickman.js"></script>
+    <!-- <script src="js/script.js"></script> -->
   </body>
 </html>
