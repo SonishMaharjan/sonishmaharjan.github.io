@@ -67,6 +67,11 @@ class Stick {
     this.draggerRadius = 7;
   }
 
+  rotate(angle) {
+    this.endX = this.x + Math.cos(degToRad(angle)) * this.length;
+    this.endY = this.y + Math.sin(degToRad(angle)) * this.length;
+  }
+
   getEndX() {
     return this.x + Math.cos(degToRad(this.angle)) * this.length;
   }
@@ -76,6 +81,7 @@ class Stick {
   }
 
   render() {
+    // console.log("ahahr ", this.angle);
     return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"  stroke-linecap="round"   style="${this.stickStyle}" />
    <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
@@ -133,6 +139,7 @@ class StickMan {
   }
 
   render() {
+    console.log("hahah");
     this.svg.innerHTML = `
     <!-- Head -->
     
@@ -179,16 +186,20 @@ function enableDragging(evt) {
 
       let stickObject = stickManManager[stickManId][stickName];
 
-      let pointA = { x: stickObject.endX, y: stickObject.endY };
-      let pointB = { x: e.offsetX, y: e.offsetY };
-      let origin = { x: stickObject.x, y: stickObject.y };
+      let tanx = e.offsetX - stickObject.x;
+      let tany = e.offsetY - stickObject.y;
 
-      //   console.log(pointA);
+      let rad = Math.atan2(tany, tanx);
+      let deg = radToDeg(rad);
+      let final = deg;
 
-      //   console.log(pointB);
+      if (tany < 0) {
+        final = 360 + deg;
+      }
 
-      //   let pointA = {x: offsetX}
-      console.log(getDistance(pointA, pointB, origin));
+      stickObject.rotate(final);
+
+      stickMan.render();
 
       //   sm[activeCp.getAttributeNS(null, "id")] = {
       //     x: e.clientX,
