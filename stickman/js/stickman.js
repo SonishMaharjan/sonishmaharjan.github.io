@@ -37,90 +37,6 @@ class Head {
   }
 }
 
-class Stick {
-  constructor(
-    x,
-    y,
-    length,
-    angle,
-    originX,
-    originY,
-    stickName,
-    stickManId,
-    parent,
-    parentAngle,
-    color
-  ) {
-    this.x = x;
-    this.y = y;
-    this.length = length;
-    this.angle = angle;
-    this.mainAngleOffset;
-    this.originX = originX;
-    this.originY = originY;
-    this.endX = this.getEndX(angle);
-    this.endY = this.getEndY(angle);
-    this.color = color || "#000";
-
-    this.stickName = stickName;
-    this.stickManId = stickManId;
-
-    this.parentAngle = parentAngle;
-
-    this.offsetAngle = this.angle - this.parentAngle;
-
-    // console.log(parent);
-    this.parent = parent;
-
-    this.stickStyle = `stroke:${this.color};stroke-width:15; `;
-
-    this.draggerRadius = 7;
-  }
-
-  rotate(angle) {
-    this.angle = angle;
-    this.endX = this.getEndX(angle);
-    this.endY = this.getEndY(angle);
-  }
-
-  getEndX(angle) {
-    return this.x + Math.cos(degToRad(angle)) * this.length;
-  }
-
-  getEndY(angle) {
-    return this.y + Math.sin(degToRad(angle)) * this.length;
-  }
-
-  updateOffsetAngle(parentAngle) {
-    this.offsetAngle = this.angle - parentAngle;
-  }
-
-  update() {
-    // debugger;
-    if (this.parent) {
-      // console.log(this.parent);
-      this.x = this.parent.endX;
-      this.y = this.parent.endY;
-
-      this.endX = this.getEndX(this.angle);
-      this.endY = this.getEndY(this.angle);
-
-      // this.rotate(this.angle);
-    }
-  }
-  render() {
-    this.update();
-    return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"
-    stroke-linecap="round"   style="${this.stickStyle}" />
-   <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
-    data-stickman-id=${this.stickManId}
-    data-stick-name=${this.stickName}
-
-    fill="red" class="draggable"  />
-    `;
-  }
-}
-
 class StickMan {
   constructor(posX, posY, color, svg, id) {
     this.posX = posX;
@@ -129,19 +45,23 @@ class StickMan {
     this.color = color;
     this.id = id;
 
-    // this.angle = 0;
     this.draggerAngle = 270;
 
     this.length = 120;
-    // this.endX = this.getEndX(this.angle);
-    // this.endY = this.getEndY(this.angle);
-    this.draggerRadius = 15;
+
+    this.draggerRadius = 7;
 
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
 
     this.createStickMan();
-    // this.rotate(this.angle);
+  }
+
+  translate(position) {
+    this.posX = position.x;
+    this.posY = position.y;
+
+    this.stickBody.translate(position);
   }
 
   getEndX(angle) {
@@ -156,20 +76,22 @@ class StickMan {
     return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="rotation"
-    fill="blue" class="draggable"  />`;
+    fill="blue" class="draggable"  />
+    
+    <circle cx="${this.posX}" cy="${this.posY}" r="${this.draggerRadius}"
+    data-stickman-id=${this.id}
+    data-transform="translate"
+    fill="yellow" class="draggable"  />
+
+    `;
   }
 
   rotate(angle) {
-    // angle = angle / 10;
-
-    // this.angle = angle;
-
     this.draggerAngle = angle;
-
-    // this.angle = this.draggerAngle - 270;
 
     this.stickBody.rotate(angle + this.stickBody.offsetAngle);
     this.leftArm.rotate(angle + this.leftArm.offsetAngle);
+    this.rightArm.rotate(angle + this.rightArm.offsetAngle);
     this.leftHand.rotate(angle + this.leftHand.offsetAngle);
 
     this.endX = this.getEndX(this.draggerAngle);
@@ -180,7 +102,7 @@ class StickMan {
     this.stickBody = new Stick(
       this.posX,
       this.posY,
-      1.5 * LINE_LENGTH,
+      2 * LINE_LENGTH,
       90,
       0,
       0,
@@ -204,11 +126,25 @@ class StickMan {
       null,
       this.draggerAngle
     );
+
+    this.rightArm = new Stick(
+      this.posX,
+      this.posY,
+      LINE_LENGTH,
+      0,
+      0,
+      0,
+      "rightArm",
+      this.id,
+      null,
+      this.draggerAngle
+    );
+
     this.leftHand = new Stick(
       this.leftArm.endX,
       this.leftArm.endY,
       LINE_LENGTH,
-      0,
+      145,
       0,
       0,
       "leftHand",
@@ -224,6 +160,8 @@ class StickMan {
     
     ${this.leftHand.render()}
     ${this.leftArm.render()}
+
+    ${this.rightArm.render()}
 
 
     
@@ -258,6 +196,7 @@ function enableDragging(evt) {
     if (e.target.classList.contains("draggable")) activeCp = e.target;
   }
   function drag(e) {
+    console.log("hahahah");
     if (activeCp) {
       e.preventDefault();
 
@@ -308,10 +247,29 @@ function enableDragging(evt) {
         stickManObject.render();
       }
 
-      //   sm[activeCp.getAttributeNS(null, "id")] = {
-      //     x: e.clientX,
-      //     y: e.clientY,
-      //   };
+      if (stickManId && dataTransform === "translate") {
+        console.log("thang");
+
+        // console.log(stickManId);
+        let stickManObject = stickManManager[stickManId];
+
+        let position = { x: e.offsetX, y: e.offsetY };
+
+        // let tanx = e.offsetX - stickManObject.posX;
+        // let tany = e.offsetY - stickManObject.posY;
+
+        // let rad = Math.atan2(tany, tanx);
+        // let deg = radToDeg(rad);
+        // let final = deg;
+
+        // if (tany < 0) {
+        //   final = 360 + deg;
+        // }
+
+        stickManObject.translate(position);
+
+        stickManObject.render();
+      }
     }
   }
   function endDrag(e) {
@@ -334,3 +292,6 @@ function enableDragging(evt) {
     // savedFrames.push(JSON.parse(JSON.stringify(sm)));
   }
 }
+
+// console.log(svg);
+window.addEventListener("load", enableDragging);
