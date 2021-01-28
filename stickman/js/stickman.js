@@ -168,17 +168,15 @@ class StickMan {
 
     // this.angle = this.draggerAngle - 270;
 
-    console.log(this.stickBody.offsetAngle);
     this.stickBody.rotate(angle + this.stickBody.offsetAngle);
-    this.leftArm.rotate(angle + 60);
-    this.leftHand.rotate(angle + 56);
+    this.leftArm.rotate(angle + this.leftArm.offsetAngle);
+    this.leftHand.rotate(angle + this.leftHand.offsetAngle);
 
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
   }
 
   createStickMan() {
-    console.log("hahat:", this.draggerAngle);
     this.stickBody = new Stick(
       this.posX,
       this.posY,
@@ -202,29 +200,32 @@ class StickMan {
       0,
       0,
       "leftArm",
-      this.id
+      this.id,
+      null,
+      this.draggerAngle
     );
     this.leftHand = new Stick(
       this.leftArm.endX,
       this.leftArm.endY,
       LINE_LENGTH,
-      60,
+      0,
       0,
       0,
       "leftHand",
       this.id,
-      this.leftArm
+      this.leftArm,
+      this.draggerAngle
     );
   }
 
   render() {
-    console.log("hahah");
     this.svg.innerHTML = `
     <!-- Head -->
     
+    ${this.leftHand.render()}
+    ${this.leftArm.render()}
 
-  
-  
+
     
     <!-- Body -->
     ${this.stickBody.render()}
@@ -232,9 +233,6 @@ class StickMan {
     ${this.addTransformer()}
     `;
 
-    // ${this.leftHand.render()}
-
-    // ${this.leftArm.render()}
     // ${this.head.render()}
   }
 }
