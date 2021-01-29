@@ -221,7 +221,7 @@ class StickMan {
   }
 
   update() {
-    console.log(this.stickBody.endX);
+    // console.log(this.stickBody.endX);
     this.lowerX = this.stickBody.endX;
     this.lowerY = this.stickBody.endY;
 
@@ -235,7 +235,7 @@ class StickMan {
 
   render() {
     this.update();
-    this.svg.innerHTML = `
+    return `
     <!-- Head -->
     ${this.head.render()}
     

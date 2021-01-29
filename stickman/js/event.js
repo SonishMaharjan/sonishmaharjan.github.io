@@ -9,7 +9,6 @@ function enableDragging(evt) {
     if (e.target.classList.contains("draggable")) activeCp = e.target;
   }
   function drag(e) {
-    console.log("hahahah");
     if (activeCp) {
       e.preventDefault();
 
@@ -17,11 +16,16 @@ function enableDragging(evt) {
       let stickName = activeCp.getAttributeNS(null, "data-stick-name");
       let dataTransform = activeCp.getAttributeNS(null, "data-transform");
 
-      // console.log(dataTransform);
+      var stickManObject = frameManager.activeFrame.stickManList.find(
+        (stickMan) => {
+          return stickMan.id == stickManId;
+        }
+      );
 
-      if (stickManId && stickName) {
-        let stickObject = stickManManager[stickManId][stickName];
+      var stickObject = stickManObject[stickName];
+      //   if (!stickObject) return;
 
+      if (stickObject) {
         let tanx = e.offsetX - stickObject.x;
         let tany = e.offsetY - stickObject.y;
 
@@ -34,16 +38,9 @@ function enableDragging(evt) {
         }
 
         stickObject.rotate(final);
-
-        stickMan.render();
       }
 
-      if (stickManId && dataTransform === "rotation") {
-        // console.log("hahah");
-
-        // console.log(stickManId);
-        let stickManObject = stickManManager[stickManId];
-
+      if (dataTransform === "rotation") {
         let tanx = e.offsetX - stickManObject.posX;
         let tany = e.offsetY - stickManObject.posY;
 
@@ -56,32 +53,11 @@ function enableDragging(evt) {
         }
 
         stickManObject.rotate(final);
-
-        stickManObject.render();
       }
 
       if (stickManId && dataTransform === "translate") {
-        console.log("thang");
-
-        // console.log(stickManId);
-        let stickManObject = stickManManager[stickManId];
-
         let position = { x: e.offsetX, y: e.offsetY };
-
-        // let tanx = e.offsetX - stickManObject.posX;
-        // let tany = e.offsetY - stickManObject.posY;
-
-        // let rad = Math.atan2(tany, tanx);
-        // let deg = radToDeg(rad);
-        // let final = deg;
-
-        // if (tany < 0) {
-        //   final = 360 + deg;
-        // }
-
         stickManObject.translate(position);
-
-        stickManObject.render();
       }
     }
   }
@@ -89,22 +65,22 @@ function enableDragging(evt) {
     if (activeCp) {
       let stickManId = activeCp.getAttributeNS(null, "data-stickman-id");
       let stickName = activeCp.getAttributeNS(null, "data-stick-name");
-      // let dataTransform = activeCp.getAttributeNS(null, "data-transform");
 
-      // console.log(dataTransform);
+      var stickManObject = frameManager.activeFrame.stickManList.find(
+        (stickMan) => {
+          return stickMan.id == stickManId;
+        }
+      );
 
-      if (stickManId && stickName) {
-        let stickObject = stickManManager[stickManId][stickName];
-        let stickManObject = stickManManager[stickManId];
-        console.log(stickObject);
+      var stickObject = stickManObject[stickName];
+
+      if (stickObject) {
         stickObject.updateOffsetAngle(stickManObject.draggerAngle);
       }
-
       activeCp = null;
     }
     // savedFrames.push(JSON.parse(JSON.stringify(sm)));
   }
 }
 
-// console.log(svg);
 window.addEventListener("load", enableDragging);
