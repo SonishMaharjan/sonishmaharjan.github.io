@@ -54,6 +54,8 @@ class StickMan {
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
 
+    // this.legCenter =
+
     this.createStickMan();
   }
 
@@ -62,6 +64,11 @@ class StickMan {
     this.posY = position.y;
 
     this.stickBody.translate(position);
+    this.leftArm.translate(position);
+    this.rightArm.translate(position);
+
+    this.endX = this.getEndX(this.draggerAngle);
+    this.endY = this.getEndY(this.draggerAngle);
   }
 
   getEndX(angle) {
@@ -93,6 +100,7 @@ class StickMan {
     this.leftArm.rotate(angle + this.leftArm.offsetAngle);
     this.rightArm.rotate(angle + this.rightArm.offsetAngle);
     this.leftHand.rotate(angle + this.leftHand.offsetAngle);
+    this.rightHand.rotate(angle + this.rightHand.offsetAngle);
 
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
@@ -152,6 +160,19 @@ class StickMan {
       this.leftArm,
       this.draggerAngle
     );
+
+    this.rightHand = new Stick(
+      this.rightArm.endX,
+      this.rightArm.endY,
+      LINE_LENGTH,
+      145,
+      0,
+      0,
+      "rightHand",
+      this.id,
+      this.rightArm,
+      this.draggerAngle
+    );
   }
 
   render() {
@@ -159,6 +180,7 @@ class StickMan {
     <!-- Head -->
     
     ${this.leftHand.render()}
+    ${this.rightHand.render()}
     ${this.leftArm.render()}
 
     ${this.rightArm.render()}
