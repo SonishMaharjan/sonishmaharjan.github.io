@@ -73,7 +73,6 @@ function enableDragging(evt) {
       );
 
       var stickObject = stickManObject[stickName];
-
       if (stickObject) {
         stickObject.updateOffsetAngle(stickManObject.draggerAngle);
       }
@@ -82,5 +81,28 @@ function enableDragging(evt) {
     // savedFrames.push(JSON.parse(JSON.stringify(sm)));
   }
 }
+
+document.getElementById("btn-add-frame").addEventListener("click", () => {
+  frameManager.addFrame();
+});
+
+function applyFrameEventHandlers() {
+  let frameList = document.querySelectorAll(".frame-list-item");
+
+  frameList.forEach((frameListItem) => {
+    let frameId = frameListItem.getAttribute("data-id");
+    frameListItem.addEventListener("click", () => {
+      console.log("here");
+      frameManager.switchFrame(frameId);
+    });
+  });
+
+  console.log(frameList);
+}
+
+let playBtn = document.getElementById("btn-play");
+playBtn.addEventListener("click", () => {
+  animator.play();
+});
 
 window.addEventListener("load", enableDragging);

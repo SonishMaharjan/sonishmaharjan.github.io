@@ -8,7 +8,33 @@
   </head>
 
   <body>
-    <svg width="500" height="500" class="svg" id="svg"></svg>
+    <div id="app">
+      <div class="container">
+        <div class="side-bar">
+          <div class="frame-list" id="frame-list-id"></div>
+        </div>
+        <div class="screen-container">
+          <div class="top-toolbar">
+            <div class="top-toolbar-left">
+              <button id="btn-add-frame">Add Frame</button>
+            </div>
+            <div class="top-toolbar-right">
+              <button id="btn-play">Play</button>
+              <button id="btn-stop">Stop</button>
+              <label for="loop">Loop:</label>
+              <input id="loop" type="checkbox" />
+
+              <label for="fps">FPS:</label>
+              <input type="number" min="0" id="fps" value="10" />
+            </div>
+          </div>
+          <div class="screen">
+            <svg width="800" height="500" class="svg" id="svg"></svg>
+          </div>
+          <div class="bottom-toolbar"></div>
+        </div>
+      </div>
+    </div>
     <!-- <div id="animTimeline"></div>
     <div class="toolbar">
       <input type="number" id="animIntervalInput" value="1000" />
@@ -19,8 +45,10 @@
     <script src="js/head.js"></script>
     <script src="js/stick.js"></script>
     <script src="js/stickman.js"></script>
+    <script src="js/animator.js"></script>
     <script src="js/event.js"></script>
     <script src="js/frame.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/renderer.js"></script>
   </body>
 </html>

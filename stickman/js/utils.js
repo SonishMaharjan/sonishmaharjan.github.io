@@ -25,3 +25,18 @@ function getAngle(p1, p2, origin) {
   var d2 = this.getDistance(p2, origin);
   return Math.atan2(p2.y - p1.y, p2.x - p1.x);
 }
+
+function generateRandomCode(length) {
+  let possible = "0123456789ABCD";
+  let string = "";
+
+  for (let i = 0; i < length; i++) {
+    string += possible.charAt(randomInt(0, possible.length - 1));
+  }
+
+  return string;
+}
+
+function randomInt(min, max) {
+  return Math.random() * (max - min) + min;
+}

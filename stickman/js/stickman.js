@@ -2,6 +2,7 @@ const LINE_LENGTH = 60;
 
 class StickMan {
   constructor(posX, posY, color, svg, id) {
+    console.log(id);
     this.posX = posX;
     this.posY = posY;
     this.svg = svg;

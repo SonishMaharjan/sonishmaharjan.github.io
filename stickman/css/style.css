@@ -8,27 +8,36 @@
   border: 1px solid #373737;
 }
 
+.container {
+  display: flex;
+}
+
+.side-bar {
+  width: 200px;
+  height: 100vh;
+  border: 2px solid black;
+}
+
+.screen-container {
+  flex: 1;
+  border: 5px solid blue;
+}
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.frame-list-item {
+  height: 100px;
+  width: 200px;
+  border: 2px solid yellow;
+}
+
+.--active {
+  border: 2px solid red;
+}
+
 .draggable {
   cursor: move;
-}
-
-.toolbar {
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-}
-
-#animTimeline {
-  display: flex;
-}
-
-.animFrame {
-  width: 10px;
-  background: lightgrey;
-  height: 50px;
-  margin-right: 5px;
-}
-
-.--activeFrame {
-  background: #373737;
 }
