@@ -1,4 +1,4 @@
-const LINE_LENGTH = 75;
+const LINE_LENGTH = 60;
 
 class Head {
   constructor(x, y, radius, angle, originX, originY, id, color) {
@@ -102,6 +102,12 @@ class StickMan {
     this.leftHand.rotate(angle + this.leftHand.offsetAngle);
     this.rightHand.rotate(angle + this.rightHand.offsetAngle);
 
+    this.leftThigh.rotate(angle + this.leftThigh.offsetAngle);
+    this.leftLeg.rotate(angle + this.leftLeg.offsetAngle);
+
+    this.rightThigh.rotate(angle + this.rightThigh.offsetAngle);
+    this.rightLeg.rotate(angle + this.rightLeg.offsetAngle);
+
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
   }
@@ -110,7 +116,7 @@ class StickMan {
     this.stickBody = new Stick(
       this.posX,
       this.posY,
-      2 * LINE_LENGTH,
+      1.5 * LINE_LENGTH,
       90,
       0,
       0,
@@ -173,6 +179,58 @@ class StickMan {
       this.rightArm,
       this.draggerAngle
     );
+
+    this.leftThigh = new Stick(
+      this.stickBody.endX,
+      this.stickBody.endY,
+      LINE_LENGTH,
+      130,
+      0,
+      0,
+      "leftThigh",
+      this.id,
+      this.stickBody,
+      this.draggerAngle
+    );
+
+    this.leftLeg = new Stick(
+      this.leftThigh.endX,
+      this.leftThigh.endY,
+      LINE_LENGTH,
+      10,
+      0,
+      0,
+      "leftLeg",
+      this.id,
+      this.leftThigh,
+      this.draggerAngle
+    );
+
+    this.rightThigh = new Stick(
+      this.stickBody.endX,
+      this.stickBody.endY,
+      LINE_LENGTH,
+      30,
+      0,
+      0,
+      "rightThigh",
+      this.id,
+      this.stickBody,
+      this.draggerAngle
+    );
+
+    this.rightLeg = new Stick(
+      this.rightThigh.endX,
+      this.rightThigh.endY,
+      LINE_LENGTH,
+      145,
+      0,
+      0,
+      "rightLeg",
+      this.id,
+      this.rightThigh,
+      this.draggerAngle
+    );
   }
 
   render() {
@@ -184,6 +242,17 @@ class StickMan {
     ${this.leftArm.render()}
 
     ${this.rightArm.render()}
+
+    ${this.leftLeg.render()}
+    ${this.leftThigh.render()}
+
+
+    ${this.rightLeg.render()}
+
+
+    ${this.rightThigh.render()}
+
+
 
 
     
