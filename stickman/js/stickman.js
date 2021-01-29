@@ -13,9 +13,9 @@ class Head {
     this.id = id;
 
     this.color = color || "#000";
+    this.draggerRadius = 7;
 
     this.stickStyle = `stroke:${this.color};stroke-width:15;
-
     `;
   }
 
@@ -27,13 +27,32 @@ class Head {
     return this.originY + Math.sin(degToRad(this.angle)) * this.radius;
   }
 
+  translate(position) {
+    this.originX = position.x;
+    this.originY = position.y;
+
+    this.endX = this.getEndX();
+    this.endY = this.getEndY();
+  }
+
   render() {
     return `<circle
   cx="${this.endX}"
   cy="${this.endY}"
   r="${this.radius}"
   fill="black"
-/>;`;
+/>
+    
+`;
+
+    {
+      /* <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
+      data-stickman-id=${this.stickManId}
+      data-stick-name=${this.stickName}
+  
+      fill="red" class="draggable"  />
+   */
+    }
   }
 }
 
@@ -48,6 +67,9 @@ class StickMan {
     this.draggerAngle = 270;
 
     this.length = 120;
+
+    this.endX = posX;
+    this.endY = posY + LINE_LENGTH;
 
     this.draggerRadius = 7;
 
@@ -64,8 +86,20 @@ class StickMan {
     this.posY = position.y;
 
     this.stickBody.translate(position);
+
+    this.lowerX = this.stickBody.endX;
+    this.lowerY = this.stickBody.endY;
+
     this.leftArm.translate(position);
     this.rightArm.translate(position);
+    this.leftThigh.translate({
+      x: this.lowerX,
+      y: this.lowerY,
+    });
+    this.rightThigh.translate({
+      x: this.lowerX,
+      y: this.lowerY,
+    });
 
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
@@ -97,6 +131,15 @@ class StickMan {
     this.draggerAngle = angle;
 
     this.stickBody.rotate(angle + this.stickBody.offsetAngle);
+    this.leftThigh.translate({
+      x: this.stickBody.endX,
+      y: this.stickBody.endY,
+    });
+    this.rightThigh.translate({
+      x: this.stickBody.endX,
+      y: this.stickBody.endY,
+    });
+
     this.leftArm.rotate(angle + this.leftArm.offsetAngle);
     this.rightArm.rotate(angle + this.rightArm.offsetAngle);
     this.leftHand.rotate(angle + this.leftHand.offsetAngle);
@@ -189,7 +232,7 @@ class StickMan {
       0,
       "leftThigh",
       this.id,
-      this.stickBody,
+      null,
       this.draggerAngle
     );
 
@@ -215,7 +258,7 @@ class StickMan {
       0,
       "rightThigh",
       this.id,
-      this.stickBody,
+      null,
       this.draggerAngle
     );
 
@@ -233,9 +276,24 @@ class StickMan {
     );
   }
 
+  update() {
+    console.log(this.stickBody.endX);
+    this.lowerX = this.stickBody.endX;
+    this.lowerY = this.stickBody.endY;
+
+    this.leftThigh.translate({ x: this.lowerX, y: this.lowerY });
+    this.rightThigh.translate({ x: this.lowerX, y: this.lowerY });
+    this.head.translate({ x: this.posX, y: this.posY });
+    // this.leftThigh.posX = this.lowerX;
+
+    // this.rightThigh.posY = this.lowerX;
+  }
+
   render() {
+    this.update();
     this.svg.innerHTML = `
     <!-- Head -->
+    ${this.head.render()}
     
     ${this.leftHand.render()}
     ${this.rightHand.render()}
@@ -243,26 +301,20 @@ class StickMan {
 
     ${this.rightArm.render()}
 
-    ${this.leftLeg.render()}
-    ${this.leftThigh.render()}
+
 
 
     ${this.rightLeg.render()}
 
-
+    ${this.leftLeg.render()}
     ${this.rightThigh.render()}
-
-
-
-
+    ${this.leftThigh.render()}
+    ${this.stickBody.render()}
     
     <!-- Body -->
-    ${this.stickBody.render()}
 
     ${this.addTransformer()}
     `;
-
-    // ${this.head.render()}
   }
 }
 

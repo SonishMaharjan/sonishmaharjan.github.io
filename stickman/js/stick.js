@@ -79,6 +79,7 @@ class Stick {
   }
   render() {
     this.update();
+
     return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"
       stroke-linecap="round"   style="${this.stickStyle}" />
      <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
