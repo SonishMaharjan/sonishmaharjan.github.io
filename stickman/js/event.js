@@ -1,14 +1,16 @@
-function enableDragging(evt) {
-  var svg = evt.target;
-  svg.addEventListener("mousedown", startDrag);
-  svg.addEventListener("mousemove", drag);
-  svg.addEventListener("mouseup", endDrag);
-  svg.addEventListener("mouseleave", endDrag);
+function enableDragging(animatorSvg) {
+  var animatorSvg = animatorSvg;
+  animatorSvg.addEventListener("mousedown", startDrag);
+  animatorSvg.addEventListener("mousemove", drag);
+  animatorSvg.addEventListener("mouseup", endDrag);
+  animatorSvg.addEventListener("mouseleave", endDrag);
   let activeCp = false;
   function startDrag(e) {
+    // console.log();
     if (e.target.classList.contains("draggable")) activeCp = e.target;
   }
   function drag(e) {
+    console.log("ahah");
     if (activeCp) {
       e.preventDefault();
 
@@ -25,9 +27,17 @@ function enableDragging(evt) {
       var stickObject = stickManObject[stickName];
       //   if (!stickObject) return;
 
+      // let offsetX = e.offsetX === undefined ? e.layerX : e.offsetX;
+      // let offsetY = e.offsetY === undefined ? e.layerY : e.offsetY;
+
+      let offsetX = e.clientX - e.currentTarget.getBoundingClientRect().left;
+      let offsetY = e.clientY - e.currentTarget.getBoundingClientRect().top;
+
+      console.log(offsetX);
+
       if (stickObject) {
-        let tanx = e.offsetX - stickObject.x;
-        let tany = e.offsetY - stickObject.y;
+        let tanx = offsetX - stickObject.x;
+        let tany = offsetY - stickObject.y;
 
         let rad = Math.atan2(tany, tanx);
         let deg = radToDeg(rad);
@@ -41,8 +51,8 @@ function enableDragging(evt) {
       }
 
       if (dataTransform === "rotation") {
-        let tanx = e.offsetX - stickManObject.posX;
-        let tany = e.offsetY - stickManObject.posY;
+        let tanx = offsetX - stickManObject.posX;
+        let tany = offsetY - stickManObject.posY;
 
         let rad = Math.atan2(tany, tanx);
         let deg = radToDeg(rad);
@@ -56,7 +66,7 @@ function enableDragging(evt) {
       }
 
       if (stickManId && dataTransform === "translate") {
-        let position = { x: e.offsetX, y: e.offsetY };
+        let position = { x: offsetX, y: offsetY };
         stickManObject.translate(position);
       }
     }
@@ -105,4 +115,9 @@ playBtn.addEventListener("click", () => {
   animator.play();
 });
 
-window.addEventListener("load", enableDragging);
+window.addEventListener("load", () => {
+  let svgBox = document.getElementById("svg");
+  enableDragging(svgBox);
+  // console.log(svgBox);
+  // svgBox.addEventListener("mouseover", enableDragging);
+});

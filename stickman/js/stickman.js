@@ -58,7 +58,7 @@ class StickMan {
     return this.posY + Math.sin(degToRad(angle)) * this.length;
   }
 
-  addTransformer() {
+  renderTransformer() {
     return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="rotation"
@@ -258,7 +258,37 @@ class StickMan {
     
     <!-- Body -->
 
-    ${this.addTransformer()}
+
+
+    
+    
+
+    ${this.leftArm.renderDragger()}
+
+    ${this.rightArm.renderDragger()}
+
+   
+    ${this.rightThigh.renderDragger()}
+    ${this.leftThigh.renderDragger()}
+    ${this.stickBody.renderDragger()}
+
+   
+
+
+    ${this.rightLeg.renderDragger()}
+    ${this.leftLeg.renderDragger()}
+
+
+
+
+    ${this.renderTransformer()}
+
+
+    ${this.leftHand.renderDragger()}
+    ${this.rightHand.renderDragger()}
+
+
+   
     `;
   }
 }
