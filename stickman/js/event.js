@@ -87,7 +87,15 @@ function enableDragging(animatorSvg) {
         stickObject.updateOffsetAngle(stickManObject.draggerAngle);
       }
       activeCp = null;
+
+      frameManager.activeFrame.updateThumbNail();
+      frameManager.render();
     }
+
+    // frameManager.framesList.forEach((frame) => {
+    //   frame.updateThumbNail();
+    // });
+
     // savedFrames.push(JSON.parse(JSON.stringify(sm)));
   }
 }

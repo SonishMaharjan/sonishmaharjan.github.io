@@ -3,27 +3,27 @@ let frameManager = {
   activeFrame: null,
 
   addFrame() {
-    if (this.activeFrame) {
-      let activeFrameIndex = this.framesList.findIndex(
-        (frame) => frame.id === this.activeFrame.id
-      );
+    // if (this.activeFrame) {
+    //   let activeFrameIndex = this.framesList.findIndex(
+    //     (frame) => frame.id === this.activeFrame.id
+    //   );
 
-      // console.log("hahah");
-      let startArray = this.framesList.slice(0, activeFrameIndex + 1);
-      let endArray = this.framesList.slice(
-        activeFrameIndex + 1,
-        this.framesList.length
-      );
+    //   let startArray = this.framesList.slice(0, activeFrameIndex + 1);
+    //   let endArray = this.framesList.slice(
+    //     activeFrameIndex + 1,
+    //     this.framesList.length
+    //   );
 
-      startArray.push(new Frame("frame-" + this.framesList.length));
+    //   startArray.push(new Frame("frame-" + generateRandomCode(5)));
+    //   this.framesList = startArray.concat(endArray);
+    //   this.activeFrame = this.framesList[activeFrameIndex + 1];
+    // } else {
+    //   this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
+    //   this.activeFrame = this.framesList[0];
+    // }
 
-      this.framesList = startArray.concat(endArray);
-
-      this.activeFrame = this.framesList[activeFrameIndex + 1];
-    } else {
-      this.framesList.push(new Frame("frame-" + this.framesList.length));
-      this.activeFrame = this.framesList[this.framesList.length - 1];
-    }
+    this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
+    this.activeFrame = this.framesList[0];
 
     this.render();
   },
@@ -37,11 +37,16 @@ let frameManager = {
     let frameList = document.getElementById("frame-list-id");
     let html = "";
     this.framesList.forEach((frame) => {
+      // console.log(frame.thumbNail);
+
       html += `<div class="frame-list-item ${
         frame.id === this.activeFrame.id ? "--active" : ""
       }"
       data-id=${frame.id}
       > 
+      <img src="data:image/svg+xml;base64,${
+        frame.thumbNail
+      }" class="frame-image"/>
       ${frame.id}
       </div>`;
     });

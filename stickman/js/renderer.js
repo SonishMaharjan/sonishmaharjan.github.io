@@ -1,4 +1,3 @@
-
 function render() {
   let html = "";
   frameManager.activeFrame.stickManList.forEach((stickMan) => {
@@ -10,4 +9,5 @@ function render() {
   requestAnimationFrame(render);
 }
 let svg = document.getElementById("svg");
+
 render();
