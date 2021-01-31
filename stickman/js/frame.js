@@ -2,7 +2,7 @@ class Frame {
   constructor(id) {
     this.stickManList = [];
     this.id = id;
-    this.addStickMan(true);
+    this.addStickMan(frameManager.framesList.length === 0);
   }
 
   addStickMan(isNew = false) {
@@ -11,9 +11,10 @@ class Frame {
         new StickMan(250, 250, "#000", svg, "stick-" + generateRandomCode(5))
       );
     } else {
-      this.stickManList = JSON.parse.JSON.stringify(
-        frameManager.activeFrame.stickManList
-      );
+      frameManager.activeFrame.stickManList.forEach((stickMan) => {
+        let clonedStickMan = stickMan.clone();
+        this.stickManList.push(clonedStickMan);
+      });
     }
   }
 }

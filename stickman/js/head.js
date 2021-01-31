@@ -36,6 +36,15 @@ class Head {
     this.endY = this.getEndY();
   }
 
+  clone() {
+    let clonedStick = Object.assign(
+      Object.create(Object.getPrototypeOf(this)),
+      this
+    );
+
+    return clonedStick;
+  }
+
   render() {
     return `<circle
     cx="${this.endX}"

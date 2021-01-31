@@ -69,6 +69,15 @@ class Stick {
       `;
   }
 
+  clone() {
+    let clonedStick = Object.assign(
+      Object.create(Object.getPrototypeOf(this)),
+      this
+    );
+
+    return clonedStick;
+  }
+
   renderDragger() {
     return `<circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}

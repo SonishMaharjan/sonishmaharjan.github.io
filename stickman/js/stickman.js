@@ -234,6 +234,23 @@ class StickMan {
     // this.rightThigh.posY = this.lowerX;
   }
 
+  clone() {
+    let stickman = new StickMan();
+
+    Object.keys(stickman).forEach((key) => {
+      stickman[key] =
+        this[key] instanceof Stick || this[key] instanceof Head
+          ? this[key].clone()
+          : JSON.parse(JSON.stringify(this[key]));
+    });
+
+    // stickman.isShadow = isShadow;
+
+    // stickman.id = "stick-man-" + generateRandomCode(5);
+
+    return stickman;
+  }
+
   render() {
     this.update();
     return `
