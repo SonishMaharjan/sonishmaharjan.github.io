@@ -52,7 +52,6 @@ let frameManager = {
       <img src="data:image/svg+xml;base64,${
         frame.thumbNail
       }" class="frame-image"/>
-      ${frame.id}
       </div>`;
     });
 
