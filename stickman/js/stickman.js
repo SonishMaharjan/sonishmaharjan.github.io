@@ -110,7 +110,6 @@ class StickMan {
       0,
       "stickBody",
       this.id,
-      null, //parent
       this.draggerAngle
     );
 
@@ -125,7 +124,6 @@ class StickMan {
       0,
       "leftArm",
       this.id,
-      null,
       this.draggerAngle
     );
 
@@ -138,7 +136,6 @@ class StickMan {
       0,
       "rightArm",
       this.id,
-      null,
       this.draggerAngle
     );
 
@@ -151,7 +148,6 @@ class StickMan {
       0,
       "leftHand",
       this.id,
-      this.leftArm,
       this.draggerAngle
     );
 
@@ -164,7 +160,6 @@ class StickMan {
       0,
       "rightHand",
       this.id,
-      this.rightArm,
       this.draggerAngle
     );
 
@@ -177,7 +172,6 @@ class StickMan {
       0,
       "leftThigh",
       this.id,
-      null,
       this.draggerAngle
     );
 
@@ -190,7 +184,6 @@ class StickMan {
       0,
       "leftLeg",
       this.id,
-      this.leftThigh,
       this.draggerAngle
     );
 
@@ -203,7 +196,6 @@ class StickMan {
       0,
       "rightThigh",
       this.id,
-      null,
       this.draggerAngle
     );
 
@@ -216,7 +208,6 @@ class StickMan {
       0,
       "rightLeg",
       this.id,
-      this.rightThigh,
       this.draggerAngle
     );
   }
@@ -230,6 +221,15 @@ class StickMan {
     this.rightThigh.translate({ x: this.lowerX, y: this.lowerY });
     this.head.translate({ x: this.posX, y: this.posY });
     // this.leftThigh.posX = this.lowerX;
+
+    this.leftLeg.translate({ x: this.leftThigh.endX, y: this.leftThigh.endY });
+    this.rightLeg.translate({
+      x: this.rightThigh.endX,
+      y: this.rightThigh.endY,
+    });
+
+    this.leftHand.translate({ x: this.leftArm.endX, y: this.leftArm.endY });
+    this.rightHand.translate({ x: this.rightArm.endX, y: this.rightArm.endY });
 
     // this.rightThigh.posY = this.lowerX;
   }

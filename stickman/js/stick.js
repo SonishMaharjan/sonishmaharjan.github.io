@@ -8,7 +8,6 @@ class Stick {
     originY,
     stickName,
     stickManId,
-    parent,
     parentAngle,
     color
   ) {
@@ -31,7 +30,6 @@ class Stick {
     this.offsetAngle = this.angle - this.parentAngle;
 
     // console.log(parent);
-    this.parent = parent;
 
     this.stickStyle = `stroke:${this.color};stroke-width:15; `;
 
@@ -64,22 +62,7 @@ class Stick {
     this.offsetAngle = this.angle - parentAngle;
   }
 
-  update() {
-    // debugger;
-    if (this.parent) {
-      // console.log(this.parent);
-      this.x = this.parent.endX;
-      this.y = this.parent.endY;
-
-      this.endX = this.getEndX(this.angle);
-      this.endY = this.getEndY(this.angle);
-
-      // this.rotate(this.angle);
-    }
-  }
   render() {
-    this.update();
-
     return `<line x1="${this.x}" y1="${this.y}" x2="${this.endX}" y2="${this.endY}"
       stroke-linecap="round"   style="${this.stickStyle}" />
      
