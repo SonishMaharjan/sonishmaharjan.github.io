@@ -3,27 +3,32 @@ let frameManager = {
   activeFrame: null,
 
   addFrame() {
-    // if (this.activeFrame) {
-    //   let activeFrameIndex = this.framesList.findIndex(
-    //     (frame) => frame.id === this.activeFrame.id
-    //   );
+    if (this.activeFrame) {
+      let activeFrameIndex = this.framesList.findIndex(
+        (frame) => frame.id === this.activeFrame.id
+      );
 
-    //   let startArray = this.framesList.slice(0, activeFrameIndex + 1);
-    //   let endArray = this.framesList.slice(
-    //     activeFrameIndex + 1,
-    //     this.framesList.length
-    //   );
+      // console.log(activeFrameIndex  );
+      let startArray = this.framesList.slice(0, activeFrameIndex + 1);
 
-    //   startArray.push(new Frame("frame-" + generateRandomCode(5)));
-    //   this.framesList = startArray.concat(endArray);
-    //   this.activeFrame = this.framesList[activeFrameIndex + 1];
-    // } else {
-    //   this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
-    //   this.activeFrame = this.framesList[0];
-    // }
+      console.log(startArray);
+      let endArray = this.framesList.slice(
+        activeFrameIndex + 1,
+        this.framesList.length
+      );
 
-    this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
-    this.activeFrame = this.framesList[0];
+      console.log(endArray);
+
+      startArray.push(new Frame("frame-" + generateRandomCode(5)));
+      this.framesList = startArray.concat(endArray);
+      this.activeFrame = this.framesList[activeFrameIndex + 1];
+    } else {
+      this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
+      this.activeFrame = this.framesList[0];
+    }
+
+    // this.framesList.push(new Frame("frame-" + generateRandomCode(5)));
+    // this.activeFrame = this.framesList[0];
 
     this.render();
   },
