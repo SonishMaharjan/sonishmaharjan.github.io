@@ -58,8 +58,6 @@ class StickBody extends Stick {
   }
 
   rotate(angle, isUpperBodyDragger = false) {
-    // *** bottom woriking
-
     if (!isUpperBodyDragger) {
       this.endX = this.getEndX(angle);
       this.endY = this.getEndY(angle);
@@ -73,6 +71,7 @@ class StickBody extends Stick {
       this.midX = this.endX + (Math.cos(degToRad(angle)) * this.length) / 2;
       this.midY = this.endY + (Math.sin(degToRad(angle)) * this.length) / 2;
 
+      //adding 180 offset while rotating with origin of endX, endY
       this.angle = 180 + angle;
     }
   }
