@@ -101,7 +101,7 @@ class StickMan {
   }
 
   createStickMan() {
-    this.stickBody = new Stick(
+    this.stickBody = new StickBody(
       this.posX,
       this.posY,
       1.5 * LINE_LENGTH,

@@ -29,8 +29,6 @@ class Stick {
 
     this.offsetAngle = this.angle - this.parentAngle;
 
-    // console.log(parent);
-
     this.stickStyle = `stroke:${this.color};stroke-width:15; `;
 
     this.draggerRadius = 7;
