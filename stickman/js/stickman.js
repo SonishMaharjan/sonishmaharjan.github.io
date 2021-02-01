@@ -11,19 +11,19 @@ class StickMan {
 
     this.draggerAngle = 270;
 
-    this.length = 120;
-
-    this.endX = posX;
-    this.endY = posY + LINE_LENGTH;
+    this.length = 150;
 
     this.draggerRadius = 7;
-
-    this.endX = this.getEndX(this.draggerAngle);
-    this.endY = this.getEndY(this.draggerAngle);
 
     // this.legCenter =
 
     this.createStickMan();
+
+    this.endX = this.getEndX(this.draggerAngle);
+    this.endY = this.getEndY(this.draggerAngle);
+
+    this.translateDraggerX = this.stickBody.midX;
+    this.translateDraggerY = this.stickBody.midY;
   }
 
   translate(position) {
@@ -35,8 +35,11 @@ class StickMan {
     this.lowerX = this.stickBody.endX;
     this.lowerY = this.stickBody.endY;
 
-    this.leftArm.translate(position);
-    this.rightArm.translate(position);
+    this.translateDraggerX = this.stickBody.midX;
+    this.translateDraggerY = this.stickBody.midY;
+
+    this.leftArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
+    this.rightArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
     this.leftThigh.translate({
       x: this.lowerX,
       y: this.lowerY,
@@ -51,11 +54,11 @@ class StickMan {
   }
 
   getEndX(angle) {
-    return this.posX + Math.cos(degToRad(angle)) * this.length;
+    return this.stickBody.midX + Math.cos(degToRad(angle)) * this.length;
   }
 
   getEndY(angle) {
-    return this.posY + Math.sin(degToRad(angle)) * this.length;
+    return this.stickBody.midY + Math.sin(degToRad(angle)) * this.length;
   }
 
   renderTransformer() {
@@ -64,7 +67,7 @@ class StickMan {
     data-transform="rotation"
     fill="blue" class="draggable"  />
     
-    <circle cx="${this.posX}" cy="${this.posY}" r="${this.draggerRadius}"
+    <circle cx="${this.translateDraggerX}" cy="${this.translateDraggerY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="translate"
     fill="yellow" class="draggable"  />
@@ -217,9 +220,12 @@ class StickMan {
     this.lowerX = this.stickBody.endX;
     this.lowerY = this.stickBody.endY;
 
+    this.translateDraggerX = this.stickBody.midX;
+    this.translateDraggerY = this.stickBody.midY;
+
     this.leftThigh.translate({ x: this.lowerX, y: this.lowerY });
     this.rightThigh.translate({ x: this.lowerX, y: this.lowerY });
-    this.head.translate({ x: this.posX, y: this.posY });
+    this.head.translate({ x: this.stickBody.x, y: this.stickBody.y });
     // this.leftThigh.posX = this.lowerX;
 
     this.leftLeg.translate({ x: this.leftThigh.endX, y: this.leftThigh.endY });

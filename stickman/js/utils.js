@@ -40,3 +40,10 @@ function generateRandomCode(length) {
 function randomInt(min, max) {
   return Math.random() * (max - min) + min;
 }
+
+function getCoordinates(origin, angle, distance) {
+  let x = origin.x + Math.cos(degToRad(angle)) * distance;
+  let y = origin.y + Math.sin(degToRad(angle)) * distance;
+
+  return { x: x, y: y };
+}
