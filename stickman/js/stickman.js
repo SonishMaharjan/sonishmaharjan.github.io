@@ -11,7 +11,7 @@ class StickMan {
 
     this.draggerAngle = 270;
 
-    this.length = 200;
+    this.length = 120;
 
     this.draggerRadius = 7;
 
