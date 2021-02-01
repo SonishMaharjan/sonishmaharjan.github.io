@@ -36,8 +36,20 @@ function enableDragging(animatorSvg) {
       console.log(offsetX);
 
       if (stickObject) {
-        let tanx = offsetX - stickObject.x;
-        let tany = offsetY - stickObject.y;
+        let tanx = null;
+        let tany = null;
+        let isUpperBodyDragger = false;
+        if (activeCp.getAttributeNS(null, "data-dragger-position")) {
+          // console.log("toper");
+          tanx = offsetX - stickObject.endX;
+          tany = offsetY - stickObject.endY;
+
+          isUpperBodyDragger = true;
+        } else {
+          // console.log("bottom");
+          tanx = offsetX - stickObject.x;
+          tany = offsetY - stickObject.y;
+        }
 
         let rad = Math.atan2(tany, tanx);
         let deg = radToDeg(rad);
@@ -47,7 +59,7 @@ function enableDragging(animatorSvg) {
           final = 360 + deg;
         }
 
-        stickObject.rotate(final);
+        stickObject.rotate(final, isUpperBodyDragger);
       }
 
       if (dataTransform === "rotation") {

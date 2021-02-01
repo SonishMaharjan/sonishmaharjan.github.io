@@ -11,7 +11,7 @@ class StickMan {
 
     this.draggerAngle = 270;
 
-    this.length = 150;
+    this.length = 200;
 
     this.draggerRadius = 7;
 
@@ -227,6 +227,10 @@ class StickMan {
     this.rightThigh.translate({ x: this.lowerX, y: this.lowerY });
     this.head.translate({ x: this.stickBody.x, y: this.stickBody.y });
     // this.leftThigh.posX = this.lowerX;
+
+    this.leftArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
+
+    this.rightArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
 
     this.leftLeg.translate({ x: this.leftThigh.endX, y: this.leftThigh.endY });
     this.rightLeg.translate({
