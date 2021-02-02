@@ -1,52 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  /* background: #2f4f4f; */
-}
+.app-name {
+  /* font-weight: bold; */
+  font-size: 20px;
+  color: #fff;
 
-.svg {
-  border: 1px solid #373737;
-}
-
-.container {
-  display: flex;
-}
-
-.side-bar {
-  width: 200px;
-  height: 100vh;
-  border: 2px solid black;
-}
-
-.screen-container {
-  flex: 1;
-  border: 5px solid blue;
-}
-
-.top-toolbar {
-  display: flex;
-  justify-content: space-between;
-}
-
-.frame-list {
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-.frame-list-item {
-  height: 100px;
-  width: 200px;
-  border: 2px solid yellow;
-}
-
-.frame-image {
-  width: 200px;
-  height: 100px;
-}
-
-.--active {
-  border: 2px solid red;
+  padding: 10px;
 }
 
 .draggable {

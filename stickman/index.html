@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stick Man Animator</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
@@ -11,6 +18,7 @@
     <div id="app">
       <div class="container">
         <div class="side-bar">
+          <h3 class="app-name">Stick Man Animator</h3>
           <div class="frame-list" id="frame-list-id"></div>
         </div>
         <div class="screen-container">
@@ -23,13 +31,13 @@
               <button id="btn-stop">Stop</button>
               <label for="is-loop">Loop:</label>
               <input id="is-loop" type="checkbox" />
-
               <label for="fps">FPS:</label>
               <input type="number" min="1" id="fps" value="1" />
             </div>
           </div>
+
           <div class="screen">
-            <svg width="800" height="500" class="svg" id="svg"></svg>
+            <svg width="800" height="500" class="svg-frame" id="svg"></svg>
           </div>
           <div class="bottom-toolbar"></div>
         </div>

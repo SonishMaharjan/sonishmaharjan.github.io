@@ -1,0 +1,69 @@
+#app {
+  font-family: "Roboto", sans-serif;
+
+  background-color: #231f31;
+}
+
+.svg-frame {
+  background-color: #fff;
+  /* border: 1px solid #373737; */
+  /* width: 100%; */
+}
+
+.container {
+  display: flex;
+}
+
+.side-bar {
+  width: 250px;
+  height: 100vh;
+  border: 2px solid black;
+  background-color: #231f31;
+  /* opacity: 0.5; */
+}
+
+.screen-container {
+  flex: 1;
+  border: 5px solid blue;
+  /* width: 100%; */
+}
+
+.top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.frame-list {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 85vh;
+  width: 220px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
+}
+
+.frame-list-item {
+  height: 100px;
+  width: 160px;
+  /* border: 2px solid yellow; */
+  background-color: #fff;
+  margin: 20px 10px;
+  border-radius: 5px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.frame-list-item:hover {
+  cursor: pointer;
+}
+
+.--active {
+  border-left: 10px solid #938cb9;
+}
+
+.frame-image {
+  width: 100%;
+  height: 100%;
+}
