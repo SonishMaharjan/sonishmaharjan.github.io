@@ -10,7 +10,9 @@ function enableDragging(animatorSvg) {
     if (e.target.classList.contains("draggable")) activeCp = e.target;
   }
   function drag(e) {
-    console.log("ahah");
+    // console.log("ahah");
+
+    // console.log(activeCp);
     if (activeCp) {
       e.preventDefault();
 
@@ -25,6 +27,7 @@ function enableDragging(animatorSvg) {
       );
 
       var stickObject = stickManObject[stickName];
+
       //   if (!stickObject) return;
 
       // let offsetX = e.offsetX === undefined ? e.layerX : e.offsetX;
@@ -33,7 +36,7 @@ function enableDragging(animatorSvg) {
       let offsetX = e.clientX - e.currentTarget.getBoundingClientRect().left;
       let offsetY = e.clientY - e.currentTarget.getBoundingClientRect().top;
 
-      console.log(offsetX);
+      // console.log(offsetX);
 
       if (stickObject) {
         let tanx = null;

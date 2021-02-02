@@ -46,6 +46,8 @@ class Stick {
     this.angle = angle;
     this.endX = this.getEndX(angle);
     this.endY = this.getEndY(angle);
+
+    // alert("ahelo");
   }
 
   getEndX(angle) {

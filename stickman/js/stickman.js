@@ -98,6 +98,7 @@ class StickMan {
 
     this.rightThigh.rotate(angle + this.rightThigh.offsetAngle);
     this.rightLeg.rotate(angle + this.rightLeg.offsetAngle);
+    this.head.rotate(angle + this.head.offsetAngle);
 
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
@@ -116,7 +117,17 @@ class StickMan {
       this.draggerAngle
     );
 
-    this.head = new Head(this.stickBody.x, this.stickBody.y, 30, 270, 0, 0);
+    this.head = new Head(
+      this.stickBody.x,
+      this.stickBody.y,
+      30,
+      270,
+      0,
+      0,
+      "head",
+      this.id,
+      this.draggerAngle
+    );
 
     this.leftArm = new Stick(
       this.posX,
@@ -306,7 +317,7 @@ class StickMan {
     ${this.leftLeg.renderDragger()}
 
 
-
+    ${this.head.renderDragger()}
 
     ${this.renderTransformer()}
 
