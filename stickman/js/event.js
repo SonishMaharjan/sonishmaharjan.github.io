@@ -129,7 +129,15 @@ function applyFrameEventHandlers() {
 
 let playBtn = document.getElementById("btn-play");
 playBtn.addEventListener("click", () => {
-  animator.play();
+  let isLoop = document.getElementById("is-loop").checked;
+  let fpsEl = document.getElementById("fps");
+  let fps = Math.floor(fpsEl.value);
+  if (fps < 1) {
+    alert("Invalid FPS value. FPS value should be equal or greater than 1");
+  } else {
+    fpsEl.value = fps;
+    animator.play(isLoop, fps);
+  }
 });
 
 let stopBtn = document.getElementById("btn-stop");

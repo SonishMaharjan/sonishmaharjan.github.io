@@ -1,13 +1,18 @@
 let animator = {
-  interval: 500,
   isLoop: false,
   timer: null,
   isAnimationPlayng: false,
+  fps: 2,
 
-  play() {
+  play(isLoop, fps) {
     // console.log(frameManager);
     // debugger;
+
     let cursor = 0;
+
+    this.isLoop = isLoop;
+    this.fps = fps || 2;
+
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -19,7 +24,7 @@ let animator = {
       if (cursor === frameManager.framesList.length - 1) {
         // console.log("hahah eorroro");
         if (this.isLoop) {
-          cursor = 0;
+          cursor = -1;
         } else {
           this.stop();
           this.is;
@@ -27,7 +32,7 @@ let animator = {
       }
 
       cursor++;
-    }, this.interval);
+    }, 1000 / this.fps);
   },
   stop() {
     this.isAnimationPlayng = false;
