@@ -274,7 +274,8 @@ class StickMan {
 
   render() {
     this.update();
-    return `
+    let html = "";
+    html += `
     <!-- Head -->
     ${this.head.render()}
     
@@ -298,6 +299,14 @@ class StickMan {
 
 
 
+
+   
+    `;
+
+    if (!animator.isAnimationPlayng) {
+      html += `
+      
+      
     
     
 
@@ -324,9 +333,8 @@ class StickMan {
 
     ${this.leftHand.renderDragger()}
     ${this.rightHand.renderDragger()}
-
-
-   
-    `;
+`;
+    }
+    return html;
   }
 }

@@ -132,6 +132,11 @@ playBtn.addEventListener("click", () => {
   animator.play();
 });
 
+let stopBtn = document.getElementById("btn-stop");
+stopBtn.addEventListener("click", () => {
+  animator.stop();
+});
+
 window.addEventListener("load", () => {
   let svgBox = document.getElementById("svg");
   enableDragging(svgBox);

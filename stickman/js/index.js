@@ -17,7 +17,7 @@ let frameManager = {
         this.framesList.length
       );
 
-      console.log(endArray);
+      // console.log(endArray);
 
       startArray.push(new Frame("frame-" + generateRandomCode(5)));
       this.framesList = startArray.concat(endArray);
