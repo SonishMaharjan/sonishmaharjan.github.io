@@ -109,8 +109,13 @@ function enableDragging(animatorSvg) {
   }
 }
 
-document.getElementById("btn-add-frame").addEventListener("click", () => {
+document.getElementById("btn-add-frame-id").addEventListener("click", () => {
   frameManager.addFrame();
+});
+
+document.getElementById("btn-delete-frame-id").addEventListener("click", () => {
+  // console.log("is deleete");
+  frameManager.deleteFrame();
 });
 
 function applyFrameEventHandlers() {

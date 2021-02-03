@@ -33,6 +33,31 @@ let frameManager = {
     this.render();
   },
 
+  deleteFrame() {
+    console.log("delet callled");
+    if (this.framesList.length > 1) {
+      let activeFrameIndex = this.framesList.findIndex(
+        (frame) => frame.id === this.activeFrame.id
+      );
+
+      if (this.activeFrame) {
+        this.framesList = this.framesList.filter(
+          (frame) => frame.id !== this.activeFrame.id
+        );
+
+        // console.log(activeFrameIndex);
+        if (activeFrameIndex === 0) {
+          this.activeFrame = this.framesList[0];
+        } else {
+          this.activeFrame = this.framesList[activeFrameIndex - 1];
+        }
+        this.render();
+      }
+    } else {
+      alert("Last frame can not be deleted.");
+    }
+  },
+
   switchFrame(frameId) {
     this.activeFrame = this.framesList.find((frame) => frame.id === frameId);
     this.render();
