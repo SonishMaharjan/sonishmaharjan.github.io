@@ -127,7 +127,7 @@ function applyFrameEventHandlers() {
   console.log(frameList);
 }
 
-let playBtn = document.getElementById("btn-play");
+let playBtn = document.getElementById("btn-play-id");
 playBtn.addEventListener("click", () => {
   let isLoop = document.getElementById("is-loop").checked;
   let fpsEl = document.getElementById("fps");
@@ -140,7 +140,7 @@ playBtn.addEventListener("click", () => {
   }
 });
 
-let stopBtn = document.getElementById("btn-stop");
+let stopBtn = document.getElementById("btn-stop-id");
 stopBtn.addEventListener("click", () => {
   animator.stop();
 });

@@ -11,7 +11,7 @@ let frameManager = {
       // console.log(activeFrameIndex  );
       let startArray = this.framesList.slice(0, activeFrameIndex + 1);
 
-      console.log(startArray);
+      // console.log(startArray);
       let endArray = this.framesList.slice(
         activeFrameIndex + 1,
         this.framesList.length
@@ -42,8 +42,6 @@ let frameManager = {
     let frameList = document.getElementById("frame-list-id");
     let html = "";
     this.framesList.forEach((frame) => {
-      // console.log(frame.thumbNail);
-
       html += `<div class="frame-list-item ${
         frame.id === this.activeFrame.id ? "--active" : ""
       }"

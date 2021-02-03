@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stick Man Animator</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+      type="text/css"
+    />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -18,17 +29,40 @@
       <div class="container">
         <div class="side-bar">
           <h3 class="app-name">Stick Man Animator</h3>
-          <div class="frames-title"><h4>Frames</h4></div>
-          <div class="frame-list" id="frame-list-id"></div>
+          <div class="side-bar-left">
+            <button class="btn btn-play" id="btn-play-id">
+              Play
+              <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-stop" id="btn-stop-id">
+              Stop
+
+              <i class="fa fa-stop" aria-hidden="true"></i>
+            </button>
+            <div class="loop-wrapper">
+              <label for="is-loop">Loop:</label>
+              <input class="loop-input" id="is-loop" type="checkbox" />
+            </div>
+            <div class="fps-wrapper">
+              <label for="fps">FPS:</label>
+              <input
+                type="number"
+                class="fps-input"
+                min="1"
+                id="fps"
+                value="1"
+              />
+            </div>
+          </div>
         </div>
         <div class="screen-container">
           <div class="top-toolbar">
             <div class="top-toolbar-left">
               <button class="btn btn-add-frame" id="btn-add-frame">
                 <i class="fa fa-plus"></i>
-                Add Frame</button>
+                Add Frame
+              </button>
             </div>
-          
           </div>
 
           <div class="screen">
@@ -38,17 +72,9 @@
         </div>
 
         <div class="side-bar">
-          <h3 class="app-name">Options</h3>
-
-          <div class="top-toolbar-right">
-            <button class="btn" id="btn-play">Play</button>
-            <button class="btn" id="btn-stop">Stop</button>
-            <label for="is-loop">Loop:</label>
-            <input id="is-loop" type="checkbox" />
-            <label for="fps">FPS:</label>
-            <input type="number" min="1" id="fps" value="1" />
-          </div>
-         
+          <div class="frames-title"><h4>Frames</h4></div>
+          <div class="frame-list" id="frame-list-id"></div>
+        </div>
       </div>
     </div>
     <!-- <div id="animTimeline"></div>
@@ -65,9 +91,7 @@
     <script src="js/animator.js"></script>
     <script src="js/event.js"></script>
     <script src="js/frame.js"></script>
-
     <script src="js/index.js"></script>
-
     <script src="js/renderer.js"></script>
   </body>
 </html>

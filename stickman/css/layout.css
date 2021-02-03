@@ -32,6 +32,12 @@
   /* opacity: 0.5; */
 }
 
+.side-bar-left {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
 .screen-container {
   flex: 1;
   /* border: 5px solid blue; */
@@ -41,7 +47,7 @@
 .top-toolbar {
   padding: 10px 20px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 60px;
   /* margin-bottom: 10px; */
   /* background-color: #231f31; */
@@ -58,15 +64,13 @@
   background: #f4f0f2;
   border-radius: 5px;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
-  /* background: #1f242a; */
 }
 
 .frame-list-item {
   height: 100px;
   width: 160px;
-  /* border: 2px solid yellow; */
   background-color: #fff;
-  margin: 20px 10px;
+  margin: 10px 10px;
   border-radius: 5px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
