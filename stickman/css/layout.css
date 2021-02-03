@@ -68,7 +68,7 @@
 
 .frame-list-item {
   height: 100px;
-  width: 160px;
+  width: 150px;
   background-color: #fff;
   margin: 10px 10px;
   border-radius: 5px;
@@ -81,6 +81,7 @@
 
 .--active {
   border-left: 10px solid #938cb9;
+  border-right: 10px solid #938cb9;
 }
 
 .frame-image {
