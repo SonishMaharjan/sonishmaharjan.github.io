@@ -1,11 +1,41 @@
 .app-name {
   /* font-weight: bold; */
-  font-size: 20px;
+  /* font-size: 20px; */
   color: #fff;
-
-  padding: 10px;
+  /* width: 80%; */
+  text-align: center;
+  margin: auto;
+  padding: 15px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.5);
+  height: 40px;
 }
 
 .draggable {
   cursor: move;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn.btn-add-frame {
+  background: #0075d9;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.frames-title {
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #fff;
 }

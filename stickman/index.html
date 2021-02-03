@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stick Man Animator</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -19,28 +18,37 @@
       <div class="container">
         <div class="side-bar">
           <h3 class="app-name">Stick Man Animator</h3>
+          <div class="frames-title"><h4>Frames</h4></div>
           <div class="frame-list" id="frame-list-id"></div>
         </div>
         <div class="screen-container">
           <div class="top-toolbar">
             <div class="top-toolbar-left">
-              <button id="btn-add-frame">Add Frame</button>
+              <button class="btn btn-add-frame" id="btn-add-frame">
+                <i class="fa fa-plus"></i>
+                Add Frame</button>
             </div>
-            <div class="top-toolbar-right">
-              <button id="btn-play">Play</button>
-              <button id="btn-stop">Stop</button>
-              <label for="is-loop">Loop:</label>
-              <input id="is-loop" type="checkbox" />
-              <label for="fps">FPS:</label>
-              <input type="number" min="1" id="fps" value="1" />
-            </div>
+          
           </div>
 
           <div class="screen">
-            <svg width="800" height="500" class="svg-frame" id="svg"></svg>
+            <svg width="850" height="490" class="svg-frame" id="svg"></svg>
           </div>
           <div class="bottom-toolbar"></div>
         </div>
+
+        <div class="side-bar">
+          <h3 class="app-name">Options</h3>
+
+          <div class="top-toolbar-right">
+            <button class="btn" id="btn-play">Play</button>
+            <button class="btn" id="btn-stop">Stop</button>
+            <label for="is-loop">Loop:</label>
+            <input id="is-loop" type="checkbox" />
+            <label for="fps">FPS:</label>
+            <input type="number" min="1" id="fps" value="1" />
+          </div>
+         
       </div>
     </div>
     <!-- <div id="animTimeline"></div>
