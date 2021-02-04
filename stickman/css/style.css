@@ -29,28 +29,34 @@
   opacity: 0.8;
 }
 
-.btn-v2 {
+.btn-icon {
   height: 2.5rem;
   flex: 1;
   margin: 0.5rem;
   font-size: 1rem;
-  border: none;
-  outline: none;
   cursor: pointer;
   border-radius: 5px;
+  background: #fff;
+  border: none;
+  outline: none;
 }
 
-.btn-v2:hover {
+.btn-icon:hover {
+  background: "blue";
   opacity: 0.8;
 }
 
-.btn-v2:disabled {
+.btn-icon:disabled {
   cursor: not-allowed;
 }
 
-.btn.btn-add-frame {
+.btn-icon.btn-add-frame {
   background: #0075d9;
   color: #fff;
+}
+.btn-icon.btn-delete-frame {
+  color: #fff;
+  background: #d9534f;
 }
 
 .btn.btn-play {
