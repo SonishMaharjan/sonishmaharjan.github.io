@@ -3,7 +3,7 @@ class StickMan {
     this.posX = posX;
     this.posY = posY;
     this.svg = svg;
-    this.color = color;
+    this.color = color || "#000";
     this.id = id;
 
     this.draggerAngle = 270;
@@ -58,11 +58,13 @@ class StickMan {
     return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="rotation"
+    stroke="#000"
     fill="#7993f0" class="draggable"  />
     
     <circle cx="${this.translateDraggerX}" cy="${this.translateDraggerY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="translate"
+    stroke="#000"
     fill="yellow" class="draggable"  />
 
     `;
@@ -103,10 +105,10 @@ class StickMan {
       this.posY,
       1.5 * LINE_LENGTH,
       90,
-
       "stickBody",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.head = new Head(
@@ -116,7 +118,8 @@ class StickMan {
       270,
       "head",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.leftArm = new Stick(
@@ -126,7 +129,8 @@ class StickMan {
       150,
       "leftArm",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.rightArm = new Stick(
@@ -136,7 +140,8 @@ class StickMan {
       30,
       "rightArm",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.leftHand = new Stick(
@@ -146,7 +151,8 @@ class StickMan {
       145,
       "leftHand",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.rightHand = new Stick(
@@ -156,7 +162,8 @@ class StickMan {
       45,
       "rightHand",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.leftThigh = new Stick(
@@ -166,7 +173,8 @@ class StickMan {
       130,
       "leftThigh",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.leftLeg = new Stick(
@@ -176,7 +184,8 @@ class StickMan {
       90,
       "leftLeg",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.rightThigh = new Stick(
@@ -186,7 +195,8 @@ class StickMan {
       30,
       "rightThigh",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
 
     this.rightLeg = new Stick(
@@ -196,7 +206,8 @@ class StickMan {
       90,
       "rightLeg",
       this.id,
-      this.draggerAngle
+      this.draggerAngle,
+      this.color
     );
   }
 
