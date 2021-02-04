@@ -6,14 +6,18 @@
   /* width: 80%; */
   text-align: center;
   margin: auto;
-  padding: 15px;
-  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.5);
+  /* padding: 15px; */
+  /* box-shadow: 0 5px 40px rgba(0, 0, 0, 0.5); */
   height: 40px;
   font-family: "Amatic SC", cursive;
 }
 
 .draggable {
-  cursor: move;
+  cursor: grab;
+}
+
+.rotateable {
+  cursor: all-scroll;
 }
 
 .btn {
@@ -28,6 +32,25 @@
 
 .btn:hover {
   opacity: 0.8;
+}
+
+.btn-v2 {
+  height: 2.5rem;
+  flex: 1;
+  margin: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-v2:hover {
+  opacity: 0.8;
+}
+
+.btn-v2:disabled {
+  cursor: not-allowed;
 }
 
 .btn.btn-add-frame {
@@ -55,6 +78,8 @@
   text-align: center;
   margin-top: 10px;
   padding: 10px;
+  /* border-bottom: 1px solid #fff; */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 .loop-wrapper {

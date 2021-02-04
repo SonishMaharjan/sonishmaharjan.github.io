@@ -18,7 +18,7 @@ let animator = {
 
       if (cursor > frameManager.framesList.length - 1) {
         if (this.isLoop) {
-          cursor = 0;
+          cursor = -1;
         } else {
           this.stop();
         }

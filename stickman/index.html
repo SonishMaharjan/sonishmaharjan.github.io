@@ -1,125 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stick Man Animator</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stick Man Animator</title>
 
-  <body>
-    <div id="app">
-      <div class="container">
-        <div class="side-bar">
-          <div class="option-wrapper">
-            <h3 class="app-name">Stick Man Animator</h3>
-            <div class="side-bar-left">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    type="text/css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+
+      <div class="side-bar">
+        <div class="frames-title">
+          <h3 class="app-name">Stick Man Animator</h3>
+        </div>
+        <div class="flex frame-buttons">
+          <button class="btn-v2 btn-add-frame" id="btn-add-frame-id">
+            <i class="fa fa-plus"></i>
+          </button>
+
+          <button class="btn-v2 btn-delete-frame" id="btn-delete-frame-id">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+
+        <div class="frame-list" id="frame-list-id"></div>
+      </div>
+
+      <div class="screen-container">
+        <div class="screen">
+          <svg width="850" height="490" class="svg-frame" id="svg"></svg>
+        </div>
+      </div>
+
+      <div class="side-bar">
+        <div class="option-wrapper">
+
+          <div class="side-bar-left">
+
+            <div class="flex">
               <button class="btn btn-play" id="btn-play-id">
                 Play
-                <i class="fa fa-play" aria-hidden="true"></i>
               </button>
               <button class="btn btn-stop" id="btn-stop-id">
                 Stop
-
-                <i class="fa fa-stop" aria-hidden="true"></i>
-              </button>
-              <div class="loop-wrapper">
-                <label for="is-loop">Loop:</label>
-                <input class="loop-input" id="is-loop" type="checkbox" />
-              </div>
-              <div class="fps-wrapper">
-                <label for="fps">FPS:</label>
-                <input
-                  type="number"
-                  class="fps-input"
-                  min="1"
-                  id="fps"
-                  value="1"
-                />
-              </div>
-            </div>
-            <div class="help-wrapper">
-              <h4>Instructions:</h4>
-              <div class="instruction-body">
-                <ul class="instruction-list">
-                  <li>
-                    <div class="dot red-dot"></div>
-                    <div class="dot-info">Move body parts</div>
-                  </li>
-
-                  <li>
-                    <div class="dot yellow-dot"></div>
-                    <div class="dot-info">Translate Stick Man</div>
-                  </li>
-
-                  <li>
-                    <div class="dot blue-dot"></div>
-                    <div class="dot-info">Rotate Stick Man</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="screen-container">
-          <div class="top-toolbar">
-            <div class="top-toolbar-left">
-              <button class="btn btn-add-frame" id="btn-add-frame-id">
-                <i class="fa fa-plus"></i>
-                Add Frame
-              </button>
-
-              <button class="btn btn-delete-frame" id="btn-delete-frame-id">
-                <i class="fa fa-trash"></i>
-                Delete Frame
               </button>
             </div>
-          </div>
 
-          <div class="screen">
-            <svg width="850" height="490" class="svg-frame" id="svg"></svg>
-          </div>
-          <div class="bottom-toolbar"></div>
-        </div>
+            <div class="loop-wrapper">
+              <label for="is-loop">Loop:</label>
+              <input class="loop-input" id="is-loop" type="checkbox" />
+            </div>
+            <div class="fps-wrapper">
+              <label for="fps">FPS:</label>
+              <input type="number" class="fps-input" min="1" id="fps" value="1" />
+            </div>
 
-        <div class="side-bar">
-          <div class="frames-title"><h4>Frames</h4></div>
-          <div class="frame-list" id="frame-list-id"></div>
+
+          </div>
+          <div class="help-wrapper">
+            <h4>Instructions:</h4>
+            <div class="instruction-body">
+              <ul class="instruction-list">
+                <li>
+                  <div class="dot red-dot"></div>
+                  <div class="dot-info">Move body parts</div>
+                </li>
+
+                <li>
+                  <div class="dot yellow-dot"></div>
+                  <div class="dot-info">Translate Stick Man</div>
+                </li>
+
+                <li>
+                  <div class="dot blue-dot"></div>
+                  <div class="dot-info">Rotate Stick Man</div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- <div id="animTimeline"></div>
+  </div>
+  <!-- <div id="animTimeline"></div>
     <div class="toolbar">
       <input type="number" id="animIntervalInput" value="1000" />
       <button id="btnPlay">Play</button>
       <button id="btnClear">Clear</button>
     </div> -->
-    <script src="js/utils.js"></script>
-    <script src="js/stick.js"></script>
-    <script src="js/head.js"></script>
-    <script src="js/bodyStick.js"></script>
-    <script src="js/stickman.js"></script>
-    <script src="js/animator.js"></script>
-    <script src="js/event.js"></script>
-    <script src="js/frame.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/renderer.js"></script>
-  </body>
+  <script src="js/utils.js"></script>
+  <script src="js/stick.js"></script>
+  <script src="js/head.js"></script>
+  <script src="js/bodyStick.js"></script>
+  <script src="js/stickman.js"></script>
+  <script src="js/animator.js"></script>
+  <script src="js/event.js"></script>
+  <script src="js/frame.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/renderer.js"></script>
+</body>
+
 </html>
