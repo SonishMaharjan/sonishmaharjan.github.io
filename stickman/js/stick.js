@@ -19,11 +19,11 @@ class Stick {
     this.parentAngle = parentAngle;
     this.color = color || "#000";
 
-    //end position of a stick
+    /** end position of a stick */
     this.endX = this.getEndX(angle);
     this.endY = this.getEndY(angle);
 
-    //offset of stick angle with respect to parent angle
+    /** offset of stick angle with respect to parent angle */
     this.offsetAngle = this.angle - this.parentAngle;
 
     this.stickStyle = `stroke:${this.color};stroke-width:${STICK_WIDTH};`;
