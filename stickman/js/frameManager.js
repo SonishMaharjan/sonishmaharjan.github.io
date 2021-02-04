@@ -28,6 +28,7 @@ let frameManager = {
     this.render();
   },
 
+  /** delete frame from framesList */
   deleteFrame() {
     if (this.framesList.length > 1) {
       let activeFrameIndex = this.framesList.findIndex(
@@ -51,11 +52,13 @@ let frameManager = {
     }
   },
 
+  /** switch the active frame */
   switchFrame(frameId) {
     this.activeFrame = this.framesList.find((frame) => frame.id === frameId);
     this.render();
   },
 
+  /** render frames thumbnails */
   render() {
     let frameList = document.getElementById("frame-list-id");
     let html = "";

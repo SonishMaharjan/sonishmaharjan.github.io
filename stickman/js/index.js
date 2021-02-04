@@ -1,7 +1,8 @@
+/** Global Svg  */
 let svg = document.getElementById("svg");
 
 /** create first Frame */
 frameManager.addFrame();
 
-/** render animator screen */
+/** start rendering animation screen */
 renderSvg();
