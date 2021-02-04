@@ -1,8 +1,5 @@
-const LINE_LENGTH = 60;
-
 class StickMan {
   constructor(posX, posY, color, svg, id) {
-    console.log(id);
     this.posX = posX;
     this.posY = posY;
     this.svg = svg;
@@ -10,12 +7,8 @@ class StickMan {
     this.id = id;
 
     this.draggerAngle = 270;
-
     this.length = 120;
-
     this.draggerRadius = 7;
-
-    // this.legCenter =
 
     this.createStickMan();
 
@@ -208,7 +201,6 @@ class StickMan {
   }
 
   update() {
-    // console.log(this.stickBody.endX);
     this.lowerX = this.stickBody.endX;
     this.lowerY = this.stickBody.endY;
 
@@ -217,11 +209,10 @@ class StickMan {
 
     this.leftThigh.translate({ x: this.lowerX, y: this.lowerY });
     this.rightThigh.translate({ x: this.lowerX, y: this.lowerY });
+
     this.head.translate({ x: this.stickBody.x, y: this.stickBody.y });
-    // this.leftThigh.posX = this.lowerX;
 
     this.leftArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
-
     this.rightArm.translate({ x: this.stickBody.x, y: this.stickBody.y });
 
     this.leftLeg.translate({ x: this.leftThigh.endX, y: this.leftThigh.endY });
@@ -232,8 +223,6 @@ class StickMan {
 
     this.leftHand.translate({ x: this.leftArm.endX, y: this.leftArm.endY });
     this.rightHand.translate({ x: this.rightArm.endX, y: this.rightArm.endY });
-
-    // this.rightThigh.posY = this.lowerX;
   }
 
   clone() {
@@ -246,10 +235,6 @@ class StickMan {
           : JSON.parse(JSON.stringify(this[key]));
     });
 
-    // stickman.isShadow = isShadow;
-
-    // stickman.id = "stick-man-" + generateRandomCode(5);
-
     return stickman;
   }
 
@@ -257,44 +242,39 @@ class StickMan {
     this.update();
     let html = "";
     html += `
-    <!-- Head -->
     ${this.head.render()}
     
     ${this.leftHand.render()}
     ${this.rightHand.render()}
+    
     ${this.leftArm.render()}
-
     ${this.rightArm.render()}
 
-
-
-
     ${this.rightLeg.render()}
-
     ${this.leftLeg.render()}
+    
     ${this.rightThigh.render()}
     ${this.leftThigh.render()}
-    ${this.stickBody.render()}
     
-    <!-- Body -->
-
-
-
-
-   
+    ${this.stickBody.render()}   
     `;
 
     if (!animator.isAnimationPlaying) {
       html += `
     ${this.leftArm.renderDragger()}
     ${this.rightArm.renderDragger()}
+
     ${this.rightThigh.renderDragger()}
     ${this.leftThigh.renderDragger()}
     ${this.stickBody.renderDragger()}
+
     ${this.rightLeg.renderDragger()}
     ${this.leftLeg.renderDragger()}
+
     ${this.head.renderDragger()}
+
     ${this.renderTransformer()}
+
     ${this.leftHand.renderDragger()}
     ${this.rightHand.renderDragger()}
 `;

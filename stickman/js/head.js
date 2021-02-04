@@ -76,7 +76,7 @@ class Head extends Stick {
         cx="${this.endX}"
         cy="${this.endY}"
         r="${this.length}"
-        fill="black"
+        fill="${this.color}"
       />
     
       `;
