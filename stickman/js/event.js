@@ -121,10 +121,12 @@ document.getElementById("btn-delete-frame-id").addEventListener("click", () => {
 function applyFrameEventHandlers() {
   let frameList = document.querySelectorAll(".frame-list-item");
   frameList.forEach((frameListItem) => {
+    console.log(animator.isAnimationPlaying);
     let frameId = frameListItem.getAttribute("data-id");
     frameListItem.addEventListener("click", () => {
-      console.log("here");
-      frameManager.switchFrame(frameId);
+      if (!animator.isAnimationPlaying) {
+        frameManager.switchFrame(frameId);
+      }
     });
   });
 }

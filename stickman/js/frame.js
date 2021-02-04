@@ -29,8 +29,7 @@ class Frame {
     if (isNew) {
       this.stickManList.push(
         new StickMan(250, 250, "#000", svg, "stick-" + generateRandomCode(5)),
-
-        new StickMan(80, 250, "#000", svg, "stick-" + generateRandomCode(5))
+        new StickMan(600, 250, "#000", svg, "stick-" + generateRandomCode(5))
       );
     } else {
       frameManager.activeFrame.stickManList.forEach((stickMan) => {

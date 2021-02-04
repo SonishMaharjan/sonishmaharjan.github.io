@@ -303,34 +303,17 @@ class StickMan {
    
     `;
 
-    if (!animator.isAnimationPlayng) {
+    if (!animator.isAnimationPlaying) {
       html += `
-      
-      
-    
-    
-
     ${this.leftArm.renderDragger()}
-
     ${this.rightArm.renderDragger()}
-
-   
     ${this.rightThigh.renderDragger()}
     ${this.leftThigh.renderDragger()}
     ${this.stickBody.renderDragger()}
-
-   
-
-
     ${this.rightLeg.renderDragger()}
     ${this.leftLeg.renderDragger()}
-
-
     ${this.head.renderDragger()}
-
     ${this.renderTransformer()}
-
-
     ${this.leftHand.renderDragger()}
     ${this.rightHand.renderDragger()}
 `;

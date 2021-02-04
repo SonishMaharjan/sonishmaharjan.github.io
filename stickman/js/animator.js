@@ -1,7 +1,7 @@
 let animator = {
   isLoop: false,
   timer: null,
-  isAnimationPlayng: false,
+  isAnimationPlaying: false,
   fps: 2,
 
   play(isLoop, fps) {
@@ -14,17 +14,15 @@ let animator = {
       clearInterval(this.timer);
     }
     this.timer = setInterval(() => {
-      // console.log(frameManager.framesList[0]);
+      this.isAnimationPlaying = true;
+
       frameManager.switchFrame(frameManager.framesList[cursor].id);
-      this.isAnimationPlayng = true;
 
       if (cursor === frameManager.framesList.length - 1) {
-        // console.log("hahah eorroro");
         if (this.isLoop) {
           cursor = -1;
         } else {
           this.stop();
-          this.is;
         }
       }
 
@@ -37,8 +35,7 @@ let animator = {
 
     addFrameBtn.disabled = false;
     deleteFramtBtn.disabled = false;
-
-    this.isAnimationPlayng = false;
+    this.isAnimationPlaying = false;
 
     clearInterval(this.timer);
   },
