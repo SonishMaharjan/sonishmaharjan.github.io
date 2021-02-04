@@ -142,7 +142,30 @@ stopBtn.addEventListener("click", () => {
   animator.stop();
 });
 
+function applySvgFullScreen() {
+  document
+    .getElementById("svg")
+    .setAttribute(
+      "width",
+      window.innerWidth -
+        2 * document.querySelector(".side-bar").getBoundingClientRect().width
+    );
+  // document
+  //   .getElementById("svg")
+  //   .setAttribute(
+  //     "height",
+  //     window.innerHeight -
+  //       2 *
+  //         document.querySelector(".top-toolbar").getBoundingClientRect().height
+  //   );
+}
+
+window.addEventListener("resize", function () {
+  applySvgFullScreen();
+});
+
 window.addEventListener("load", () => {
   let svgBox = document.getElementById("svg");
   enableDragging(svgBox);
+  applySvgFullScreen();
 });
