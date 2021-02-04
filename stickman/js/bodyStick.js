@@ -87,11 +87,13 @@ class StickBody extends Stick {
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
     data-dragger-position="top-body"
+    stroke="#000"
     fill="red" class="draggable"  />
     
     <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
+    stroke="#000"
     fill="red" class="draggable"  />
     `;
   }
