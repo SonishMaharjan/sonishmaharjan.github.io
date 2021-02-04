@@ -1,5 +1,6 @@
 /** initailizes all the event handlers */
 
+/** add eventhanler in dragger points */
 function enableDragging(animatorSvg) {
   let animatorSvgFrame = animatorSvg;
   animatorSvgFrame.addEventListener("mousedown", startDrag);
@@ -98,14 +99,7 @@ function enableDragging(animatorSvg) {
   }
 }
 
-document.getElementById("btn-add-frame-id").addEventListener("click", () => {
-  frameManager.addFrame();
-});
-
-document.getElementById("btn-delete-frame-id").addEventListener("click", () => {
-  frameManager.deleteFrame();
-});
-
+/** add events to thumbnail frames */
 function applyFrameEventHandlers() {
   let frameList = document.querySelectorAll(".frame-list-item");
   frameList.forEach((frameListItem) => {
@@ -118,30 +112,6 @@ function applyFrameEventHandlers() {
   });
 }
 
-let playBtn = document.getElementById("btn-play-id");
-
-playBtn.addEventListener("click", () => {
-  let isLoop = document.getElementById("is-loop").checked;
-  let fpsEl = document.getElementById("fps");
-  let fps = Math.floor(fpsEl.value);
-  let addFrameBtn = document.getElementById("btn-add-frame-id");
-  let deleteFramtBtn = document.getElementById("btn-delete-frame-id");
-
-  if (fps < 1) {
-    alert("Invalid FPS value. FPS value should be equal or greater than 1");
-  } else {
-    fpsEl.value = fps;
-    animator.play(isLoop, fps);
-    addFrameBtn.disabled = true;
-    deleteFramtBtn.disabled = true;
-  }
-});
-
-let stopBtn = document.getElementById("btn-stop-id");
-stopBtn.addEventListener("click", () => {
-  animator.stop();
-});
-
 /** makes resizable animator screen */
 function applySvgFullScreen() {
   document
@@ -152,7 +122,9 @@ function applySvgFullScreen() {
         2 * document.querySelector(".side-bar").getBoundingClientRect().width
     );
 
-  document.getElementById("svg").setAttribute("height", window.innerHeight);
+  document
+    .getElementById("svg")
+    .setAttribute("height", window.innerHeight - 20);
 }
 
 window.addEventListener("resize", function () {
@@ -161,6 +133,40 @@ window.addEventListener("resize", function () {
 
 window.addEventListener("load", () => {
   let svgBox = document.getElementById("svg");
+  let stopBtn = document.getElementById("btn-stop-id");
+  let playBtn = document.getElementById("btn-play-id");
+
   enableDragging(svgBox);
   applySvgFullScreen();
+
+  document.getElementById("btn-add-frame-id").addEventListener("click", () => {
+    frameManager.addFrame();
+  });
+
+  document
+    .getElementById("btn-delete-frame-id")
+    .addEventListener("click", () => {
+      frameManager.deleteFrame();
+    });
+
+  playBtn.addEventListener("click", () => {
+    let isLoop = document.getElementById("is-loop").checked;
+    let fpsEl = document.getElementById("fps");
+    let fps = Math.floor(fpsEl.value);
+    let addFrameBtn = document.getElementById("btn-add-frame-id");
+    let deleteFramtBtn = document.getElementById("btn-delete-frame-id");
+
+    if (fps < 1) {
+      alert("Invalid FPS value. FPS value should be equal or greater than 1");
+    } else {
+      fpsEl.value = fps;
+      animator.play(isLoop, fps);
+      addFrameBtn.disabled = true;
+      deleteFramtBtn.disabled = true;
+    }
+  });
+
+  stopBtn.addEventListener("click", () => {
+    animator.stop();
+  });
 });
