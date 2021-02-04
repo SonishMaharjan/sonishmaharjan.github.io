@@ -8,7 +8,3 @@ function renderSvg() {
   svg.innerHTML = html;
   requestAnimationFrame(renderSvg);
 }
-
-let svg = document.getElementById("svg");
-
-renderSvg();

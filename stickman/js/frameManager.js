@@ -1,7 +1,9 @@
+/** object for managing frames */
 let frameManager = {
   framesList: [],
   activeFrame: null,
 
+  /** create new frame and pushes to framesList */
   addFrame() {
     if (this.activeFrame) {
       let activeFrameIndex = this.framesList.findIndex(
@@ -27,7 +29,6 @@ let frameManager = {
   },
 
   deleteFrame() {
-    console.log("delet callled");
     if (this.framesList.length > 1) {
       let activeFrameIndex = this.framesList.findIndex(
         (frame) => frame.id === this.activeFrame.id
@@ -38,7 +39,6 @@ let frameManager = {
           (frame) => frame.id !== this.activeFrame.id
         );
 
-        // console.log(activeFrameIndex);
         if (activeFrameIndex === 0) {
           this.activeFrame = this.framesList[0];
         } else {
@@ -75,5 +75,3 @@ let frameManager = {
     applyFrameEventHandlers();
   },
 };
-
-frameManager.addFrame();

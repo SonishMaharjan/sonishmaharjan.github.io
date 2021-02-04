@@ -109,7 +109,6 @@ document.getElementById("btn-delete-frame-id").addEventListener("click", () => {
 function applyFrameEventHandlers() {
   let frameList = document.querySelectorAll(".frame-list-item");
   frameList.forEach((frameListItem) => {
-    console.log(animator.isAnimationPlaying);
     let frameId = frameListItem.getAttribute("data-id");
     frameListItem.addEventListener("click", () => {
       if (!animator.isAnimationPlaying) {
