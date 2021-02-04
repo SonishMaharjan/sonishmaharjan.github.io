@@ -16,14 +16,14 @@ let animator = {
     this.timer = setInterval(() => {
       this.isAnimationPlaying = true;
 
-      frameManager.switchFrame(frameManager.framesList[cursor].id);
-
-      if (cursor === frameManager.framesList.length - 1) {
+      if (cursor > frameManager.framesList.length - 1) {
         if (this.isLoop) {
-          cursor = -1;
+          cursor = 0;
         } else {
           this.stop();
         }
+      } else {
+        frameManager.switchFrame(frameManager.framesList[cursor].id);
       }
 
       cursor++;

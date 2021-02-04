@@ -5,7 +5,6 @@ function render() {
   });
 
   svg.innerHTML = html;
-
   requestAnimationFrame(render);
 }
 let svg = document.getElementById("svg");
