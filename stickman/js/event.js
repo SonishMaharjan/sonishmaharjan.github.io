@@ -1,11 +1,11 @@
 /** initailizes all the event handlers */
 
 function enableDragging(animatorSvg) {
-  var animatorSvg = animatorSvg;
-  animatorSvg.addEventListener("mousedown", startDrag);
-  animatorSvg.addEventListener("mousemove", drag);
-  animatorSvg.addEventListener("mouseup", endDrag);
-  animatorSvg.addEventListener("mouseleave", endDrag);
+  let animatorSvgFrame = animatorSvg;
+  animatorSvgFrame.addEventListener("mousedown", startDrag);
+  animatorSvgFrame.addEventListener("mousemove", drag);
+  animatorSvgFrame.addEventListener("mouseup", endDrag);
+  animatorSvgFrame.addEventListener("mouseleave", endDrag);
   let activeCp = false;
   function startDrag(e) {
     if (e.target.classList.contains("draggable")) activeCp = e.target;
@@ -18,13 +18,13 @@ function enableDragging(animatorSvg) {
       let stickName = activeCp.getAttributeNS(null, "data-stick-name");
       let dataTransform = activeCp.getAttributeNS(null, "data-transform");
 
-      var stickManObject = frameManager.activeFrame.stickManList.find(
+      let stickManObject = frameManager.activeFrame.stickManList.find(
         (stickMan) => {
           return stickMan.id == stickManId;
         }
       );
 
-      var stickObject = stickManObject[stickName];
+      let stickObject = stickManObject[stickName];
 
       let offsetX = e.clientX - e.currentTarget.getBoundingClientRect().left;
       let offsetY = e.clientY - e.currentTarget.getBoundingClientRect().top;
@@ -80,13 +80,13 @@ function enableDragging(animatorSvg) {
       let stickManId = activeCp.getAttributeNS(null, "data-stickman-id");
       let stickName = activeCp.getAttributeNS(null, "data-stick-name");
 
-      var stickManObject = frameManager.activeFrame.stickManList.find(
+      let stickManObject = frameManager.activeFrame.stickManList.find(
         (stickMan) => {
           return stickMan.id == stickManId;
         }
       );
 
-      var stickObject = stickManObject[stickName];
+      let stickObject = stickManObject[stickName];
       if (stickObject) {
         stickObject.updateOffsetAngle(stickManObject.draggerAngle);
       }
