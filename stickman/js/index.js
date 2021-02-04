@@ -8,7 +8,6 @@ let frameManager = {
         (frame) => frame.id === this.activeFrame.id
       );
 
-      // console.log(activeFrameIndex  );
       let startArray = this.framesList.slice(0, activeFrameIndex + 1);
 
       // console.log(startArray);

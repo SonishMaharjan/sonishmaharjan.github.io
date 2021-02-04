@@ -1,4 +1,12 @@
+/** Class representing a StickMan*/
 class StickMan {
+  /** Create a stickman.
+   * @param {number} posX - The x position(neck of stickman).
+   * @param {number} posY - The Y position(neck of stickman).
+   * @param {object} svg - The DOM's <svg> node.
+   * @param {string} [color="#000"]- The color hexcode or color name of stick man.
+   * @param {string} id - The unique id of stick man of which this stick is a part.
+   */
   constructor(posX, posY, color, svg, id) {
     this.posX = posX;
     this.posY = posY;
@@ -6,19 +14,24 @@ class StickMan {
     this.color = color || "#000";
     this.id = id;
 
-    this.draggerAngle = 270;
-    this.length = 120;
-    this.draggerRadius = 7;
+    this.draggerAngle = STICKMAN_ROTATOR_ANGLE_INITAL;
+    this.draggerDistance = STICKMAN_ROTATOR_DISTANCE;
+    this.draggerRadius = DRAGGER_RADIUS;
 
     this.createStickMan();
 
+    /** point x,y for stickman rotator dragger */
     this.endX = this.getEndX(this.draggerAngle);
     this.endY = this.getEndY(this.draggerAngle);
 
+    /** point x,y for stickman translator dragger */
     this.translateDraggerX = this.stickBody.midX;
     this.translateDraggerY = this.stickBody.midY;
   }
 
+  /** Translate the stickman and its sticks position
+   * @param {object} position -  position(co-ordinate) object with x and y value.
+   */
   translate(position) {
     this.posX = position.x;
     this.posY = position.y;
@@ -46,30 +59,9 @@ class StickMan {
     this.endY = this.getEndY(this.draggerAngle);
   }
 
-  getEndX(angle) {
-    return this.stickBody.midX + Math.cos(degToRad(angle)) * this.length;
-  }
-
-  getEndY(angle) {
-    return this.stickBody.midY + Math.sin(degToRad(angle)) * this.length;
-  }
-
-  renderTransformer() {
-    return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
-    data-stickman-id=${this.id}
-    data-transform="rotation"
-    stroke="#000"
-    fill="#7993f0" class="draggable"  />
-    
-    <circle cx="${this.translateDraggerX}" cy="${this.translateDraggerY}" r="${this.draggerRadius}"
-    data-stickman-id=${this.id}
-    data-transform="translate"
-    stroke="#000"
-    fill="yellow" class="draggable"  />
-
-    `;
-  }
-
+  /**Rotate the stick man and its stick with given angle
+   * @param {number} angle - rotate angle in degree.
+   */
   rotate(angle) {
     this.draggerAngle = angle;
 
@@ -99,6 +91,44 @@ class StickMan {
     this.endY = this.getEndY(this.draggerAngle);
   }
 
+  /** calculate the endX position of stickman after rotation of given angle
+   * @param {number} angle -  angle of rotation in degree.
+   */
+  getEndX(angle) {
+    return (
+      this.stickBody.midX + Math.cos(degToRad(angle)) * this.draggerDistance
+    );
+  }
+
+  /** calculate the endY position of stickman after rotation of given angle
+   * @param {number} angle -  angle of rotation in degree.
+   */
+  getEndY(angle) {
+    return (
+      this.stickBody.midY + Math.sin(degToRad(angle)) * this.draggerDistance
+    );
+  }
+
+  /** render control/dragger points(rotator and translator) for stickman
+   */
+  renderTransformer() {
+    return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
+    data-stickman-id=${this.id}
+    data-transform="rotation"
+    stroke="#000"
+    fill="#7993f0" class="draggable"  />
+    
+    <circle cx="${this.translateDraggerX}" cy="${this.translateDraggerY}" r="${this.draggerRadius}"
+    data-stickman-id=${this.id}
+    data-transform="translate"
+    stroke="#000"
+    fill="yellow" class="draggable"  />
+
+    `;
+  }
+
+  /** create stick man's body parts
+   */
   createStickMan() {
     this.stickBody = new StickBody(
       this.posX,
@@ -211,6 +241,8 @@ class StickMan {
     );
   }
 
+  /** update the postion of stickman body parts with respect to sticman posititon
+   */
   update() {
     this.lowerX = this.stickBody.endX;
     this.lowerY = this.stickBody.endY;
@@ -236,6 +268,8 @@ class StickMan {
     this.rightHand.translate({ x: this.rightArm.endX, y: this.rightArm.endY });
   }
 
+  /** clone stick man object to new object(with out reference) and return new object
+   */
   clone() {
     let stickman = new StickMan();
 
@@ -249,6 +283,8 @@ class StickMan {
     return stickman;
   }
 
+  /** render stickman and its sticks
+   */
   render() {
     this.update();
     let html = "";
