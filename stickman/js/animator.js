@@ -4,13 +4,13 @@ let animator = {
   isLoop: false,
   timer: null,
   isAnimationPlaying: false,
-  fps: 2,
+  fps: DEFAULT_FPS,
 
   play(isLoop, fps) {
     let cursor = 0;
 
     this.isLoop = isLoop;
-    this.fps = fps || 2;
+    this.fps = fps;
 
     if (this.timer) {
       clearInterval(this.timer);
