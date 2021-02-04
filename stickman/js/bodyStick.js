@@ -60,7 +60,9 @@ class StickBody extends Stick {
    */
   rotate(angle, isUpperBodyDragger = false) {
     if (!isUpperBodyDragger) {
-      //origin of rotation is (x,y)
+      /*
+       * origin of rotation is (x,y)
+       */
       this.endX = this.getEndX(angle);
       this.endY = this.getEndY(angle);
       this.midX = this.getMidX(angle);
@@ -68,7 +70,9 @@ class StickBody extends Stick {
 
       this.angle = angle;
     } else {
-      //origin of rotation is (endX,endY)
+      /*
+       * origin of rotation is (endX,endY)
+       */
       this.x = this.getStartX(angle);
       this.y = this.getStartY(angle);
       this.midX = this.endX + (Math.cos(degToRad(angle)) * this.length) / 2;
