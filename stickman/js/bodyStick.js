@@ -1,39 +1,9 @@
 class StickBody extends Stick {
-  constructor(
-    x,
-    y,
-    length,
-    angle,
-
-    stickName,
-    stickManId,
-    parentAngle,
-    color
-  ) {
-    super(
-      x,
-      y,
-      length,
-      angle,
-
-      stickName,
-      stickManId,
-      parentAngle,
-      color
-    );
+  constructor(x, y, length, angle, stickName, stickManId, parentAngle, color) {
+    super(x, y, length, angle, stickName, stickManId, parentAngle, color);
 
     this.midX = this.getMidX(angle);
     this.midY = this.getMidY(angle);
-  }
-
-  getMidX(angle) {
-    return this.x + (Math.cos(degToRad(angle)) * this.length) / 2;
-    // return this.endX + (Math.cos(degToRad(angle)) * this.length) / 2;
-  }
-
-  getMidY(angle) {
-    return this.y + (Math.sin(degToRad(angle)) * this.length) / 2;
-    // return this.endY + (Math.sin(degToRad(angle)) * this.length) / 2;
   }
 
   getStartX(angle) {
@@ -42,6 +12,14 @@ class StickBody extends Stick {
 
   getStartY(angle) {
     return this.endY + Math.sin(degToRad(angle)) * this.length;
+  }
+
+  getMidX(angle) {
+    return this.x + (Math.cos(degToRad(angle)) * this.length) / 2;
+  }
+
+  getMidY(angle) {
+    return this.y + (Math.sin(degToRad(angle)) * this.length) / 2;
   }
 
   translate(position) {
@@ -69,14 +47,12 @@ class StickBody extends Stick {
       this.midX = this.endX + (Math.cos(degToRad(angle)) * this.length) / 2;
       this.midY = this.endY + (Math.sin(degToRad(angle)) * this.length) / 2;
 
-      //adding 180 offset while rotating with origin of endX, endY
       this.angle = 180 + angle;
     }
   }
 
   renderDragger() {
     return `
-    
     <circle cx="${this.x}" cy="${this.y}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
@@ -86,12 +62,7 @@ class StickBody extends Stick {
     <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
-
     fill="red" class="draggable"  />
-
-
-
-    
     `;
   }
 }

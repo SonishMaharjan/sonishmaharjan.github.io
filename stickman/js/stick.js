@@ -96,6 +96,6 @@ class Stick {
     return `<circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
-    fill="red" class="draggable" stroke="black"  />`;
+    fill=${STICK_ROTATOR_COLOR} class="draggable" stroke="black"  />`;
   }
 }

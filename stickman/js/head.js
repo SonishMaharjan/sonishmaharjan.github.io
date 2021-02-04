@@ -1,8 +1,8 @@
-/** Class representing a Head of stick man. Inherits the  Stick Class
+/** Class representing a Head of stick man. Inherits the Stick Class
  * This is the circle version of stick object
  */
 class Head extends Stick {
-  /** calls parent'st constructor
+  /** calls parent's constructor
    * head uses length as the radius of the circle
    */
   constructor(x, y, length, angle, stickName, stickManId, parentAngle, color) {
