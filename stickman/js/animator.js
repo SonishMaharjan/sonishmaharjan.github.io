@@ -5,9 +5,6 @@ let animator = {
   fps: 2,
 
   play(isLoop, fps) {
-    // console.log(frameManager);
-    // debugger;
-
     let cursor = 0;
 
     this.isLoop = isLoop;
@@ -35,7 +32,14 @@ let animator = {
     }, 1000 / this.fps);
   },
   stop() {
+    let addFrameBtn = document.getElementById("btn-add-frame-id");
+    let deleteFramtBtn = document.getElementById("btn-delete-frame-id");
+
+    addFrameBtn.disabled = false;
+    deleteFramtBtn.disabled = false;
+
     this.isAnimationPlayng = false;
+
     clearInterval(this.timer);
   },
 };

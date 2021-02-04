@@ -65,7 +65,7 @@ class StickMan {
     return `  <circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}
     data-transform="rotation"
-    fill="blue" class="draggable"  />
+    fill="#7993f0" class="draggable"  />
     
     <circle cx="${this.translateDraggerX}" cy="${this.translateDraggerY}" r="${this.draggerRadius}"
     data-stickman-id=${this.id}

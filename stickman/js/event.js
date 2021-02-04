@@ -120,7 +120,6 @@ document.getElementById("btn-delete-frame-id").addEventListener("click", () => {
 
 function applyFrameEventHandlers() {
   let frameList = document.querySelectorAll(".frame-list-item");
-
   frameList.forEach((frameListItem) => {
     let frameId = frameListItem.getAttribute("data-id");
     frameListItem.addEventListener("click", () => {
@@ -128,8 +127,6 @@ function applyFrameEventHandlers() {
       frameManager.switchFrame(frameId);
     });
   });
-
-  console.log(frameList);
 }
 
 let playBtn = document.getElementById("btn-play-id");
@@ -137,11 +134,16 @@ playBtn.addEventListener("click", () => {
   let isLoop = document.getElementById("is-loop").checked;
   let fpsEl = document.getElementById("fps");
   let fps = Math.floor(fpsEl.value);
+  let addFrameBtn = document.getElementById("btn-add-frame-id");
+  let deleteFramtBtn = document.getElementById("btn-delete-frame-id");
+
   if (fps < 1) {
     alert("Invalid FPS value. FPS value should be equal or greater than 1");
   } else {
     fpsEl.value = fps;
     animator.play(isLoop, fps);
+    addFrameBtn.disabled = true;
+    deleteFramtBtn.disabled = true;
   }
 });
 

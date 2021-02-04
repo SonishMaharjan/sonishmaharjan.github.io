@@ -28,30 +28,53 @@
     <div id="app">
       <div class="container">
         <div class="side-bar">
-          <h3 class="app-name">Stick Man Animator</h3>
-          <div class="side-bar-left">
-            <button class="btn btn-play" id="btn-play-id">
-              Play
-              <i class="fa fa-play" aria-hidden="true"></i>
-            </button>
-            <button class="btn btn-stop" id="btn-stop-id">
-              Stop
+          <div class="option-wrapper">
+            <h3 class="app-name">Stick Man Animator</h3>
+            <div class="side-bar-left">
+              <button class="btn btn-play" id="btn-play-id">
+                Play
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </button>
+              <button class="btn btn-stop" id="btn-stop-id">
+                Stop
 
-              <i class="fa fa-stop" aria-hidden="true"></i>
-            </button>
-            <div class="loop-wrapper">
-              <label for="is-loop">Loop:</label>
-              <input class="loop-input" id="is-loop" type="checkbox" />
+                <i class="fa fa-stop" aria-hidden="true"></i>
+              </button>
+              <div class="loop-wrapper">
+                <label for="is-loop">Loop:</label>
+                <input class="loop-input" id="is-loop" type="checkbox" />
+              </div>
+              <div class="fps-wrapper">
+                <label for="fps">FPS:</label>
+                <input
+                  type="number"
+                  class="fps-input"
+                  min="1"
+                  id="fps"
+                  value="1"
+                />
+              </div>
             </div>
-            <div class="fps-wrapper">
-              <label for="fps">FPS:</label>
-              <input
-                type="number"
-                class="fps-input"
-                min="1"
-                id="fps"
-                value="1"
-              />
+            <div class="help-wrapper">
+              <h4>Instructions:</h4>
+              <div class="instruction-body">
+                <ul class="instruction-list">
+                  <li>
+                    <div class="dot red-dot"></div>
+                    <div class="dot-info">Move body parts</div>
+                  </li>
+
+                  <li>
+                    <div class="dot yellow-dot"></div>
+                    <div class="dot-info">Translate Stick Man</div>
+                  </li>
+
+                  <li>
+                    <div class="dot blue-dot"></div>
+                    <div class="dot-info">Rotate Stick Man</div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
