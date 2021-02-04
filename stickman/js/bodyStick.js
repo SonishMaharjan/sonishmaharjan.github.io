@@ -4,8 +4,7 @@ class StickBody extends Stick {
     y,
     length,
     angle,
-    originX,
-    originY,
+
     stickName,
     stickManId,
     parentAngle,
@@ -16,8 +15,7 @@ class StickBody extends Stick {
       y,
       length,
       angle,
-      originX,
-      originY,
+
       stickName,
       stickManId,
       parentAngle,

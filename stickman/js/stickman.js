@@ -110,8 +110,7 @@ class StickMan {
       this.posY,
       1.5 * LINE_LENGTH,
       90,
-      0,
-      0,
+
       "stickBody",
       this.id,
       this.draggerAngle
@@ -122,8 +121,6 @@ class StickMan {
       this.stickBody.y,
       30,
       270,
-      0,
-      0,
       "head",
       this.id,
       this.draggerAngle
@@ -134,8 +131,6 @@ class StickMan {
       this.posY,
       LINE_LENGTH,
       150,
-      0,
-      0,
       "leftArm",
       this.id,
       this.draggerAngle
@@ -146,8 +141,6 @@ class StickMan {
       this.posY,
       LINE_LENGTH,
       30,
-      0,
-      0,
       "rightArm",
       this.id,
       this.draggerAngle
@@ -158,8 +151,6 @@ class StickMan {
       this.leftArm.endY,
       LINE_LENGTH,
       145,
-      0,
-      0,
       "leftHand",
       this.id,
       this.draggerAngle
@@ -170,8 +161,6 @@ class StickMan {
       this.rightArm.endY,
       LINE_LENGTH,
       45,
-      0,
-      0,
       "rightHand",
       this.id,
       this.draggerAngle
@@ -182,8 +171,6 @@ class StickMan {
       this.stickBody.endY,
       LINE_LENGTH,
       130,
-      0,
-      0,
       "leftThigh",
       this.id,
       this.draggerAngle
@@ -194,8 +181,6 @@ class StickMan {
       this.leftThigh.endY,
       LINE_LENGTH,
       90,
-      0,
-      0,
       "leftLeg",
       this.id,
       this.draggerAngle
@@ -206,8 +191,6 @@ class StickMan {
       this.stickBody.endY,
       LINE_LENGTH,
       30,
-      0,
-      0,
       "rightThigh",
       this.id,
       this.draggerAngle
@@ -218,8 +201,6 @@ class StickMan {
       this.rightThigh.endY,
       LINE_LENGTH,
       90,
-      0,
-      0,
       "rightLeg",
       this.id,
       this.draggerAngle

@@ -1,23 +1,11 @@
 class Stick {
-  constructor(
-    x,
-    y,
-    length,
-    angle,
-    originX,
-    originY,
-    stickName,
-    stickManId,
-    parentAngle,
-    color
-  ) {
+  constructor(x, y, length, angle, stickName, stickManId, parentAngle, color) {
     this.x = x;
     this.y = y;
     this.length = length;
     this.angle = angle;
     this.mainAngleOffset;
-    this.originX = originX;
-    this.originY = originY;
+
     this.endX = this.getEndX(angle);
     this.endY = this.getEndY(angle);
     this.color = color || "#000";
@@ -82,7 +70,6 @@ class Stick {
     return `<circle cx="${this.endX}" cy="${this.endY}" r="${this.draggerRadius}"
     data-stickman-id=${this.stickManId}
     data-stick-name=${this.stickName}
-
     fill="red" class="draggable"  />`;
   }
 }

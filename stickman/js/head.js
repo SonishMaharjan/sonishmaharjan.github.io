@@ -67,30 +67,8 @@
 // }
 
 class Head extends Stick {
-  constructor(
-    x,
-    y,
-    length,
-    angle,
-    originX,
-    originY,
-    stickName,
-    stickManId,
-    parentAngle,
-    color
-  ) {
-    super(
-      x,
-      y,
-      length,
-      angle,
-      originX,
-      originY,
-      stickName,
-      stickManId,
-      parentAngle,
-      color
-    );
+  constructor(x, y, length, angle, stickName, stickManId, parentAngle, color) {
+    super(x, y, length, angle, stickName, stickManId, parentAngle, color);
   }
 
   render() {
