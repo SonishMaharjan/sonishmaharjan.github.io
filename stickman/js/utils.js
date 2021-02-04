@@ -1,3 +1,4 @@
+/** utilites function*/
 function degToRad(deg) {
   return (deg * Math.PI) / 180;
 }
@@ -13,7 +14,6 @@ function generateRandomCode(length) {
   for (let i = 0; i < length; i++) {
     string += possible.charAt(randomInt(0, possible.length - 1));
   }
-
   return string;
 }
 

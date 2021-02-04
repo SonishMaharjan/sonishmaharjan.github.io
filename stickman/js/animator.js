@@ -1,3 +1,5 @@
+/** object that animates the stick man
+ */
 let animator = {
   isLoop: false,
   timer: null,
