@@ -1,4 +1,4 @@
-/** object that animates the stick man
+/** object that animates the stick man by switching the frames
  */
 let animator = {
   isLoop: false,
