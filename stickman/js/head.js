@@ -10,6 +10,7 @@ class Head extends Stick {
   }
 
   /** Override Stick render function
+   * render circle instead of stick
    */
   render() {
     return `<circle

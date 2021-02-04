@@ -32,7 +32,7 @@ class Stick {
   }
 
   /** Translate the stick position
-   * @param {object} position -  Position object with x and y value.
+   * @param {object} position -  position(co-ordinate) object with x and y value.
    */
   translate(position) {
     this.x = position.x;
@@ -43,7 +43,7 @@ class Stick {
   }
 
   /**Rotate the stick with given angle
-   * @param {number} angle - rotate angle.
+   * @param {number} angle - rotate angle in degree.
    */
   rotate(angle) {
     this.angle = angle;
@@ -52,21 +52,21 @@ class Stick {
   }
 
   /** calculate the endX position of stick after rotation of given angle
-   * @param {number} angle -  angle of rotation.
+   * @param {number} angle -  angle of rotation in degree.
    */
   getEndX(angle) {
     return this.x + Math.cos(degToRad(angle)) * this.length;
   }
 
   /** calculate the endY position of stick after rotation of given angle
-   * @param {number} angle -  angle of rotation.
+   * @param {number} angle -  angle of rotation in degree.
    */
   getEndY(angle) {
     return this.y + Math.sin(degToRad(angle)) * this.length;
   }
 
   /** calculate the angle of stick with respect to angle of stickman
-   * @param {number} parentAngle - stickman angle.
+   * @param {number} parentAngle - stickman angle in degree.
    */
   updateOffsetAngle(parentAngle) {
     this.offsetAngle = this.angle - parentAngle;
