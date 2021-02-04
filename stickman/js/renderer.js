@@ -6,7 +6,7 @@ function renderSvg() {
   });
 
   svg.innerHTML = html;
-  requestAnimationFrame(render);
+  requestAnimationFrame(renderSvg);
 }
 
 let svg = document.getElementById("svg");
