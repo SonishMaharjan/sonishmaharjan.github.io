@@ -142,6 +142,7 @@ stopBtn.addEventListener("click", () => {
   animator.stop();
 });
 
+/** makes resizable animator screen */
 function applySvgFullScreen() {
   document
     .getElementById("svg")
@@ -150,14 +151,8 @@ function applySvgFullScreen() {
       window.innerWidth -
         2 * document.querySelector(".side-bar").getBoundingClientRect().width
     );
-  // document
-  //   .getElementById("svg")
-  //   .setAttribute(
-  //     "height",
-  //     window.innerHeight -
-  //       2 *
-  //         document.querySelector(".top-toolbar").getBoundingClientRect().height
-  //   );
+
+  document.getElementById("svg").setAttribute("height", window.innerHeight);
 }
 
 window.addEventListener("resize", function () {
